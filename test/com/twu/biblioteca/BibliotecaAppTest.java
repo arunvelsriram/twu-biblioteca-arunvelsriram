@@ -33,7 +33,7 @@ public class BibliotecaAppTest {
     @Test
     public void shouldBeAbleToDisplayAListOfBooks() {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.books();
+        bibliotecaApp.displayBooks();
 
         String actualListOfBooks = outputStream.toString();
 

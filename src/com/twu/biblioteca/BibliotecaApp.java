@@ -16,7 +16,7 @@ public class BibliotecaApp {
         System.out.println("Welcome to Biblioteca");
     }
 
-    public void books() {
+    public void displayBooks() {
         StringBuilder sb = new StringBuilder();
         for (String[] book : books) {
             sb.append(book[0]).append(", ").append(book[1]).append(", ").append(book[2]).append("\n");
@@ -27,6 +27,6 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
         bibliotecaApp.welcomeMessage();
-        bibliotecaApp.books();
+        bibliotecaApp.displayBooks();
     }
 }
