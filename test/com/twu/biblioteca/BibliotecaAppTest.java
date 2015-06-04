@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 public class BibliotecaAppTest {
     @Test
     public void shouldDisplayAWelcomeMessageOnceTheAppIsLaunched() {
-        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(new Library());
 
         String actual = bibliotecaApp.welcomeMessage();
 
