@@ -20,9 +20,9 @@ public class BibliotecaApp {
         System.out.println("Welcome to Biblioteca");
     }
 
-    public void displayBooks() {
-        for(String book : books) {
-            System.out.println(book);
+    public void books() {
+        for (int i = 0; i < books.size(); i++) {
+            System.out.println(i + 1 + ". " + books.get(i));
         }
     }
 }
