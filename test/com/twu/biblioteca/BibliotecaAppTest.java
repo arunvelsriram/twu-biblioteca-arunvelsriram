@@ -21,23 +21,23 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldDisplayWelcomeMessageOnAppStart() {
+    public void shouldBeAbleToDisplayAWelcomeMessageOnAppStart() {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
         bibliotecaApp.welcomeMessage();
 
-        String actual = outputStream.toString();
+        String actualMessage = outputStream.toString();
 
-        assertThat(actual, is("Welcome to Biblioteca\n"));
+        assertThat(actualMessage, is("Welcome to Biblioteca\n"));
     }
 
     @Test
-    public void shouldDisplayAListOfBooks() {
+    public void shouldBeAbleToDisplayAListOfBooks() {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.displayBooks();
+        bibliotecaApp.books();
 
-        String actual = outputStream.toString();
+        String actualListOfBooks = outputStream.toString();
 
-        assertThat(actual, is(not("\n")));
+        assertThat(actualListOfBooks, is(not("\n")));
     }
 
     @After
