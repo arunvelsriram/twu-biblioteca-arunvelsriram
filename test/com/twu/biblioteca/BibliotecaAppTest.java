@@ -8,6 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
 public class BibliotecaAppTest {
@@ -27,6 +28,16 @@ public class BibliotecaAppTest {
         String actual = outputStream.toString();
 
         assertThat(actual, is("Welcome to Biblioteca\n"));
+    }
+
+    @Test
+    public void shouldDisplayAListOfBooks() {
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
+        bibliotecaApp.displayBooks();
+
+        String actual = outputStream.toString();
+
+        assertThat(actual, is(not("\n")));
     }
 
     @After
