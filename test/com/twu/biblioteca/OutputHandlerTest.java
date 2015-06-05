@@ -14,16 +14,17 @@ import static org.junit.Assert.assertThat;
 
 public class OutputHandlerTest {
     private ByteArrayOutputStream byteArrayOutputStream;
+    private OutputHandler outputHandler;
 
     @Before
     public void setUp() {
         byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
+        outputHandler = new OutputHandler();
     }
 
     @Test
     public void shouldBeAbleToDisplayWelcomeMessage() {
-        OutputHandler outputHandler = new OutputHandler();
         outputHandler.welcomeMessage();
 
         String actualMessage = byteArrayOutputStream.toString();
