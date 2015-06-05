@@ -34,11 +34,12 @@ public class OutputHandlerTest {
 
     @Test
     public void shouldBeAbleToDisplayBookDetails() {
-        outputHandler.bookDetails();
+        Books books = new Books();
+        outputHandler.bookDetails(books);
 
         String actualBookDetails = byteArrayOutputStream.toString();
 
-        assertThat(actualBookDetails, is(equalTo("OOPS\n")));
+        assertThat(actualBookDetails, is(equalTo("Harry Potter and The Sorcer's Stone\nHarry Potter and The Chamber of Secrets\n")));
     }
 
     @After

@@ -5,7 +5,7 @@ public class OutputHandler {
         System.out.println("Welcome to Biblioteca");
     }
 
-    public void bookDetails() {
-        System.out.println("OOPS");
+    public void bookDetails(Books books) {
+        System.out.print(books);
     }
 }
