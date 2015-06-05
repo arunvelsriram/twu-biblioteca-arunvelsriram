@@ -15,7 +15,7 @@ public class Books {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(String book : books) {
+        for (String book : books) {
             sb.append(book).append("\n");
         }
         return sb.toString();
