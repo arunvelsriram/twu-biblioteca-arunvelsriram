@@ -32,6 +32,15 @@ public class OutputHandlerTest {
         assertThat(actualMessage, is(equalTo("Welcome to Biblioteca\n")));
     }
 
+    @Test
+    public void shouldBeAbleToDisplayBookDetails() {
+        outputHandler.bookDetails();
+
+        String actualBookDetails = byteArrayOutputStream.toString();
+
+        assertThat(actualBookDetails, is(equalTo("OOPS\n")));
+    }
+
     @After
     public void tearDown() throws Exception {
         System.setOut(null);
