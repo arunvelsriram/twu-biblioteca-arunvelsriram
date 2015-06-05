@@ -21,6 +21,7 @@ public class BibliotecaAppTest {
     @Test
     public void shouldInvokeMethodsOnOutputHandlerToDisplayWelcomeMessage() {
         bibliotecaApp.start();
+
         Mockito.verify(outputHandlerStub).welcomeMessage();
     }
 }
