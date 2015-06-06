@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 
 public class BooksTest {
     @Test
-    public void shouldBeAbleToReturnBookDetails() throws Exception {
+    public void shouldBeAbleToReturnBookDetails() {
         Books books = new Books();
 
         String actualBookDetails = books.toString();
@@ -17,17 +17,28 @@ public class BooksTest {
     }
 
     @Test
-    public void equalityShouldSatisfyReflexivity() throws Exception {
+    public void equalityShouldSatisfyReflexivity() {
         Books books = new Books();
 
         assertThat(books, is(equalTo(books)));
     }
 
     @Test
-    public void equalityShouldSatisfySymmetricity() throws Exception {
-        Books books = new Books();
-        Books otherBooks = new Books();
+    public void equalityShouldSatisfySymmetricity() {
+        Books firstListOfBooks = new Books();
+        Books secondListOfBooks = new Books();
 
-        assertThat(books, is(equalTo(otherBooks)));
+        assertThat(firstListOfBooks, is(equalTo(secondListOfBooks)));
+    }
+
+    @Test
+    public void equalityShouldSatisfyTransitivity() {
+        Books firstListOfBooks = new Books();
+        Books secondListOfBooks = new Books();
+        Books thirdListOfBooks = new Books();
+
+        assertThat(firstListOfBooks, is(equalTo(secondListOfBooks)));
+        assertThat(secondListOfBooks, is(equalTo(thirdListOfBooks)));
+        assertThat(firstListOfBooks, is(equalTo(thirdListOfBooks)));
     }
 }
