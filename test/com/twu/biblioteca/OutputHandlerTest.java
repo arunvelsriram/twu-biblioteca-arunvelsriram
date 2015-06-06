@@ -39,7 +39,8 @@ public class OutputHandlerTest {
 
         String actualBookDetails = byteArrayOutputStream.toString();
 
-        assertThat(actualBookDetails, is(equalTo("Harry Potter and The Sorcer's Stone\nHarry Potter and The Chamber of Secrets\n")));
+        assertThat(actualBookDetails, is(equalTo("| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n" +
+                "| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |")));
     }
 
     @After
