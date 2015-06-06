@@ -9,6 +9,8 @@ public class BibliotecaApp {
 
     public void start() {
         outputHandler.welcomeMessage();
+        Books books = new Books();
+        outputHandler.bookDetails(books);
     }
 
     public static void main(String[] args) {

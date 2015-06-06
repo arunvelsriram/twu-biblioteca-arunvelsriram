@@ -19,9 +19,11 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldInvokeMethodsOnOutputHandlerToDisplayWelcomeMessage() {
+    public void shouldInvokeMethodsOnOutputHandlerToDisplayWelcomeMessageAndBookDetails() {
+        Books books = new Books();
         bibliotecaApp.start();
 
         Mockito.verify(outputHandlerStub).welcomeMessage();
+        Mockito.verify(outputHandlerStub).bookDetails(books);
     }
 }
