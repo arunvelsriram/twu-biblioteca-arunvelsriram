@@ -22,4 +22,12 @@ public class BooksTest {
 
         assertThat(books, is(equalTo(books)));
     }
+
+    @Test
+    public void equalityShouldSatisfySymmetricity() throws Exception {
+        Books books = new Books();
+        Books otherBooks = new Books();
+
+        assertThat(books, is(equalTo(otherBooks)));
+    }
 }
