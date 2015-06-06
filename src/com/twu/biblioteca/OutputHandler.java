@@ -6,6 +6,6 @@ public class OutputHandler {
     }
 
     public void bookDetails(Books books) {
-        System.out.print(books);
+        System.out.println(books);
     }
 }
