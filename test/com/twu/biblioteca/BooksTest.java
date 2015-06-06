@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 
 public class BooksTest {
@@ -41,5 +42,12 @@ public class BooksTest {
         assertThat(firstListOfBooks, is(equalTo(secondListOfBooks)));
         assertThat(secondListOfBooks, is(equalTo(thirdListOfBooks)));
         assertThat(firstListOfBooks, is(equalTo(thirdListOfBooks)));
+    }
+
+    @Test
+    public void equalityShouldReturnFalseOnPassingNull() throws Exception {
+        Books books = new Books();
+
+        assertFalse(books.equals(null));
     }
 }
