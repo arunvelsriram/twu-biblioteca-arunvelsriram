@@ -14,5 +14,7 @@ public class BibliotecaApp {
     }
 
     public static void main(String[] args) {
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(new OutputHandler());
+        bibliotecaApp.start();
     }
 }
