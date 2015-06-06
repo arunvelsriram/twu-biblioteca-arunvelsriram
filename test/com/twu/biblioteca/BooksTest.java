@@ -45,16 +45,25 @@ public class BooksTest {
     }
 
     @Test
-    public void equalityShouldReturnFalseOnPassingNull() throws Exception {
+    public void equalityShouldReturnFalseOnPassingNull() {
         Books books = new Books();
 
         assertFalse(books.equals(null));
     }
 
     @Test
-    public void equalityShouldReturnFalseOnPassingObjectsOtherThanBooks() throws Exception {
+    public void equalityShouldReturnFalseOnPassingObjectsOtherThanBooks() {
         Books books = new Books();
 
         assertFalse(books.equals(new String("Hello, World")));
+    }
+
+    @Test
+    public void whenTwoBooksAreEqualThenTheyShouldHaveSameHashCode() throws Exception {
+        Books firstListOfBooks = new Books();
+        Books secondListOfBooks = new Books();
+
+        assertThat(firstListOfBooks, is(equalTo(secondListOfBooks)));
+        assertThat(firstListOfBooks.hashCode(), is(equalTo(secondListOfBooks.hashCode())));
     }
 }
