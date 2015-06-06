@@ -29,6 +29,7 @@ public class BooksTest {
         Books secondListOfBooks = new Books();
 
         assertThat(firstListOfBooks, is(equalTo(secondListOfBooks)));
+        assertThat(secondListOfBooks, is(equalTo(firstListOfBooks)));
     }
 
     @Test
