@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -20,10 +21,9 @@ public class BibliotecaAppTest {
 
     @Test
     public void shouldInvokeMethodsOnOutputHandlerToDisplayWelcomeMessageAndBookDetails() {
-        Books books = new Books();
         bibliotecaApp.start();
 
         Mockito.verify(outputHandlerStub).welcomeMessage();
-        Mockito.verify(outputHandlerStub).bookDetails(books);
+        Mockito.verify(outputHandlerStub).bookDetails(Matchers.any(Books.class));
     }
 }
