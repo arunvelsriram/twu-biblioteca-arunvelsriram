@@ -29,7 +29,7 @@ public class OutputHandlerTest {
 
         String actualMessage = byteArrayOutputStream.toString();
 
-        assertThat(actualMessage, is(equalTo("Welcome to Biblioteca\n")));
+        assertThat(actualMessage, is(equalTo("***Welcome to Biblioteca***\n")));
     }
 
     @Test
