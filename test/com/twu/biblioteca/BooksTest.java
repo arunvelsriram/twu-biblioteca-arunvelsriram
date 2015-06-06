@@ -50,4 +50,11 @@ public class BooksTest {
 
         assertFalse(books.equals(null));
     }
+
+    @Test
+    public void equalityShouldReturnFalseOnPassingObjectsOtherThanBooks() throws Exception {
+        Books books = new Books();
+
+        assertFalse(books.equals(new String("Hello, World")));
+    }
 }
