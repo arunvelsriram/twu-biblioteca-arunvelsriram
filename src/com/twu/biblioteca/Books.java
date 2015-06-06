@@ -13,21 +13,6 @@ public class Books {
     }
 
     @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-
-        Books otherBooks = (Books) object;
-
-        return !(books != null ? !books.equals(otherBooks.books) : otherBooks.books != null);
-    }
-
-    @Override
-    public int hashCode() {
-        return books != null ? books.hashCode() : 0;
-    }
-
-    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (String book : books) {
