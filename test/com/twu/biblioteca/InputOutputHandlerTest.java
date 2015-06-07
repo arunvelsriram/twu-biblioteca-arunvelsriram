@@ -47,7 +47,8 @@ public class InputOutputHandlerTest {
     @Test
     public void shouldBeAbleToDisplayAMenuWithListOfOptions() {
         InputOutputHandler inputOutputHandler = new InputOutputHandler();
-        inputOutputHandler.listOptions(new Menu());
+        Menu menu = new Menu(new MenuItemActionListenerImpl());
+        inputOutputHandler.listOptions(menu);
 
         String actualMenu = byteArrayOutputStream.toString();
 

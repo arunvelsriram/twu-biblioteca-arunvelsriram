@@ -9,7 +9,8 @@ public class BibliotecaApp {
 
     public void start() {
         inputOutputHandler.welcomeMessage();
-        Menu menu = new Menu();
+        MenuItemActionListener menuItemActionListener = new MenuItemActionListenerImpl();
+        Menu menu = new Menu(menuItemActionListener);
         inputOutputHandler.listOptions(menu);
         int option = inputOutputHandler.readMenuOption();
     }

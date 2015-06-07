@@ -7,11 +7,6 @@ public class Menu {
     private Map<Integer, String> menuItems;
     private Map<String, MenuItemActionListener> menuItemActionMap;
 
-    public Menu() {
-        menuItems = new HashMap<>();
-        menuItems.put(1, "List Books");
-    }
-    
     public Menu(MenuItemActionListener menuItemActionListener) {
         menuItems = new HashMap<>();
         menuItemActionMap = new HashMap<>();
