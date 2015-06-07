@@ -8,11 +8,11 @@ import static org.junit.Assert.assertThat;
 
 public class MenuTest {
     @Test
-    public void shouldBeAbleToReturnAvailableOptions() throws Exception {
+    public void shouldBeAbleToReturnAvailableOptions() {
         Menu menu = new Menu();
 
         String actualOptions = menu.toString();
 
-        assertThat(actualOptions, is(equalTo("")));
+        assertThat(actualOptions, is(equalTo("1. List Books\nEnter your choice...")));
     }
 }

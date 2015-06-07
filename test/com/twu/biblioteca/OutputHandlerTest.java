@@ -48,7 +48,7 @@ public class OutputHandlerTest {
         Menu menu = new Menu();
         outputHandler.listOptions(menu);
 
-        assertThat(byteArrayOutputStream.toString(), is(equalTo("\n")));
+        assertThat(byteArrayOutputStream.toString(), is(equalTo("1. List Books\nEnter your choice...")));
     }
 
     @After

@@ -10,6 +10,6 @@ public class OutputHandler {
     }
 
     public void listOptions(Menu menu) {
-        System.out.println(menu);
+        System.out.print(menu);
     }
 }
