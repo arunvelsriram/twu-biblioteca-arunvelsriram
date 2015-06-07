@@ -49,7 +49,9 @@ public class InputOutputHandlerTest {
         InputOutputHandler inputOutputHandler = new InputOutputHandler();
         inputOutputHandler.listOptions(new Menu());
 
-        assertThat(byteArrayOutputStream.toString(), is(equalTo("1. List Books\nEnter your choice...")));
+        String actualMenu = byteArrayOutputStream.toString();
+
+        assertThat(actualMenu, is(equalTo("1. List Books\nEnter your choice...")));
     }
 
     @Test
@@ -65,7 +67,7 @@ public class InputOutputHandlerTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         System.setOut(null);
         System.setIn(System.in);
     }
