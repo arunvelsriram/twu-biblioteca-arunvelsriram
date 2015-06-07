@@ -1,0 +1,30 @@
+package com.twu.biblioteca;
+
+public class MenuItemActionListenerImpl implements MenuItemActionListener {
+    public static class FactoryHelper {
+        public InputOutputHandler makeInputOutputHandler() {
+            return new InputOutputHandler();
+        }
+
+        public Books makeBooks() {
+            return new Books();
+        }
+    }
+
+    private FactoryHelper factoryHelper;
+
+    public MenuItemActionListenerImpl() {
+        this(new FactoryHelper());
+    }
+
+    public MenuItemActionListenerImpl(FactoryHelper factoryHelper) {
+        this.factoryHelper = factoryHelper;
+    }
+
+    @Override
+    public void actionPerformed() {
+        InputOutputHandler inputOutputHandler = factoryHelper.makeInputOutputHandler();
+        Books books = factoryHelper.makeBooks();
+        inputOutputHandler.bookDetails(books);
+    }
+}
