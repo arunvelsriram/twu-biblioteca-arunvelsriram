@@ -9,6 +9,8 @@ public class BibliotecaApp {
 
     public void start() {
         outputHandler.welcomeMessage();
+        Menu menu = new Menu();
+        outputHandler.listOptions(menu);
     }
 
     public static void main(String[] args) {
