@@ -30,7 +30,7 @@ public class MenuTest {
     }
 
     @Test
-    public void shouldBeAbleToInvokeAnActionForAParticularMenuItem() throws Exception {
+    public void shouldBeAbleToInvokeActionPerformedByPassingAValidOption() throws Exception {
         int option = 1;
         Menu menu = new Menu(menuItemActionListenerStub);
         menu.choose(option);
