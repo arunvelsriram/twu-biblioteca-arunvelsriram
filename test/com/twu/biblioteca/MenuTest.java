@@ -37,4 +37,14 @@ public class MenuTest {
 
         Mockito.verify(menuItemActionListenerStub).actionPerformed(option);
     }
+
+    @Test
+    public void shouldBeAbleToInvokeActionPerformedByPassingAnInvalidOptionWhenUserChoosesAnInvalidOption() throws Exception {
+        int option = 10;
+        Menu menu = new Menu(menuItemActionListenerStub);
+        menu.choose(option);
+        option = -1;
+
+        Mockito.verify(menuItemActionListenerStub).actionPerformed(option);
+    }
 }
