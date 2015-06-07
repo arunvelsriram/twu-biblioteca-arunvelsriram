@@ -12,7 +12,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-
 public class InputOutputHandlerTest {
     private ByteArrayOutputStream byteArrayOutputStream;
     private ByteArrayInputStream byteArrayInputStream;

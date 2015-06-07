@@ -13,9 +13,9 @@ public class BibliotecaAppTest {
     @Mock
     BibliotecaApp.FactoryHelper mockFactoryHelper;
     @Mock
-    private InputOutputHandler inputOutputHandlerStub;
+    private InputOutputHandler mockInputOutputHandler;
     @Mock
-    private Menu menuStub;
+    private Menu mockMenu;
 
     private BibliotecaApp bibliotecaApp;
 
@@ -29,35 +29,35 @@ public class BibliotecaAppTest {
     public void shouldUseMethodsOnInputOutputHandlerToDisplayWelcomeMessage() {
         givenWhen();
 
-        verify(inputOutputHandlerStub).welcomeMessage();
+        verify(mockInputOutputHandler).welcomeMessage();
     }
 
     @Test
     public void shouldUseMethodsOnInputOutputHandlerToDisplayAMenuWithListOfOptions() {
         givenWhen();
 
-        verify(inputOutputHandlerStub).listOptions(Matchers.any(Menu.class));
+        verify(mockInputOutputHandler).listOptions(Matchers.any(Menu.class));
     }
 
     @Test
     public void shouldUseMethodsOnInputOutputHandlerToGetAMenuOptionFromTheUser() {
         givenWhen();
 
-        verify(inputOutputHandlerStub).readMenuOption();
+        verify(mockInputOutputHandler).readMenuOption();
     }
 
     @Test
     public void shouldBeAbleToChooseAnOptionByPassingTheOptionGivenByTheUser() {
         givenWhen();
 
-        verify(menuStub).choose(Matchers.any(Integer.class));
+        verify(mockMenu).choose(Matchers.any(Integer.class));
     }
 
     private void givenWhen() {
         when(mockFactoryHelper.makeInputOutputHandler())
-                .thenReturn(inputOutputHandlerStub);
+                .thenReturn(mockInputOutputHandler);
         when(mockFactoryHelper.makeMenu())
-                .thenReturn(menuStub);
+                .thenReturn(mockMenu);
 
         bibliotecaApp.start();
     }

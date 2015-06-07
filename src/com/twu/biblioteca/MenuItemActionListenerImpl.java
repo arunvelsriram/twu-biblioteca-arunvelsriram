@@ -24,11 +24,10 @@ public class MenuItemActionListenerImpl implements MenuItemActionListener {
     @Override
     public void actionPerformed(int option) {
         InputOutputHandler inputOutputHandler = factoryHelper.makeInputOutputHandler();
-        if(option == 1) {
+        if (option == 1) {
             Books books = factoryHelper.makeBooks();
             inputOutputHandler.bookDetails(books);
-        }
-        else {
+        } else {
             inputOutputHandler.errorMessage();
         }
     }

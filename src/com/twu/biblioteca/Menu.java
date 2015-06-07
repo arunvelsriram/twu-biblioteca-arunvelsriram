@@ -15,7 +15,7 @@ public class Menu {
 
     public void choose(int option) {
         String menuItem = menuItems.get(option);
-        if(menuItem == null) {
+        if (menuItem == null) {
             option = -1;
         }
         menuItemActionListener.actionPerformed(option);

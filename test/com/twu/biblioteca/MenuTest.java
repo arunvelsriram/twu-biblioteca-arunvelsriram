@@ -10,7 +10,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-
 public class MenuTest {
     @Mock
     private MenuItemActionListenerImpl menuItemActionListenerStub;
@@ -33,6 +32,7 @@ public class MenuTest {
     public void shouldBeAbleToInvokeActionPerformedByPassingAValidOption() throws Exception {
         int option = 1;
         Menu menu = new Menu(menuItemActionListenerStub);
+
         menu.choose(option);
 
         Mockito.verify(menuItemActionListenerStub).actionPerformed(option);
@@ -42,9 +42,10 @@ public class MenuTest {
     public void shouldBeAbleToInvokeActionPerformedByPassingAnInvalidOptionWhenUserChoosesAnInvalidOption() throws Exception {
         int option = 10;
         Menu menu = new Menu(menuItemActionListenerStub);
-        menu.choose(option);
-        option = -1;
 
+        menu.choose(option);
+
+        option = -1;
         Mockito.verify(menuItemActionListenerStub).actionPerformed(option);
     }
 }

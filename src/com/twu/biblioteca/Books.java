@@ -15,7 +15,7 @@ public class Books {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(Book book : books) {
+        for (Book book : books) {
             sb.append(book).append("\n");
         }
         sb.deleteCharAt(sb.length() - 1);
