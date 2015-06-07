@@ -20,14 +20,14 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldInvokeAMethodOnOutputHandlerToDisplayWelcomeMessage() {
+    public void shouldUseMethodsOnInputOutputHandlerToDisplayWelcomeMessage() {
         bibliotecaApp.start();
 
         Mockito.verify(inputOutputHandlerStub).welcomeMessage();
     }
 
     @Test
-    public void shouldInvokeAMethodOnOutputHandlerToDisplayAMenuWithListOfOptions() {
+    public void shouldUseMethodsOnInputOutputHandlerToDisplayAMenuWithListOfOptions() {
         bibliotecaApp.start();
 
         Mockito.verify(inputOutputHandlerStub).listOptions(Matchers.any(Menu.class));
