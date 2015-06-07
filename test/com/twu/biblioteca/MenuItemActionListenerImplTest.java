@@ -22,7 +22,7 @@ public class MenuItemActionListenerImplTest {
     }
 
     @Test
-    public void shouldBeAbleToPerformAnAction() {
+    public void shouldBeAbleToPerformDisplayBookListActionOnChoosingListBooksOption() {
         MenuItemActionListener menuItemActionListener = new MenuItemActionListenerImpl(mockFactoryHelper);
         when(mockFactoryHelper.makeInputOutputHandler())
                 .thenReturn(inputOutputHandlerStub);
@@ -31,5 +31,15 @@ public class MenuItemActionListenerImplTest {
         menuItemActionListener.actionPerformed(1);
 
         Mockito.verify(inputOutputHandlerStub).bookDetails(booksStub);
+    }
+
+    @Test
+    public void shouldBeAbleToPerformDisplayErrorMessageActionOnChoosingAnInvalidOption() throws Exception {
+        MenuItemActionListener menuItemActionListener = new MenuItemActionListenerImpl(mockFactoryHelper);
+        when(mockFactoryHelper.makeInputOutputHandler())
+                .thenReturn(inputOutputHandlerStub);
+        menuItemActionListener.actionPerformed(-1);
+
+        Mockito.verify(inputOutputHandlerStub).errorMessage();
     }
 }
