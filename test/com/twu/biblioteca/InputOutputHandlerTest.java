@@ -14,17 +14,16 @@ import static org.junit.Assert.assertThat;
 
 public class InputOutputHandlerTest {
     private ByteArrayOutputStream byteArrayOutputStream;
-    private InputOutputHandler inputOutputHandler;
 
     @Before
     public void setUp() {
         byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
-        inputOutputHandler = new InputOutputHandler();
     }
 
     @Test
     public void shouldBeAbleToDisplayWelcomeMessage() {
+        InputOutputHandler inputOutputHandler = new InputOutputHandler();
         inputOutputHandler.welcomeMessage();
 
         String actualMessage = byteArrayOutputStream.toString();
@@ -34,8 +33,8 @@ public class InputOutputHandlerTest {
 
     @Test
     public void shouldBeAbleToDisplayBookDetails() {
-        Books books = new Books();
-        inputOutputHandler.bookDetails(books);
+        InputOutputHandler inputOutputHandler = new InputOutputHandler();
+        inputOutputHandler.bookDetails(new Books());
 
         String actualBookDetails = byteArrayOutputStream.toString();
 
@@ -45,8 +44,8 @@ public class InputOutputHandlerTest {
 
     @Test
     public void shouldBeAbleToDisplayAMenuWithListOfOptions() {
-        Menu menu = new Menu();
-        inputOutputHandler.listOptions(menu);
+        InputOutputHandler inputOutputHandler = new InputOutputHandler();
+        inputOutputHandler.listOptions(new Menu());
 
         assertThat(byteArrayOutputStream.toString(), is(equalTo("1. List Books\nEnter your choice...")));
     }
