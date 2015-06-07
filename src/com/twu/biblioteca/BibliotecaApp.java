@@ -1,22 +1,37 @@
 package com.twu.biblioteca;
 
 public class BibliotecaApp {
-    private InputOutputHandler inputOutputHandler;
+    private FactoryHelper factoryHelper;
 
-    public BibliotecaApp(InputOutputHandler inputOutputHandler) {
-        this.inputOutputHandler = inputOutputHandler;
+    public static class FactoryHelper {
+        public Menu makeMenu() {
+            return new Menu(new MenuItemActionListenerImpl());
+        }
+
+        public InputOutputHandler makeInputOutputHandler() {
+            return new InputOutputHandler();
+        }
+    }
+
+    public BibliotecaApp() {
+        this(new FactoryHelper());
+    }
+
+    public BibliotecaApp(FactoryHelper factoryHelper) {
+        this.factoryHelper = factoryHelper;
     }
 
     public void start() {
+        InputOutputHandler inputOutputHandler = factoryHelper.makeInputOutputHandler();
         inputOutputHandler.welcomeMessage();
-        MenuItemActionListener menuItemActionListener = new MenuItemActionListenerImpl();
-        Menu menu = new Menu(menuItemActionListener);
+        Menu menu = factoryHelper.makeMenu();
         inputOutputHandler.listOptions(menu);
         int option = inputOutputHandler.readMenuOption();
+        menu.choose(option);
     }
 
     public static void main(String[] args) {
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(new InputOutputHandler());
+        BibliotecaApp bibliotecaApp = new BibliotecaApp();
         bibliotecaApp.start();
     }
 }
