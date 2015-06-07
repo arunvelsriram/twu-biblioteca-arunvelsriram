@@ -24,4 +24,8 @@ public class InputOutputHandler {
     public int readMenuOption() {
         return scanner.nextInt();
     }
+
+    public void errorMessage() {
+        System.out.println("Select a valid option!");
+    }
 }

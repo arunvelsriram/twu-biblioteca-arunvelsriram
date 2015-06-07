@@ -67,6 +67,17 @@ public class InputOutputHandlerTest {
         assertThat(actualOption, is(equalTo(1)));
     }
 
+    @Test
+    public void shouldBeAbleToDisplayErrorMessageOnChoosingInvalidOptionFromTheMenu() throws Exception {
+        InputOutputHandler inputOutputHandler = new InputOutputHandler();
+        Menu menu = new Menu(new MenuItemActionListenerImpl());
+        inputOutputHandler.errorMessage();
+
+        String actualErrorMessage = byteArrayOutputStream.toString();
+
+        assertThat(actualErrorMessage, is(equalTo("Select a valid option!\n")));
+    }
+
     @After
     public void tearDown() {
         System.setOut(null);
