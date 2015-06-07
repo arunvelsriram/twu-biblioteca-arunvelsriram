@@ -8,4 +8,8 @@ public class OutputHandler {
     public void bookDetails(Books books) {
         System.out.println(books);
     }
+
+    public void listOptions(Menu menu) {
+        System.out.println(menu);
+    }
 }

@@ -43,6 +43,14 @@ public class OutputHandlerTest {
                 "| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |\n")));
     }
 
+    @Test
+    public void shouldBeAbleToDisplayAMenuWithListOfOptions() {
+        Menu menu = new Menu();
+        outputHandler.listOptions(menu);
+
+        assertThat(byteArrayOutputStream.toString(), is(equalTo("\n")));
+    }
+
     @After
     public void tearDown() throws Exception {
         System.setOut(null);
