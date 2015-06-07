@@ -15,7 +15,7 @@ public class Menu {
 
     public void choose(int option) {
         String menuItem = menuItems.get(option);
-        menuItemActionListener.actionPerformed();
+        menuItemActionListener.actionPerformed(option);
     }
 
     @Override

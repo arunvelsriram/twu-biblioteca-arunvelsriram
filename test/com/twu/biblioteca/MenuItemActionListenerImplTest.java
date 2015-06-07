@@ -28,7 +28,7 @@ public class MenuItemActionListenerImplTest {
                 .thenReturn(inputOutputHandlerStub);
         when(mockFactoryHelper.makeBooks())
                 .thenReturn(booksStub);
-        menuItemActionListener.actionPerformed();
+        menuItemActionListener.actionPerformed(1);
 
         Mockito.verify(inputOutputHandlerStub).bookDetails(booksStub);
     }

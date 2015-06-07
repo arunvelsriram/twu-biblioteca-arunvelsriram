@@ -22,9 +22,10 @@ public class MenuItemActionListenerImpl implements MenuItemActionListener {
     }
 
     @Override
-    public void actionPerformed() {
+    public void actionPerformed(int option) {
         InputOutputHandler inputOutputHandler = factoryHelper.makeInputOutputHandler();
         Books books = factoryHelper.makeBooks();
         inputOutputHandler.bookDetails(books);
+
     }
 }

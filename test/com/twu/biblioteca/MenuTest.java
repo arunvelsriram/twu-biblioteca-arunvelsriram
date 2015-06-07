@@ -31,9 +31,10 @@ public class MenuTest {
 
     @Test
     public void shouldBeAbleToInvokeAnActionForAParticularMenuItem() throws Exception {
+        int option = 1;
         Menu menu = new Menu(menuItemActionListenerStub);
-        menu.choose(1);
+        menu.choose(option);
 
-        Mockito.verify(menuItemActionListenerStub).actionPerformed();
+        Mockito.verify(menuItemActionListenerStub).actionPerformed(option);
     }
 }
