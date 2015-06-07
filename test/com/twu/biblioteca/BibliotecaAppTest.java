@@ -11,25 +11,25 @@ public class BibliotecaAppTest {
     private BibliotecaApp bibliotecaApp;
 
     @Mock
-    private OutputHandler outputHandlerStub;
+    private InputOutputHandler inputOutputHandlerStub;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        bibliotecaApp = new BibliotecaApp(outputHandlerStub);
+        bibliotecaApp = new BibliotecaApp(inputOutputHandlerStub);
     }
 
     @Test
     public void shouldInvokeAMethodOnOutputHandlerToDisplayWelcomeMessage() {
         bibliotecaApp.start();
 
-        Mockito.verify(outputHandlerStub).welcomeMessage();
+        Mockito.verify(inputOutputHandlerStub).welcomeMessage();
     }
 
     @Test
     public void shouldInvokeAMethodOnOutputHandlerToDisplayAMenuWithListOfOptions() {
         bibliotecaApp.start();
 
-        Mockito.verify(outputHandlerStub).listOptions(Matchers.any(Menu.class));
+        Mockito.verify(inputOutputHandlerStub).listOptions(Matchers.any(Menu.class));
     }
 }

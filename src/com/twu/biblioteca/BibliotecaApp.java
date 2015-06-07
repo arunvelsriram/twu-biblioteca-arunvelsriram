@@ -1,20 +1,20 @@
 package com.twu.biblioteca;
 
 public class BibliotecaApp {
-    private OutputHandler outputHandler;
+    private InputOutputHandler inputOutputHandler;
 
-    public BibliotecaApp(OutputHandler outputHandler) {
-        this.outputHandler = outputHandler;
+    public BibliotecaApp(InputOutputHandler inputOutputHandler) {
+        this.inputOutputHandler = inputOutputHandler;
     }
 
     public void start() {
-        outputHandler.welcomeMessage();
+        inputOutputHandler.welcomeMessage();
         Menu menu = new Menu();
-        outputHandler.listOptions(menu);
+        inputOutputHandler.listOptions(menu);
     }
 
     public static void main(String[] args) {
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(new OutputHandler());
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(new InputOutputHandler());
         bibliotecaApp.start();
     }
 }

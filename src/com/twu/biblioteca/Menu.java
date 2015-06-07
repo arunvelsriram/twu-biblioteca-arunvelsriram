@@ -13,9 +13,9 @@ public class Menu {
         menuItems.put(1, "List Books");
         menuItemActionMap.put("List Books", new MenuItemActionListener() {
             @Override
-            public void actionPerformed(OutputHandler outputHandler) {
+            public void actionPerformed(InputOutputHandler inputOutputHandler) {
                 Books books = new Books();
-                outputHandler.bookDetails(books);
+                inputOutputHandler.bookDetails(books);
             }
         });
     }

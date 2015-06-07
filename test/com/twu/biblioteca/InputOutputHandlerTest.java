@@ -12,20 +12,20 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 
-public class OutputHandlerTest {
+public class InputOutputHandlerTest {
     private ByteArrayOutputStream byteArrayOutputStream;
-    private OutputHandler outputHandler;
+    private InputOutputHandler inputOutputHandler;
 
     @Before
     public void setUp() {
         byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
-        outputHandler = new OutputHandler();
+        inputOutputHandler = new InputOutputHandler();
     }
 
     @Test
     public void shouldBeAbleToDisplayWelcomeMessage() {
-        outputHandler.welcomeMessage();
+        inputOutputHandler.welcomeMessage();
 
         String actualMessage = byteArrayOutputStream.toString();
 
@@ -35,7 +35,7 @@ public class OutputHandlerTest {
     @Test
     public void shouldBeAbleToDisplayBookDetails() {
         Books books = new Books();
-        outputHandler.bookDetails(books);
+        inputOutputHandler.bookDetails(books);
 
         String actualBookDetails = byteArrayOutputStream.toString();
 
@@ -46,7 +46,7 @@ public class OutputHandlerTest {
     @Test
     public void shouldBeAbleToDisplayAMenuWithListOfOptions() {
         Menu menu = new Menu();
-        outputHandler.listOptions(menu);
+        inputOutputHandler.listOptions(menu);
 
         assertThat(byteArrayOutputStream.toString(), is(equalTo("1. List Books\nEnter your choice...")));
     }
