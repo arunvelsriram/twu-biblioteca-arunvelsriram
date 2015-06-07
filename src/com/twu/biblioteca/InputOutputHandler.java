@@ -1,6 +1,14 @@
 package com.twu.biblioteca;
 
+import java.util.Scanner;
+
 public class InputOutputHandler {
+    private Scanner scanner;
+
+    public InputOutputHandler() {
+        scanner = new Scanner(System.in);
+    }
+
     public void welcomeMessage() {
         System.out.println("***Welcome to Biblioteca***");
     }
@@ -11,5 +19,9 @@ public class InputOutputHandler {
 
     public void listOptions(Menu menu) {
         System.out.print(menu);
+    }
+
+    public int readMenuOption() {
+        return scanner.nextInt();
     }
 }

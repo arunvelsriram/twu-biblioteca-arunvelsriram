@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
@@ -14,6 +15,7 @@ import static org.junit.Assert.assertThat;
 
 public class InputOutputHandlerTest {
     private ByteArrayOutputStream byteArrayOutputStream;
+    private ByteArrayInputStream byteArrayInputStream;
 
     @Before
     public void setUp() {
@@ -50,8 +52,21 @@ public class InputOutputHandlerTest {
         assertThat(byteArrayOutputStream.toString(), is(equalTo("1. List Books\nEnter your choice...")));
     }
 
+    @Test
+    public void shouldBeAbleToGetAMenuOptionFromTheUser() {
+        String inputData = "1";
+        byteArrayInputStream = new ByteArrayInputStream(inputData.getBytes());
+        System.setIn(byteArrayInputStream);
+        InputOutputHandler inputOutputHandler = new InputOutputHandler();
+
+        int actualOption = inputOutputHandler.readMenuOption();
+
+        assertThat(actualOption, is(equalTo(1)));
+    }
+
     @After
     public void tearDown() throws Exception {
         System.setOut(null);
+        System.setIn(System.in);
     }
 }
