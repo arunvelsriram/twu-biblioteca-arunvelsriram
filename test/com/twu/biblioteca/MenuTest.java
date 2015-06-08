@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
 
 public class MenuTest {
     @Mock
-    private MenuItemActionListenerImpl menuItemActionListenerStub;
+    private MenuItemActionListenerImpl mockMenuItemActionListener;
 
     @Before
     public void setUp() throws Exception {
@@ -31,21 +31,21 @@ public class MenuTest {
     @Test
     public void shouldBeAbleToInvokeActionPerformedByPassingAValidOption() throws Exception {
         int option = 1;
-        Menu menu = new Menu(menuItemActionListenerStub);
+        Menu menu = new Menu(mockMenuItemActionListener);
 
         menu.choose(option);
 
-        Mockito.verify(menuItemActionListenerStub).actionPerformed(option);
+        Mockito.verify(mockMenuItemActionListener).actionPerformed(option);
     }
 
     @Test
     public void shouldBeAbleToInvokeActionPerformedByPassingAnInvalidOptionWhenUserChoosesAnInvalidOption() throws Exception {
         int option = 10;
-        Menu menu = new Menu(menuItemActionListenerStub);
+        Menu menu = new Menu(mockMenuItemActionListener);
 
         menu.choose(option);
 
         option = -1;
-        Mockito.verify(menuItemActionListenerStub).actionPerformed(option);
+        Mockito.verify(mockMenuItemActionListener).actionPerformed(option);
     }
 }

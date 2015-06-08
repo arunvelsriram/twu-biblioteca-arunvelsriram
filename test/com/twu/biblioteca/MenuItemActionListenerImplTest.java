@@ -12,9 +12,9 @@ public class MenuItemActionListenerImplTest {
     @Mock
     private MenuItemActionListenerImpl.FactoryHelper mockFactoryHelper;
     @Mock
-    private InputOutputHandler inputOutputHandlerStub;
+    private InputOutputHandler mockInputOutputHandler;
     @Mock
-    private Books booksStub;
+    private Books mockBooks;
 
     @Before
     public void setUp() throws Exception {
@@ -25,23 +25,23 @@ public class MenuItemActionListenerImplTest {
     public void shouldBeAbleToPerformDisplayBookListActionOnChoosingListBooksOption() {
         MenuItemActionListener menuItemActionListener = new MenuItemActionListenerImpl(mockFactoryHelper);
         when(mockFactoryHelper.makeInputOutputHandler())
-                .thenReturn(inputOutputHandlerStub);
+                .thenReturn(mockInputOutputHandler);
         when(mockFactoryHelper.makeBooks())
-                .thenReturn(booksStub);
+                .thenReturn(mockBooks);
 
         menuItemActionListener.actionPerformed(1);
 
-        Mockito.verify(inputOutputHandlerStub).bookDetails(booksStub);
+        Mockito.verify(mockInputOutputHandler).bookDetails(mockBooks);
     }
 
     @Test
     public void shouldBeAbleToPerformDisplayErrorMessageActionOnChoosingAnInvalidOption() throws Exception {
         MenuItemActionListener menuItemActionListener = new MenuItemActionListenerImpl(mockFactoryHelper);
         when(mockFactoryHelper.makeInputOutputHandler())
-                .thenReturn(inputOutputHandlerStub);
+                .thenReturn(mockInputOutputHandler);
         
         menuItemActionListener.actionPerformed(-1);
 
-        Mockito.verify(inputOutputHandlerStub).errorMessage();
+        Mockito.verify(mockInputOutputHandler).errorMessage();
     }
 }
