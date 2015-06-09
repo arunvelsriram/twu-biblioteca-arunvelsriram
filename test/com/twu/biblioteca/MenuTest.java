@@ -1,26 +1,27 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.views.BooksView;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MenuTest {
     @Mock
-    private BooksView mockBooksView;
+    private MenuItemAction mockMenuItemAction;
 
     @Test
     public void shouldBeAbleToDisplayAMenuWithListOfOptions() {
-        Menu menu = new Menu(mockBooksView);
-        when(mockBooksView.toString())
-                .thenReturn("1. List Books Enter your choice...");
+        List<MenuItem> menuItems = new ArrayList<>();
+        menuItems.add(new MenuItem("List Books", mockMenuItemAction));
+        Menu menu = new Menu(menuItems);
 
         String actualMenu = menu.toString();
 

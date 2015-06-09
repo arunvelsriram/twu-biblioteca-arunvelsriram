@@ -1,16 +1,12 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.views.BooksView;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class Menu {
     private List<MenuItem> menuItems;
 
-    public Menu(BooksView booksView) {
-        menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem("List Books", new ListBooksAction(booksView)));
+    public Menu(List<MenuItem> menuItems) {
+        this.menuItems = menuItems;
     }
 
     @Override
