@@ -9,12 +9,6 @@ public class Books {
         this.books = books;
     }
 
-    //    public Books() {
-//        books = new ArrayList<>();
-//        books.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
-//        books.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
-//    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
