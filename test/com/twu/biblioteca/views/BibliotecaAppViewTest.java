@@ -1,5 +1,6 @@
 package com.twu.biblioteca.views;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,5 +28,10 @@ public class BibliotecaAppViewTest {
         String actualMessage = byteArrayOutputStream.toString();
 
         assertThat(actualMessage, is(equalTo("***Welcome to Biblioteca***\n")));
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        System.setOut(null);
     }
 }

@@ -1,6 +1,7 @@
 package com.twu.biblioteca.views;
 
 import com.twu.biblioteca.Books;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,5 +41,10 @@ public class BooksViewTest {
 
         assertThat(actualBookList, is(equalTo("| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n" +
                 "| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |\n")));
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        System.setOut(null);
     }
 }

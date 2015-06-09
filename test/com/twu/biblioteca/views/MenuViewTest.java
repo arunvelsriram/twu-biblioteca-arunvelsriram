@@ -48,7 +48,6 @@ public class MenuViewTest {
         String inputData = "1";
         byteArrayInputStream = new ByteArrayInputStream(inputData.getBytes());
         System.setIn(byteArrayInputStream);
-
         MenuView menuView = new MenuView(mockMenu);
 
         int actualOption = menuView.read();
