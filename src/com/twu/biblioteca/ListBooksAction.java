@@ -11,6 +11,6 @@ public class ListBooksAction implements MenuItemAction {
 
     @Override
     public void performAction() {
-        booksView.display();
+        booksView.write();
     }
 }

@@ -36,7 +36,7 @@ public class MenuViewTest {
         MenuView menuView = new MenuView(mockMenu);
         when(mockMenu.toString())
                 .thenReturn("1. List Books\nEnter your choice...");
-        menuView.display();
+        menuView.write();
 
         String actualMessage = byteArrayOutputStream.toString();
 

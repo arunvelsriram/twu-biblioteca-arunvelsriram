@@ -12,7 +12,7 @@ public class MenuView {
         this.menu = menu;
     }
 
-    public void display() {
+    public void write() {
         System.out.print(menu);
     }
 

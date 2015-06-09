@@ -17,6 +17,6 @@ public class ListBooksActionTest {
         MenuItemAction menuItemAction = new ListBooksAction(mockBooksView);
         menuItemAction.performAction();
 
-        Mockito.verify(mockBooksView).display();
+        Mockito.verify(mockBooksView).write();
     }
 }

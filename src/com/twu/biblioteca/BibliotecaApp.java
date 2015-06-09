@@ -23,8 +23,8 @@ public class BibliotecaApp {
     }
 
     public void start() {
-        bibliotecaAppView.display("***Welcome to Biblioteca***");
-        menuView.display();
+        bibliotecaAppView.write("***Welcome to Biblioteca***");
+        menuView.write();
         int option = menuView.read();
         MenuItem menuItem = menu.menuItem(option);
         menuItem.performAction();

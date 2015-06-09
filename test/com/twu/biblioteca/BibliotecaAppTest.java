@@ -36,8 +36,8 @@ public class BibliotecaAppTest {
                 .thenReturn(mockMenuItem);
         bibliotecaApp.start();
 
-        Mockito.verify(mockBibliotecaAppView).display("***Welcome to Biblioteca***");
-        Mockito.verify(mockMenuView).display();
+        Mockito.verify(mockBibliotecaAppView).write("***Welcome to Biblioteca***");
+        Mockito.verify(mockMenuView).write();
         Mockito.verify(mockMenuView).read();
         Mockito.verify(mockMenu).menuItem(Matchers.any(Integer.class));
         Mockito.verify(mockMenuItem).performAction();

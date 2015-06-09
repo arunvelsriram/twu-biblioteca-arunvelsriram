@@ -23,7 +23,7 @@ public class BibliotecaAppViewTest {
     @Test
     public void shouldBeAbleToPrintWelcomeMessage() throws Exception {
         BibliotecaAppView bibliotecaAppView = new BibliotecaAppView();
-        bibliotecaAppView.display("***Welcome to Biblioteca***");
+        bibliotecaAppView.write("***Welcome to Biblioteca***");
 
         String actualMessage = byteArrayOutputStream.toString();
 

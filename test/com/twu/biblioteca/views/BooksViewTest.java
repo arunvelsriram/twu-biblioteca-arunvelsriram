@@ -35,7 +35,7 @@ public class BooksViewTest {
         when(mockBooks.toString())
                 .thenReturn("| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n" +
                         "| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |");
-        booksView.display();
+        booksView.write();
 
         String actualBookList = byteArrayOutputStream.toString();
 

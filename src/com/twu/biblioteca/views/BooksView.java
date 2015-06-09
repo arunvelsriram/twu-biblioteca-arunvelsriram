@@ -9,7 +9,7 @@ public class BooksView {
         this.books = books;
     }
 
-    public void display() {
+    public void write() {
         System.out.println(books);
     }
 }
