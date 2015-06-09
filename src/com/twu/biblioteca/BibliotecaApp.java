@@ -25,7 +25,9 @@ public class BibliotecaApp {
     public void start() {
         bibliotecaAppView.display("***Welcome to Biblioteca***");
         menuView.display();
-        menuView.read();
+        int option = menuView.read();
+        MenuItem menuItem = menu.menuItem(option);
+        menuItem.performAction();
     }
 
     public static void main(String[] args) {

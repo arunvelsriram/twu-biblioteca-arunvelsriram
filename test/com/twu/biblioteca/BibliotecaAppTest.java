@@ -5,9 +5,12 @@ import com.twu.biblioteca.views.BooksView;
 import com.twu.biblioteca.views.MenuView;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BibliotecaAppTest {
@@ -21,13 +24,22 @@ public class BibliotecaAppTest {
     private Books mockBooks;
     @Mock
     private Menu mockMenu;
+    @Mock
+    private MenuItem mockMenuItem;
 
     @Test
-    public void shouldInvokeMethodsOnBibliotecaAppViewBooksViewAndMenuView() throws Exception {
+    public void shouldInvokeASeriesOfMethods() throws Exception {
         BibliotecaApp bibliotecaApp = new BibliotecaApp(mockBibliotecaAppView, mockBooksView, mockMenuView, mockBooks, mockMenu);
+        when(mockMenuView.read())
+                .thenReturn(1);
+        when(mockMenu.menuItem(Matchers.any(Integer.class)))
+                .thenReturn(mockMenuItem);
         bibliotecaApp.start();
 
         Mockito.verify(mockBibliotecaAppView).display("***Welcome to Biblioteca***");
         Mockito.verify(mockMenuView).display();
+        Mockito.verify(mockMenuView).read();
+        Mockito.verify(mockMenu).menuItem(Matchers.any(Integer.class));
+        Mockito.verify(mockMenuItem).performAction();
     }
 }
