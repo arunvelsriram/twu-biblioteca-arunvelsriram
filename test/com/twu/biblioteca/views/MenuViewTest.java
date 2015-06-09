@@ -44,6 +44,16 @@ public class MenuViewTest {
     }
 
     @Test
+    public void shouldBeAbleToPrintMessagePassedToWriteMethod() throws Exception {
+        MenuView menuView = new MenuView(mockMenu);
+        menuView.write("Hello, world");
+
+        String actualMessage = byteArrayOutputStream.toString();
+
+        assertThat(actualMessage, is(equalTo("Hello, world\n")));
+    }
+
+    @Test
     public void shouldBeAbleToReadAMenuOptionFromTheUser() throws Exception {
         String inputData = "1";
         byteArrayInputStream = new ByteArrayInputStream(inputData.getBytes());

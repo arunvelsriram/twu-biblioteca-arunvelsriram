@@ -16,6 +16,10 @@ public class MenuView {
         System.out.print(menu);
     }
 
+    public void write(String message) {
+        System.out.println(message);
+    }
+
     public int read() {
         scanner = new Scanner(System.in);
         return scanner.nextInt();
