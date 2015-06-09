@@ -14,6 +14,24 @@ public class MenuItem {
     }
 
     @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof MenuItem)) return false;
+
+        MenuItem menuItem = (MenuItem) object;
+
+        return !(name != null ? !name.equals(menuItem.name) : menuItem.name != null) && !(menuItemAction != null ?
+                !menuItemAction.equals(menuItem.menuItemAction) : menuItem.menuItemAction != null);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (menuItemAction != null ? menuItemAction.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(name);
