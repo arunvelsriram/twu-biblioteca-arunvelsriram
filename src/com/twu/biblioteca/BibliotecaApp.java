@@ -11,16 +11,21 @@ public class BibliotecaApp {
     private BibliotecaAppView bibliotecaAppView;
     private BooksView booksView;
     private MenuView menuView;
+    private Books books;
+    private Menu menu;
 
-    public BibliotecaApp(BibliotecaAppView bibliotecaAppView, BooksView booksView, MenuView menuView) {
+    public BibliotecaApp(BibliotecaAppView bibliotecaAppView, BooksView booksView, MenuView menuView, Books books, Menu menu) {
         this.bibliotecaAppView = bibliotecaAppView;
         this.booksView = booksView;
         this.menuView = menuView;
+        this.books = books;
+        this.menu = menu;
     }
 
     public void start() {
         bibliotecaAppView.display("***Welcome to Biblioteca***");
         menuView.display();
+        menuView.read();
     }
 
     public static void main(String[] args) {
@@ -37,7 +42,7 @@ public class BibliotecaApp {
         Menu menu = new Menu(menuItems);
         MenuView menuView = new MenuView(menu);
 
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaAppView(), booksView, menuView);
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaAppView(), booksView, menuView, books, menu);
         bibliotecaApp.start();
     }
 }
