@@ -1,6 +1,8 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.views.BibliotecaAppView;
+import com.twu.biblioteca.views.BooksView;
+import com.twu.biblioteca.views.MenuView;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -10,13 +12,18 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class BibliotecaAppTest {
     @Mock
-    BibliotecaAppView mockBibliotecaAppView;
+    private BibliotecaAppView mockBibliotecaAppView;
+    @Mock
+    private BooksView mockBooksView;
+    @Mock
+    private MenuView mockMenuView;
 
     @Test
-    public void shouldInvokeAMethodOnViewToDisplayWelcomeMessage() throws Exception {
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(mockBibliotecaAppView);
+    public void shouldInvokeMethodsOnBibliotecaAppViewBooksViewAndMenuView() throws Exception {
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(mockBibliotecaAppView, mockBooksView, mockMenuView);
         bibliotecaApp.start();
 
         Mockito.verify(mockBibliotecaAppView).display("***Welcome to Biblioteca***");
+        Mockito.verify(mockMenuView).display();
     }
 }
