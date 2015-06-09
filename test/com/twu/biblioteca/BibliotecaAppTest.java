@@ -17,10 +17,14 @@ public class BibliotecaAppTest {
     private BooksView mockBooksView;
     @Mock
     private MenuView mockMenuView;
+    @Mock
+    private Books mockBooks;
+    @Mock
+    private Menu mockMenu;
 
     @Test
     public void shouldInvokeMethodsOnBibliotecaAppViewBooksViewAndMenuView() throws Exception {
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(mockBibliotecaAppView, mockBooksView, mockMenuView);
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(mockBibliotecaAppView, mockBooksView, mockMenuView, mockBooks, mockMenu);
         bibliotecaApp.start();
 
         Mockito.verify(mockBibliotecaAppView).display("***Welcome to Biblioteca***");
