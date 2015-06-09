@@ -19,4 +19,8 @@ public class Menu {
         sb.append("Enter your choice...");
         return sb.toString();
     }
+
+    public MenuItem menuItem(int option) {
+        return menuItems.get(--option);
+    }
 }

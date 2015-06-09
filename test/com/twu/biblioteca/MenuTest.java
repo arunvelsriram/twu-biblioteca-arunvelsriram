@@ -27,4 +27,16 @@ public class MenuTest {
 
         assertThat(actualMenu, is(equalTo("1. List Books\nEnter your choice...")));
     }
+
+    @Test
+    public void shouldBeAbleReturnAMenuItemBasedOnUsersOption() {
+        List<MenuItem> menuItems = new ArrayList<>();
+        menuItems.add(new MenuItem("List Books", mockMenuItemAction));
+        Menu menu = new Menu(menuItems);
+
+        MenuItem actualMenuItem = menu.menuItem(1);
+
+        assertThat(actualMenuItem, is(equalTo(menuItems.get(0))));
+    }
+
 }
