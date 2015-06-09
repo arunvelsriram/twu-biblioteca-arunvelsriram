@@ -6,9 +6,9 @@ import java.util.List;
 public class Menu {
     private List<MenuItem> menuItems;
 
-    public Menu() {
+    public Menu(BooksView booksView) {
         menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem("List Books", new ListBooksAction()));
+        menuItems.add(new MenuItem("List Books", new ListBooksAction(booksView)));
     }
 
     @Override
