@@ -24,8 +24,8 @@ public class BooksViewTest {
 
     @Test
     public void shouldBeAbleToPrintWelcomeMessage() throws Exception {
-        BooksView booksView = new BooksView();
-        booksView.display(new Books());
+        BooksView booksView = new BooksView(new Books());
+        booksView.display();
 
         String actualBookList = byteArrayOutputStream.toString();
 

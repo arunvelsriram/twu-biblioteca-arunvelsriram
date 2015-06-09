@@ -1,7 +1,13 @@
 package com.twu.biblioteca;
 
 public class BooksView {
-    public void display(Books books) {
+    private Books books;
+
+    public BooksView(Books books) {
+        this.books = books;
+    }
+
+    public void display() {
         System.out.println(books);
     }
 }
