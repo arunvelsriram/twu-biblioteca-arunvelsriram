@@ -9,6 +9,10 @@ public class MenuItem {
         this.menuItemAction = menuItemAction;
     }
 
+    public void performAction() {
+        menuItemAction.performAction();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

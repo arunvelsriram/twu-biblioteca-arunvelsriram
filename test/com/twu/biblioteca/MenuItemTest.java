@@ -4,6 +4,7 @@ import com.twu.biblioteca.views.BooksView;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -15,6 +16,8 @@ import static org.mockito.Mockito.when;
 public class MenuItemTest {
     @Mock
     private BooksView mockBookView;
+    @Mock
+    private MenuItemAction mockMenuItemAction;
 
     @Test
     public void shouldBeAbleToReturnAMenuItem() throws Exception {
@@ -24,5 +27,13 @@ public class MenuItemTest {
         String actualMenuItem = menuItem.toString();
 
         assertThat(actualMenuItem, is(equalTo("List Books")));
+    }
+
+    @Test
+    public void shouldBeAbleToPerformAnActionByInvokingMethodOnMenuItemAction() throws Exception {
+        MenuItem menuItem = new MenuItem("List Books", mockMenuItemAction);
+        menuItem.performAction();
+
+        Mockito.verify(mockMenuItemAction).performAction();
     }
 }
