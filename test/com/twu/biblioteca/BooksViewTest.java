@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.io.ByteArrayOutputStream;
@@ -11,9 +12,13 @@ import java.io.PrintStream;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BooksViewTest {
+    @Mock
+    private Books mockBooks;
+
     private ByteArrayOutputStream byteArrayOutputStream;
 
     @Before
@@ -24,7 +29,10 @@ public class BooksViewTest {
 
     @Test
     public void shouldBeAbleToPrintWelcomeMessage() throws Exception {
-        BooksView booksView = new BooksView(new Books());
+        BooksView booksView = new BooksView(mockBooks);
+        when(mockBooks.toString())
+                .thenReturn("| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n" +
+                        "| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |");
         booksView.display();
 
         String actualBookList = byteArrayOutputStream.toString();
