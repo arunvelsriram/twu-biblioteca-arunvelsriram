@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.views.BibliotecaAppView;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;

@@ -1,4 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.views;
+
+import com.twu.biblioteca.Menu;
 
 public class MenuView {
     private Menu menu;

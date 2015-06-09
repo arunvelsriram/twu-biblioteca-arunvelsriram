@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.views;
 
 public class BibliotecaAppView {
     public void display(String message) {

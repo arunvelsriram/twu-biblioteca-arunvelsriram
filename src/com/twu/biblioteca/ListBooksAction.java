@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.views.BooksView;
+
 public class ListBooksAction implements MenuItemAction {
     private BooksView booksView;
 

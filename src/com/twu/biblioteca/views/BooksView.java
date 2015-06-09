@@ -1,4 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.views;
+
+import com.twu.biblioteca.Books;
 
 public class BooksView {
     private Books books;
