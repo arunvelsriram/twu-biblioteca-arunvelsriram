@@ -1,16 +1,19 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Books {
     private List<Book> books;
 
-    public Books() {
-        books = new ArrayList<>();
-        books.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
-        books.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
+    public Books(List<Book> books) {
+        this.books = books;
     }
+
+    //    public Books() {
+//        books = new ArrayList<>();
+//        books.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
+//        books.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
+//    }
 
     @Override
     public String toString() {
