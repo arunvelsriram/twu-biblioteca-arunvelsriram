@@ -2,11 +2,11 @@ package com.twu.biblioteca;
 
 public class MenuItem {
     private String name;
-    private MenuItemActionListener menuItemActionListener;
+    private MenuItemAction menuItemAction;
 
-    public MenuItem(String name, MenuItemActionListener menuItemActionListener) {
+    public MenuItem(String name, MenuItemAction menuItemAction) {
         this.name = name;
-        this.menuItemActionListener = menuItemActionListener;
+        this.menuItemAction = menuItemAction;
     }
 
     @Override

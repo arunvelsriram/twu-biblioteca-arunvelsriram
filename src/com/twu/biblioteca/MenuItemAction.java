@@ -1,5 +1,5 @@
 package com.twu.biblioteca;
 
-public interface MenuItemActionListener {
+public interface MenuItemAction {
     void performAction(int option);
 }
