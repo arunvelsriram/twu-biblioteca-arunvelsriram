@@ -9,7 +9,7 @@ public class MenuView {
         this.menu = menu;
     }
 
-    public void show() {
+    public void display() {
         System.out.print(menu);
     }
 }
