@@ -27,7 +27,11 @@ public class BibliotecaApp {
         menuView.write();
         int option = menuView.read();
         MenuItem menuItem = menu.menuItem(option);
-        menuItem.performAction();
+        if(menuItem != null) {
+            menuItem.performAction();
+        } else {
+            menuView.write("Select a valid option!");
+        }
     }
 
     public static void main(String[] args) {

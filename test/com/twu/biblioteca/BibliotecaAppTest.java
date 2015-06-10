@@ -28,7 +28,7 @@ public class BibliotecaAppTest {
     private MenuItem mockMenuItem;
 
     @Test
-    public void shouldInvokeASeriesOfMethods() throws Exception {
+    public void shouldInvokeASeriesOfMethodsWhenUserProvidesAValidOption() throws Exception {
         BibliotecaApp bibliotecaApp = new BibliotecaApp(mockBibliotecaAppView, mockBooksView, mockMenuView, mockBooks, mockMenu);
         when(mockMenuView.read())
                 .thenReturn(1);
@@ -41,5 +41,21 @@ public class BibliotecaAppTest {
         Mockito.verify(mockMenuView).read();
         Mockito.verify(mockMenu).menuItem(Matchers.any(Integer.class));
         Mockito.verify(mockMenuItem).performAction();
+    }
+
+    @Test
+    public void shouldInvokeAnotherSeriesOfMethodsWhenUserProvidesAnInValidOption() throws Exception {
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(mockBibliotecaAppView, mockBooksView, mockMenuView, mockBooks, mockMenu);
+        when(mockMenuView.read())
+                .thenReturn(10);
+        when(mockMenu.menuItem(Matchers.any(Integer.class)))
+                .thenReturn(null);
+        bibliotecaApp.start();
+
+        Mockito.verify(mockBibliotecaAppView).write("***Welcome to Biblioteca***");
+        Mockito.verify(mockMenuView).write();
+        Mockito.verify(mockMenuView).read();
+        Mockito.verify(mockMenu).menuItem(Matchers.any(Integer.class));
+        Mockito.verify(mockMenuView).write(Matchers.any(String.class));
     }
 }
