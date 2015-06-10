@@ -39,4 +39,14 @@ public class MenuTest {
         assertThat(actualMenuItem, is(equalTo(menuItems.get(0))));
     }
 
+    @Test
+    public void shouldReturnNullOnProvidingAnInvalidOption() throws Exception {
+        List<MenuItem> menuItems = new ArrayList<>();
+        menuItems.add(new MenuItem("List Books", mockMenuItemAction));
+        Menu menu = new Menu(menuItems);
+
+        MenuItem actualMenuItem = menu.menuItem(10);
+
+        assertThat(actualMenuItem, is(equalTo(null)));
+    }
 }

@@ -21,6 +21,7 @@ public class Menu {
     }
 
     public MenuItem menuItem(int option) {
-        return menuItems.get(--option);
+        option--;
+        return !(option < 0 || option >= menuItems.size()) ? menuItems.get(option) : null;
     }
 }
