@@ -35,6 +35,8 @@ public class BibliotecaApp {
     }
 
     public static void main(String[] args) {
+        BibliotecaAppView bibliotecaAppView  = new BibliotecaAppView();
+
         List<Book> bookList = new ArrayList<>();
         bookList.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
         bookList.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
@@ -44,11 +46,12 @@ public class BibliotecaApp {
 
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(new MenuItem("List Books", new ListBooksAction(booksView)));
+        menuItems.add(new MenuItem("Quit", new QuitAction(bibliotecaAppView)));
 
         Menu menu = new Menu(menuItems);
         MenuView menuView = new MenuView(menu);
 
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(new BibliotecaAppView(), booksView, menuView, books, menu);
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(bibliotecaAppView, booksView, menuView, books, menu);
         bibliotecaApp.start();
     }
 }
