@@ -21,6 +21,7 @@ public class Menu {
         for (MenuItem menuItem : menuItems) {
             sb.append(i++).append(". ").append(menuItem).append("\n");
         }
+        sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
     }
 }

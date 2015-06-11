@@ -26,7 +26,7 @@ public class MenuTest {
 
         String actualMenu = menu.toString();
 
-        assertThat(actualMenu, is(equalTo("1. List Books\n")));
+        assertThat(actualMenu, is(equalTo("1. List Books")));
     }
 
     @Test
