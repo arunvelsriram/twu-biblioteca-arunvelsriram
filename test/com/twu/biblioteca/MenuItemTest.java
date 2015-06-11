@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.views.BooksView;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -16,14 +15,16 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class MenuItemTest {
     @Mock
-    private BooksView mockBookView;
+    private View mockView;
+    @Mock
+    private Books mockBooks;
     @Mock
     private MenuItemAction mockMenuItemAction;
 
     @Test
     public void shouldBeAbleToReturnAMenuItem() throws Exception {
-        MenuItem menuItem = new MenuItem("List Books", new ListBooksAction(mockBookView));
-        when(mockBookView.toString()).thenReturn("List Books");
+        MenuItem menuItem = new MenuItem("List Books", new ListBooksAction(mockView, mockBooks));
+        when(mockView.toString()).thenReturn("List Books");
 
         String actualMenuItem = menuItem.toString();
 

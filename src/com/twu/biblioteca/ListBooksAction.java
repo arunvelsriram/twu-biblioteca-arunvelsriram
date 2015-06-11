@@ -1,16 +1,17 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.views.BooksView;
-
 public class ListBooksAction implements MenuItemAction {
-    private BooksView booksView;
 
-    public ListBooksAction(BooksView booksView) {
-        this.booksView = booksView;
+    private final View view;
+    private Books books;
+
+    public ListBooksAction(View view, Books books) {
+        this.view = view;
+        this.books = books;
     }
 
     @Override
     public void performAction() {
-        booksView.write();
+        view.write(books.toString());
     }
 }

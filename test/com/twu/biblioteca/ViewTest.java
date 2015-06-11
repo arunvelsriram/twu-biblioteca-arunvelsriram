@@ -1,4 +1,4 @@
-package com.twu.biblioteca.views;
+package com.twu.biblioteca;
 
 import org.junit.After;
 import org.junit.Before;
@@ -6,12 +6,13 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Scanner;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class BibliotecaAppViewTest {
+public class ViewTest {
     private ByteArrayOutputStream byteArrayOutputStream;
 
     @Before
@@ -22,8 +23,8 @@ public class BibliotecaAppViewTest {
 
     @Test
     public void shouldBeAbleToPrintWelcomeMessage() throws Exception {
-        BibliotecaAppView bibliotecaAppView = new BibliotecaAppView();
-        bibliotecaAppView.write("***Welcome to Biblioteca***");
+        View view = new View(new Scanner(System.in));
+        view.write("***Welcome to Biblioteca***");
 
         String actualMessage = byteArrayOutputStream.toString();
 

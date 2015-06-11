@@ -1,17 +1,15 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.views.BibliotecaAppView;
-
 public class QuitAction implements MenuItemAction {
-    private BibliotecaAppView bibliotecaAppView;
+    private View view;
 
-    public QuitAction(BibliotecaAppView bibliotecaAppView) {
-        this.bibliotecaAppView = bibliotecaAppView;
+    public QuitAction(View view) {
+        this.view = view;
     }
 
     @Override
     public void performAction() {
-        bibliotecaAppView.write("Bye!");
+        view.write("Bye!");
         System.exit(0);
     }
 }

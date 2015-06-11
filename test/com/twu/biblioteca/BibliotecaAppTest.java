@@ -1,61 +1,25 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.views.BibliotecaAppView;
-import com.twu.biblioteca.views.BooksView;
-import com.twu.biblioteca.views.MenuView;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.when;
-
 @RunWith(MockitoJUnitRunner.class)
 public class BibliotecaAppTest {
     @Mock
-    private BibliotecaAppView mockBibliotecaAppView;
-    @Mock
-    private BooksView mockBooksView;
-    @Mock
-    private MenuView mockMenuView;
+    private View mockView;
     @Mock
     private Books mockBooks;
     @Mock
     private Menu mockMenu;
-    @Mock
-    private MenuItem mockMenuItem;
 
     @Test
-    public void shouldInvokeASeriesOfMethodsWhenUserProvidesAValidOption() throws Exception {
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(mockBibliotecaAppView, mockBooksView, mockMenuView, mockBooks, mockMenu);
-        when(mockMenuView.read())
-                .thenReturn(1);
-        when(mockMenu.menuItem(Matchers.any(Integer.class)))
-                .thenReturn(mockMenuItem);
+    public void shouldDiplayAWelcomeMessageThroughView() throws Exception {
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(mockView, mockBooks, mockMenu);
         bibliotecaApp.start();
 
-        Mockito.verify(mockBibliotecaAppView).write("***Welcome to Biblioteca***");
-        Mockito.verify(mockMenuView).write();
-        Mockito.verify(mockMenuView).read();
-        Mockito.verify(mockMenu).menuItem(Matchers.any(Integer.class));
-        Mockito.verify(mockMenuItem).performAction();
-    }
-
-    @Test
-    public void shouldInvokeAnotherSeriesOfMethodsWhenUserProvidesAnInValidOption() throws Exception {
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(mockBibliotecaAppView, mockBooksView, mockMenuView, mockBooks, mockMenu);
-        when(mockMenuView.read())
-                .thenReturn(10);
-        when(mockMenu.menuItem(Matchers.any(Integer.class)))
-                .thenReturn(null);
-        bibliotecaApp.start();
-
-        Mockito.verify(mockBibliotecaAppView).write("***Welcome to Biblioteca***");
-        Mockito.verify(mockMenuView).write();
-        Mockito.verify(mockMenuView).read();
-        Mockito.verify(mockMenu).menuItem(Matchers.any(Integer.class));
-        Mockito.verify(mockMenuView).write(Matchers.any(String.class));
+        Mockito.verify(mockView).write("***Welcome to Biblioteca***");
     }
 }
