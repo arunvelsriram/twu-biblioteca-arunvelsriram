@@ -12,6 +12,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -88,5 +89,19 @@ public class MenuItemTest {
 
         assertThat(menuItemOne, is(equalTo(menuItemTwo)));
         assertThat(menuItemOne.hashCode(), is(equalTo(menuItemTwo.hashCode())));
+    }
+
+    @Test
+    public void shouldReturnFalseForOptionsOtherThanExit() throws Exception {
+        MenuItem menuItem = new MenuItem("List Books", menuItemActionStub);
+
+        assertFalse(menuItem.isExit());
+    }
+
+    @Test
+    public void shouldReturnTrueForExitOption() throws Exception {
+        MenuItem menuItem = new MenuItem("Quit", null);
+
+        assertTrue(menuItem.isExit());
     }
 }

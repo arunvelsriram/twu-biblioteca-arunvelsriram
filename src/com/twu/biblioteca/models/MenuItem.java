@@ -15,6 +15,10 @@ public class MenuItem {
         menuItemAction.performAction();
     }
 
+    public boolean isExit() {
+        return (this.name.compareToIgnoreCase("quit") == 0);
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;
