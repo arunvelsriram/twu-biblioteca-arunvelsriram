@@ -17,7 +17,7 @@ public class MenuController {
        view.write(menu.toString());
     }
 
-    public void select() {
+    public void chooseOption() {
         int option = view.read();
         MenuItem menuItem =  menu.menuItem(option);
         menuItem.performAction();

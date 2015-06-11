@@ -34,7 +34,7 @@ public class MenuControllerTest {
                 .thenReturn(1);
         when(mockMenu.menuItem(1))
                 .thenReturn(mockMenuItem);
-        menuController.select();
+        menuController.chooseOption();
 
         verify(mockMenuItem).performAction();
     }
