@@ -14,7 +14,9 @@ public class View {
     }
 
     public int readInt() {
-        return scanner.nextInt();
+        int option = scanner.nextInt();
+        scanner.nextLine();
+        return option;
     }
 
     public String read() {

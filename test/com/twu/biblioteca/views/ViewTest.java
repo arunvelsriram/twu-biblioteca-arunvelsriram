@@ -35,7 +35,7 @@ public class ViewTest {
 
     @Test
     public void shouldBeAbleToReadAMenuOptionFromTheUser() throws Exception {
-        String inputData = "1";
+        String inputData = "1 ";
         byteArrayInputStream = new ByteArrayInputStream(inputData.getBytes());
         System.setIn(byteArrayInputStream);
         View view = new View(new Scanner(System.in));
