@@ -26,8 +26,9 @@ public class EntryPoint {
         menuItems.add(new MenuItem("Quit", new QuitAction()));
 
         Menu menu = new Menu(menuItems);
+        MenuController menuController = new MenuController(menu, view);
 
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(view, books, menu);
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(view, books, menu, menuController, booksController);
         bibliotecaApp.start();
     }
 }
