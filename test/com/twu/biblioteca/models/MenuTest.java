@@ -1,5 +1,8 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.models;
 
+import com.twu.biblioteca.MenuItemAction;
+import com.twu.biblioteca.models.Menu;
+import com.twu.biblioteca.models.MenuItem;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;

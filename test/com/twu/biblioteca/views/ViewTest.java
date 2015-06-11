@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.views;
 
+import com.twu.biblioteca.view.View;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

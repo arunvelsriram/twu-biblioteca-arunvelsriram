@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.view.View;
+
 public class QuitAction implements MenuItemAction {
     private View view;
 

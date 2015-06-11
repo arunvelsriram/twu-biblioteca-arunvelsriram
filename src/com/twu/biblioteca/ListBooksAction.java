@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.models.Books;
+import com.twu.biblioteca.view.View;
+
 public class ListBooksAction implements MenuItemAction {
 
     private final View view;
