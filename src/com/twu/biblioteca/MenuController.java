@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.models.Menu;
+import com.twu.biblioteca.models.MenuItem;
 import com.twu.biblioteca.views.View;
 
 public class MenuController {
@@ -14,5 +15,11 @@ public class MenuController {
 
     public void showMenu() {
        view.write(menu.toString());
+    }
+
+    public void select() {
+        int option = view.read();
+        MenuItem menuItem =  menu.menuItem(option);
+        menuItem.performAction();
     }
 }

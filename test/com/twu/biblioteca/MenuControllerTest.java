@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.models.Menu;
+import com.twu.biblioteca.models.MenuItem;
 import com.twu.biblioteca.views.View;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,12 +18,25 @@ public class MenuControllerTest {
     private Menu mockMenu;
     @Mock
     private View mockView;
+    @Mock
+    private MenuItem mockMenuItem;
 
     private MenuController menuController;
 
     @Before
     public void setUp() throws Exception {
         menuController = new MenuController(mockMenu, mockView);
+    }
+
+    @Test
+    public void shouldReadMenuOptionFromUserThroughTheView() throws Exception {
+        when(mockView.read())
+                .thenReturn(1);
+        when(mockMenu.menuItem(1))
+                .thenReturn(mockMenuItem);
+        menuController.select();
+
+        verify(mockMenuItem).performAction();
     }
 
     @Test
