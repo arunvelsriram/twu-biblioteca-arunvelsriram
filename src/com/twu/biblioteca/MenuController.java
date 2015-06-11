@@ -17,13 +17,15 @@ public class MenuController {
         view.write(menu.toString());
     }
 
-    public void chooseOption() {
+    public boolean chooseOption() {
         int option = view.read();
         MenuItem menuItem = menu.menuItem(option);
         if (menuItem != null) {
             menuItem.performAction();
         } else {
             view.write("Select a valid option!");
+            return false;
         }
+        return true;
     }
 }

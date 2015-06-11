@@ -9,7 +9,9 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BibliotecaAppTest {
@@ -43,5 +45,14 @@ public class BibliotecaAppTest {
         bibliotecaApp.start();
 
         verify(menuControllerStub).showMenu();
+    }
+
+    @Test
+    public void shouldInteractWithControllerToChooseAnOption() throws Exception {
+        when(menuControllerStub.chooseOption())
+                .thenReturn(true, false);
+        bibliotecaApp.start();
+
+        verify(menuControllerStub, times(2)).chooseOption();
     }
 }

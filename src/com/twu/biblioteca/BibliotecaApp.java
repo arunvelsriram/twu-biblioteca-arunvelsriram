@@ -21,7 +21,8 @@ public class BibliotecaApp {
 
     public void start() {
         view.write("***Welcome to Biblioteca***");
-        menuController.showMenu();
-        menuController.chooseOption();
+        do {
+            menuController.showMenu();
+        } while(menuController.chooseOption());
     }
 }
