@@ -21,7 +21,7 @@ public class BookTest {
 
     @Test
     public void equalityShouldSatisfyReflexivity() {
-        Book bookOne= new Book("Harry Potter an The Sorcer's Stone", "JK Rowling", 1999);
+        Book bookOne = new Book("Harry Potter an The Sorcer's Stone", "JK Rowling", 1999);
 
         assertThat(bookOne, is(equalTo(bookOne)));
     }
@@ -70,16 +70,16 @@ public class BookTest {
     }
 
     @Test
-    public void shouldBeAbleToTellIfABookExists() throws Exception {
+    public void shouldBeAbleToTellIfABookExist() throws Exception {
         Book book = new Book("Harry Potter an The Sorcer's Stone", "JK Rowling", 1999);
 
-        assertTrue(book.exists("Harry Potter an The Sorcer's Stone"));
+        assertTrue(book.exist("Harry Potter an The Sorcer's Stone"));
     }
 
     @Test
     public void shouldBeAbleToTellIfABookDoesNotExist() throws Exception {
         Book book = new Book("Harry Potter an The Sorcer's Stone", "JK Rowling", 1999);
 
-        assertFalse(book.exists("Twilight"));
+        assertFalse(book.exist("Twilight"));
     }
 }
