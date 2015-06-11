@@ -9,6 +9,15 @@ public class Books {
         this.books = books;
     }
 
+    public Book book(String title) {
+        for(Book book : books) {
+            if(book.exist(title)) {
+                return book;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

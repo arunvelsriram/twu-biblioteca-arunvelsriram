@@ -1,7 +1,6 @@
 package com.twu.biblioteca.models;
 
-import com.twu.biblioteca.models.Book;
-import com.twu.biblioteca.models.Books;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -12,16 +11,36 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class BooksTest {
-    @Test
-    public void shouldBeAbleToReturnBookDetails() {
+
+    private Books books;
+
+    @Before
+    public void setUp() throws Exception {
         List<Book> bookList = new ArrayList<>();
         bookList.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
         bookList.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
-        Books books = new Books(bookList);
+        books = new Books(bookList);
+    }
 
+    @Test
+    public void shouldBeAbleToReturnBookDetails() {
         String actualBookDetails = books.toString();
 
         assertThat(actualBookDetails, is(equalTo("| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n" +
                 "| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |")));
+    }
+
+    @Test
+    public void shouldBeAbleToRetrieveABookUsingTheTitle() throws Exception {
+        Book actualBook = books.book("Harry Potter and The Chamber of Secrets");
+
+        assertThat(actualBook, is(equalTo(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000))));
+    }
+
+    @Test
+    public void shouldReturnNullWhenABookDoesNotExist() throws Exception {
+        Book actualBook = books.book("Twilight");
+
+        assertThat(actualBook, is(equalTo(null)));
     }
 }
