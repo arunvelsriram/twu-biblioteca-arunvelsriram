@@ -6,6 +6,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class BookTest {
 
@@ -66,5 +67,19 @@ public class BookTest {
 
         assertThat(bookOne, is(equalTo(bookTwo)));
         assertThat(bookOne.hashCode(), is(equalTo(bookTwo.hashCode())));
+    }
+
+    @Test
+    public void shouldBeAbleToTellIfABookExists() throws Exception {
+        Book book = new Book("Harry Potter an The Sorcer's Stone", "JK Rowling", 1999);
+
+        assertTrue(book.exists("Harry Potter an The Sorcer's Stone"));
+    }
+
+    @Test
+    public void shouldBeAbleToTellIfABookDoesNotExist() throws Exception {
+        Book book = new Book("Harry Potter an The Sorcer's Stone", "JK Rowling", 1999);
+
+        assertFalse(book.exists("Twilight"));
     }
 }

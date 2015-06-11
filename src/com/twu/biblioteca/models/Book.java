@@ -4,11 +4,15 @@ public class Book {
     private String title;
     private String author;
     private int yearOfPublication;
-    
+
     public Book(String title, String author, int yearOfPublication) {
         this.title = title;
         this.author = author;
         this.yearOfPublication = yearOfPublication;
+    }
+
+    public boolean exists(String title) {
+        return this.title.equals(title);
     }
 
     @Override
