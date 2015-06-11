@@ -1,25 +1,22 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.models.Books;
-import com.twu.biblioteca.views.View;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ListBooksActionTest {
     @Mock
-    private View mockView;
-    @Mock
-    private Books mockBooks;
+    private BooksController mockBooksController;
 
     @Test
-    public void shouldInvokeAMethodOnBooksViewToDisplayTheListOfBooks() throws Exception {
-        MenuItemAction menuItemAction = new ListBooksAction(mockView, mockBooks);
-        menuItemAction.performAction();
+    public void shouldDisplayBookDetailsThroughView() throws Exception {
+        ListBooksAction listBooksAction = new ListBooksAction(mockBooksController);
+        listBooksAction.performAction();
 
-        Mockito.verify(mockView).write(mockBooks.toString());
+        verify(mockBooksController).listBooks();
     }
 }

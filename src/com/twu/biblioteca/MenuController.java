@@ -14,12 +14,16 @@ public class MenuController {
     }
 
     public void showMenu() {
-       view.write(menu.toString());
+        view.write(menu.toString());
     }
 
     public void chooseOption() {
         int option = view.read();
-        MenuItem menuItem =  menu.menuItem(option);
-        menuItem.performAction();
+        MenuItem menuItem = menu.menuItem(option);
+        if (menuItem != null) {
+            menuItem.performAction();
+        } else {
+            view.write("Select a valid option!");
+        }
     }
 }

@@ -1,33 +1,31 @@
 package com.twu.biblioteca.models;
 
+import com.twu.biblioteca.BooksController;
 import com.twu.biblioteca.ListBooksAction;
 import com.twu.biblioteca.MenuItemAction;
-import com.twu.biblioteca.views.View;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MenuItemTest {
     @Mock
-    private View mockView;
-    @Mock
     private Books mockBooks;
+    @Mock
+    private BooksController mockBooksController;
     @Mock
     private MenuItemAction mockMenuItemAction;
 
     @Test
     public void shouldBeAbleToReturnAMenuItem() throws Exception {
-        MenuItem menuItem = new MenuItem("List Books", new ListBooksAction(mockView, mockBooks));
-        when(mockView.toString()).thenReturn("List Books");
+        MenuItem menuItem = new MenuItem("List Books", new ListBooksAction(mockBooksController));
 
         String actualMenuItem = menuItem.toString();
 
@@ -39,7 +37,7 @@ public class MenuItemTest {
         MenuItem menuItem = new MenuItem("List Books", mockMenuItemAction);
         menuItem.performAction();
 
-        Mockito.verify(mockMenuItemAction).performAction();
+        verify(mockMenuItemAction).performAction();
     }
 
     @Test

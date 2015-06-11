@@ -29,7 +29,7 @@ public class MenuControllerTest {
     }
 
     @Test
-    public void shouldReadMenuOptionFromUserThroughTheView() throws Exception {
+    public void shouldDelegateToMenuItemOnValidMenuOption() throws Exception {
         when(mockView.read())
                 .thenReturn(1);
         when(mockMenu.menuItem(1))
@@ -37,6 +37,17 @@ public class MenuControllerTest {
         menuController.chooseOption();
 
         verify(mockMenuItem).performAction();
+    }
+
+    @Test
+    public void shouldPrintErrorMessageThroughViewOnInvalidMenuOption() throws Exception {
+        when(mockView.read())
+                .thenReturn(10);
+        when(mockMenu.menuItem(10))
+                .thenReturn(null);
+        menuController.chooseOption();
+
+        verify(mockView).write("Select a valid option!");
     }
 
     @Test

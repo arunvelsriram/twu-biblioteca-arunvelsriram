@@ -19,10 +19,11 @@ public class EntryPoint {
         bookList.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
 
         Books books = new Books(bookList);
+        BooksController booksController = new BooksController(books, view);
 
         List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem("List Books", new ListBooksAction(view, books)));
-        menuItems.add(new MenuItem("Quit", new QuitAction(view)));
+        menuItems.add(new MenuItem("List Books", new ListBooksAction(booksController)));
+        menuItems.add(new MenuItem("Quit", new QuitAction()));
 
         Menu menu = new Menu(menuItems);
 
