@@ -2,7 +2,7 @@ package com.twu.biblioteca.models;
 
 import com.twu.biblioteca.ListBooksAction;
 import com.twu.biblioteca.MenuItemAction;
-import com.twu.biblioteca.view.View;
+import com.twu.biblioteca.views.View;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;

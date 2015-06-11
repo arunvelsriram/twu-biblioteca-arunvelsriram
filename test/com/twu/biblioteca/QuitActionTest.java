@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.view.View;
+import com.twu.biblioteca.views.View;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;

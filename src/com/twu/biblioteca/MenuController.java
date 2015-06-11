@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.models.Menu;
-import com.twu.biblioteca.view.View;
+import com.twu.biblioteca.views.View;
 
 public class MenuController {
     private Menu menu;

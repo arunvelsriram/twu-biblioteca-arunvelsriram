@@ -1,4 +1,4 @@
-package com.twu.biblioteca.view;
+package com.twu.biblioteca.views;
 
 import java.util.Scanner;
 
