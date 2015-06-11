@@ -35,12 +35,17 @@ public class Book {
 
         Book book = (Book) o;
 
-        return !(title != null ? !title.equals(book.title) : book.title != null);
+        if (yearOfPublication != book.yearOfPublication) return false;
+        if (title != null ? !title.equals(book.title) : book.title != null) return false;
+        return !(author != null ? !author.equals(book.author) : book.author != null);
 
     }
 
     @Override
     public int hashCode() {
-        return title != null ? title.hashCode() : 0;
+        int result = title != null ? title.hashCode() : 0;
+        result = 31 * result + (author != null ? author.hashCode() : 0);
+        result = 31 * result + yearOfPublication;
+        return result;
     }
 }
