@@ -18,6 +18,10 @@ public class Books {
         return null;
     }
 
+    public void remove(Book book) {
+        books.remove(book);
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

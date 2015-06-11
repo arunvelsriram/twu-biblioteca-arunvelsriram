@@ -43,4 +43,12 @@ public class BooksTest {
 
         assertThat(actualBook, is(equalTo(null)));
     }
+
+    @Test
+    public void shouldBeAbleToRemoveABookFromTheBookList() throws Exception {
+        Book book = new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999);
+        books.remove(book);
+
+        assertThat(books.toString(), is(equalTo("| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |")));
+    }
 }
