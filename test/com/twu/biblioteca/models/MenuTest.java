@@ -1,8 +1,6 @@
 package com.twu.biblioteca.models;
 
 import com.twu.biblioteca.MenuItemAction;
-import com.twu.biblioteca.models.Menu;
-import com.twu.biblioteca.models.MenuItem;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -18,23 +16,23 @@ import static org.junit.Assert.assertThat;
 @RunWith(MockitoJUnitRunner.class)
 public class MenuTest {
     @Mock
-    private MenuItemAction mockMenuItemAction;
+    private MenuItemAction menuItemActionStub;
 
     @Test
     public void shouldBeAbleToDisplayAMenuWithListOfOptions() {
         List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem("List Books", mockMenuItemAction));
+        menuItems.add(new MenuItem("List Books", menuItemActionStub));
         Menu menu = new Menu(menuItems);
 
         String actualMenu = menu.toString();
 
-        assertThat(actualMenu, is(equalTo("1. List Books\nEnter your choice...")));
+        assertThat(actualMenu, is(equalTo("1. List Books\n")));
     }
 
     @Test
     public void shouldBeAbleReturnAMenuItemBasedOnUsersOption() {
         List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem("List Books", mockMenuItemAction));
+        menuItems.add(new MenuItem("List Books", menuItemActionStub));
         Menu menu = new Menu(menuItems);
 
         MenuItem actualMenuItem = menu.menuItem(1);
@@ -45,7 +43,7 @@ public class MenuTest {
     @Test
     public void shouldReturnNullOnProvidingAnInvalidOption() throws Exception {
         List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem("List Books", mockMenuItemAction));
+        menuItems.add(new MenuItem("List Books", menuItemActionStub));
         Menu menu = new Menu(menuItems);
 
         MenuItem actualMenuItem = menu.menuItem(10);

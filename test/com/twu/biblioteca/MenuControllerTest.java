@@ -15,47 +15,47 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class MenuControllerTest {
     @Mock
-    private Menu mockMenu;
+    private Menu menuStub;
     @Mock
-    private View mockView;
+    private View viewStub;
     @Mock
-    private MenuItem mockMenuItem;
+    private MenuItem menuItemStub;
 
     private MenuController menuController;
 
     @Before
     public void setUp() throws Exception {
-        menuController = new MenuController(mockMenu, mockView);
+        menuController = new MenuController(menuStub, viewStub);
     }
 
     @Test
     public void shouldDelegateToMenuItemOnValidMenuOption() throws Exception {
-        when(mockView.read())
+        when(viewStub.read())
                 .thenReturn(1);
-        when(mockMenu.menuItem(1))
-                .thenReturn(mockMenuItem);
+        when(menuStub.menuItem(1))
+                .thenReturn(menuItemStub);
         menuController.chooseOption();
 
-        verify(mockMenuItem).performAction();
+        verify(menuItemStub).performAction();
     }
 
     @Test
     public void shouldPrintErrorMessageThroughViewOnInvalidMenuOption() throws Exception {
-        when(mockView.read())
+        when(viewStub.read())
                 .thenReturn(10);
-        when(mockMenu.menuItem(10))
+        when(menuStub.menuItem(10))
                 .thenReturn(null);
         menuController.chooseOption();
 
-        verify(mockView).write("Select a valid option!");
+        verify(viewStub).write("Select a valid option!");
     }
 
     @Test
     public void shouldSentMenuItemsToViewForDisplaying() throws Exception {
-        when(mockMenu.toString())
+        when(menuStub.toString())
                 .thenReturn("Menu");
         menuController.showMenu();
 
-        verify(mockView).write(mockMenu.toString());
+        verify(viewStub).write(menuStub.toString());
     }
 }

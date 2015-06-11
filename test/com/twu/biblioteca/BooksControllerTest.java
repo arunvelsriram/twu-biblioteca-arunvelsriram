@@ -14,23 +14,23 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class BooksControllerTest {
     @Mock
-    private Books mockBooks;
+    private Books booksStub;
     @Mock
-    private View mockView;
+    private View viewStub;
 
     private BooksController booksController;
 
     @Before
     public void setUp() throws Exception {
-        booksController = new BooksController(mockBooks, mockView);
+        booksController = new BooksController(booksStub, viewStub);
     }
 
     @Test
     public void shouldSendBookDetailsToTheViewForDisplaying() throws Exception {
-        when(mockBooks.toString())
+        when(booksStub.toString())
                 .thenReturn("Book details");
         booksController.listBooks();
 
-        Mockito.verify(mockView).write(mockBooks.toString());
+        Mockito.verify(viewStub).write(booksStub.toString());
     }
 }

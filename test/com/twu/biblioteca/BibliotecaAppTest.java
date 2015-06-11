@@ -14,34 +14,34 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class BibliotecaAppTest {
     @Mock
-    private View mockView;
+    private View viewStub;
     @Mock
-    private Books mockBooks;
+    private Books booksStub;
     @Mock
-    private Menu mockMenu;
+    private Menu menuStub;
     @Mock
-    private MenuController mockMenuController;
+    private MenuController menuControllerStub;
     @Mock
-    private BooksController mockBooksController;
+    private BooksController booksControllerStub;
 
     private BibliotecaApp bibliotecaApp;
 
     @Before
     public void setUp() throws Exception {
-        bibliotecaApp = new BibliotecaApp(mockView, mockBooks, mockMenu, mockMenuController, mockBooksController);
+        bibliotecaApp = new BibliotecaApp(viewStub, booksStub, menuStub, menuControllerStub, booksControllerStub);
     }
 
     @Test
     public void shouldDisplayAWelcomeMessageThroughTheView() throws Exception {
         bibliotecaApp.start();
 
-        verify(mockView).write("***Welcome to Biblioteca***");
+        verify(viewStub).write("***Welcome to Biblioteca***");
     }
 
     @Test
     public void shouldInteractWithControllerToDisplayMenuInTheView() throws Exception {
         bibliotecaApp.start();
 
-        verify(mockMenuController).showMenu();
+        verify(menuControllerStub).showMenu();
     }
 }

@@ -10,13 +10,13 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class ListBooksActionTest {
     @Mock
-    private BooksController mockBooksController;
+    private BooksController booksControllerStub;
 
     @Test
     public void shouldDisplayBookDetailsThroughView() throws Exception {
-        ListBooksAction listBooksAction = new ListBooksAction(mockBooksController);
+        ListBooksAction listBooksAction = new ListBooksAction(booksControllerStub);
         listBooksAction.performAction();
 
-        verify(mockBooksController).listBooks();
+        verify(booksControllerStub).listBooks();
     }
 }

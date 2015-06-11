@@ -17,15 +17,15 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class MenuItemTest {
     @Mock
-    private Books mockBooks;
+    private Books booksStub;
     @Mock
-    private BooksController mockBooksController;
+    private BooksController booksControllerStub;
     @Mock
-    private MenuItemAction mockMenuItemAction;
+    private MenuItemAction menuItemActionStub;
 
     @Test
     public void shouldBeAbleToReturnAMenuItem() throws Exception {
-        MenuItem menuItem = new MenuItem("List Books", new ListBooksAction(mockBooksController));
+        MenuItem menuItem = new MenuItem("List Books", new ListBooksAction(booksControllerStub));
 
         String actualMenuItem = menuItem.toString();
 
@@ -34,23 +34,23 @@ public class MenuItemTest {
 
     @Test
     public void shouldBeAbleToPerformAnActionByInvokingMethodOnMenuItemAction() throws Exception {
-        MenuItem menuItem = new MenuItem("List Books", mockMenuItemAction);
+        MenuItem menuItem = new MenuItem("List Books", menuItemActionStub);
         menuItem.performAction();
 
-        verify(mockMenuItemAction).performAction();
+        verify(menuItemActionStub).performAction();
     }
 
     @Test
     public void equalityShouldSatisfyReflexivity() {
-        MenuItem menuItemOne = new MenuItem("List Books", mockMenuItemAction);
+        MenuItem menuItemOne = new MenuItem("List Books", menuItemActionStub);
 
         assertThat(menuItemOne, is(equalTo(menuItemOne)));
     }
 
     @Test
     public void equalityShouldSatisfySymmetricity() {
-        MenuItem menuItemOne = new MenuItem("List Books", mockMenuItemAction);
-        MenuItem menuItemTwo = new MenuItem("List Books", mockMenuItemAction);
+        MenuItem menuItemOne = new MenuItem("List Books", menuItemActionStub);
+        MenuItem menuItemTwo = new MenuItem("List Books", menuItemActionStub);
 
         assertThat(menuItemOne, is(equalTo(menuItemTwo)));
         assertThat(menuItemTwo, is(equalTo(menuItemOne)));
@@ -58,9 +58,9 @@ public class MenuItemTest {
 
     @Test
     public void equalityShouldSatisfyTransitivity() {
-        MenuItem menuItemOne = new MenuItem("List Books", mockMenuItemAction);
-        MenuItem menuItemTwo = new MenuItem("List Books", mockMenuItemAction);
-        MenuItem menuItemThree = new MenuItem("List Books", mockMenuItemAction);
+        MenuItem menuItemOne = new MenuItem("List Books", menuItemActionStub);
+        MenuItem menuItemTwo = new MenuItem("List Books", menuItemActionStub);
+        MenuItem menuItemThree = new MenuItem("List Books", menuItemActionStub);
 
         assertThat(menuItemOne, is(equalTo(menuItemTwo)));
         assertThat(menuItemTwo, is(equalTo(menuItemThree)));
@@ -69,22 +69,22 @@ public class MenuItemTest {
 
     @Test
     public void equalityShouldReturnFalseOnPassingNull() {
-        MenuItem menuItemOne = new MenuItem("List Books", mockMenuItemAction);
+        MenuItem menuItemOne = new MenuItem("List Books", menuItemActionStub);
 
         assertFalse(menuItemOne.equals(null));
     }
 
     @Test
     public void equalityShouldReturnFalseOnPassingOtherObject() {
-        MenuItem menuItemOne = new MenuItem("List Books", mockMenuItemAction);
+        MenuItem menuItemOne = new MenuItem("List Books", menuItemActionStub);
 
         assertFalse(menuItemOne.equals(new String("Hello, World")));
     }
 
     @Test
     public void whenTwoObjectsAreEqualThenTheirHashCodeMustBeEqual() {
-        MenuItem menuItemOne = new MenuItem("List Books", mockMenuItemAction);
-        MenuItem menuItemTwo = new MenuItem("List Books", mockMenuItemAction);
+        MenuItem menuItemOne = new MenuItem("List Books", menuItemActionStub);
+        MenuItem menuItemTwo = new MenuItem("List Books", menuItemActionStub);
 
         assertThat(menuItemOne, is(equalTo(menuItemTwo)));
         assertThat(menuItemOne.hashCode(), is(equalTo(menuItemTwo.hashCode())));
