@@ -40,9 +40,21 @@ public class ViewTest {
         System.setIn(byteArrayInputStream);
         View view = new View(new Scanner(System.in));
 
-        int actualOption = view.read();
+        int actualOption = view.readInt();
 
         assertThat(actualOption, is(equalTo(1)));
+    }
+
+    @Test
+    public void shouldBeAbleToReadBookNameFromThConsole() throws Exception {
+        String inputData = "Harry Potter and The Sorcer's Stone";
+        byteArrayInputStream = new ByteArrayInputStream(inputData.getBytes());
+        System.setIn(byteArrayInputStream);
+        View view = new View(new Scanner(System.in));
+
+        String actualBookName = view.read();
+
+        assertThat(actualBookName, is(equalTo("Harry Potter and The Sorcer's Stone")));
     }
 
     @After

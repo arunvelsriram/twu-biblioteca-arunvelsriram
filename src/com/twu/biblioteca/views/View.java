@@ -13,7 +13,11 @@ public class View {
         System.out.println(message);
     }
 
-    public int read() {
+    public int readInt() {
         return scanner.nextInt();
+    }
+
+    public String read() {
+        return scanner.nextLine();
     }
 }
