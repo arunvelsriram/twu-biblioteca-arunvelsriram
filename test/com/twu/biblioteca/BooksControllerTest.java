@@ -26,7 +26,7 @@ public class BooksControllerTest {
     }
 
     @Test
-    public void shouldGetBookDetailsFromBooks() throws Exception {
+    public void shouldSendBookDetailsToTheViewForDisplaying() throws Exception {
         when(mockBooks.toString())
                 .thenReturn("Book details");
         booksController.listBooks();
