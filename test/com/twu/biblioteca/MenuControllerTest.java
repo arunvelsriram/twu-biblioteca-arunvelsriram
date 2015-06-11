@@ -32,7 +32,7 @@ public class MenuControllerTest {
 
     @Test
     public void shouldReturnTrueOnValidUserInput() throws Exception {
-        when(viewStub.read())
+        when(viewStub.readInt())
                 .thenReturn(1);
         when(menuStub.menuItem(1))
                 .thenReturn(menuItemStub);
@@ -44,7 +44,7 @@ public class MenuControllerTest {
 
     @Test
     public void shouldReturnFalseOnValidUserInput() throws Exception {
-        when(viewStub.read())
+        when(viewStub.readInt())
                 .thenReturn(10);
         when(menuStub.menuItem(10))
                 .thenReturn(null);

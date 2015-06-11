@@ -18,7 +18,7 @@ public class MenuController {
     }
 
     public boolean chooseOption() {
-        int option = view.read();
+        int option = view.readInt();
         MenuItem menuItem = menu.menuItem(option);
         if (menuItem != null) {
             menuItem.performAction();
