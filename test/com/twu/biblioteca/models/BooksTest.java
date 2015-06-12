@@ -27,7 +27,7 @@ public class BooksTest {
         String actualBookDetails = books.toString();
 
         assertThat(actualBookDetails, is(equalTo("| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n" +
-                "| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |")));
+                "| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |\n")));
     }
 
     @Test
@@ -49,6 +49,6 @@ public class BooksTest {
         Book book = new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999);
         books.remove(book);
 
-        assertThat(books.toString(), is(equalTo("| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |")));
+        assertThat(books.toString(), is(equalTo("| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |\n")));
     }
 }
