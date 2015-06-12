@@ -38,15 +38,15 @@
 
     <target name="jar" depends="test">
         <mkdir dir="out/jar"/>
-        <jar destfile="out/jar/BibliotecaApp.jar" basedir="out/src/classes">
+        <jar destfile="out/jar/EntryPoint.jar" basedir="out/src/classes">
             <manifest>
-                <attribute name="Main-Class" value="com.twu.biblioteca.BibliotecaApp"/>
+                <attribute name="Main-Class" value="com.twu.biblioteca.EntryPoint"/>
             </manifest>
         </jar>
     </target>
 
     <target name="run" depends="jar">
-        <java jar="out/jar/BibliotecaApp.jar" fork="true"/>
+        <java jar="out/jar/EntryPoint.jar" fork="true"/>
     </target>
 
 </project>
