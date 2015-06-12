@@ -24,7 +24,7 @@ public class EntryPoint {
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(new MenuItem("List Books", new ListBooksAction(booksController)));
         menuItems.add(new MenuItem("Checkout", new CheckoutBookAction(booksController)));
-        menuItems.add(new MenuItem("Quit", new QuitAction()));
+        menuItems.add(new MenuItem("Quit", null));
 
         Menu menu = new Menu(menuItems);
         MenuController menuController = new MenuController(menu, view);
