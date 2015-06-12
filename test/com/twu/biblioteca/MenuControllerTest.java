@@ -31,11 +31,13 @@ public class MenuControllerTest {
     }
 
     @Test
-    public void shouldReturnTrueOnValidUserInput() throws Exception {
+    public void shouldReturnTrueOnValidInput() throws Exception {
         when(viewStub.readInt())
                 .thenReturn(1);
         when(menuStub.menuItem(1))
                 .thenReturn(menuItemStub);
+        when(menuItemStub.isExit())
+                .thenReturn(false);
 
         boolean actual = menuController.chooseOption();
 
@@ -43,11 +45,25 @@ public class MenuControllerTest {
     }
 
     @Test
-    public void shouldReturnFalseOnValidUserInput() throws Exception {
+    public void shouldReturnTrueOnInvalidInput() throws Exception {
         when(viewStub.readInt())
                 .thenReturn(10);
         when(menuStub.menuItem(10))
                 .thenReturn(null);
+
+        boolean actual = menuController.chooseOption();
+
+        assertTrue(actual);
+    }
+
+    @Test
+    public void shouldReturnFalseWhenUserSelectsQuitOption() throws Exception {
+        when(viewStub.readInt())
+                .thenReturn(3);
+        when(menuStub.menuItem(3))
+                .thenReturn(menuItemStub);
+        when(menuItemStub.isExit())
+                .thenReturn(true);
 
         boolean actual = menuController.chooseOption();
 

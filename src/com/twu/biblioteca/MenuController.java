@@ -20,11 +20,12 @@ public class MenuController {
     public boolean chooseOption() {
         int option = view.readInt();
         MenuItem menuItem = menu.menuItem(option);
-        if (menuItem != null) {
-            menuItem.performAction();
-        } else {
+        if (menuItem == null) {
             view.write("Select a valid option!");
+        } else if (menuItem.isExit()) {
             return false;
+        } else {
+            menuItem.performAction();
         }
         return true;
     }
