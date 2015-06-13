@@ -28,6 +28,13 @@ public class BooksController {
         }
     }
 
+    public void returnBook() {
+        Book book = getBook();
+        if(book != null) {
+            books.returnBook(book);
+        }
+    }
+
     private Book getBook() {
         String title = view.read();
         return books.search(title);

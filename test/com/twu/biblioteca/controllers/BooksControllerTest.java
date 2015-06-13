@@ -86,4 +86,14 @@ public class BooksControllerTest {
         verify(viewStub).write("That book is not available!");
     }
 
+    @Test
+    public void shouldBeAbleToReturnABook() throws Exception {
+        when(viewStub.read())
+                .thenReturn("Harry Potter and The Sorcer's Stone");
+        when(booksStub.search("Harry Potter and The Sorcer's Stone"))
+                .thenReturn(bookStub);
+        booksController.returnBook();
+
+        verify(booksStub).returnBook(bookStub);
+    }
 }
