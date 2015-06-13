@@ -29,8 +29,7 @@ public class BooksController {
 
     public void returnBook() {
         Book book = getBook();
-        if (book != null) {
-            books.returnBook(book);
+        if (books.returnBook(book)) {
             view.write("Thank you for returning the book.");
         } else {
             view.write("That is not a valid book to return.");

@@ -53,7 +53,11 @@ public class Books {
         return books != null ? books.hashCode() : 0;
     }
 
-    public void returnBook(Book book) {
-        books.put(book, true);
+    public boolean returnBook(Book book) {
+        if(book != null && books.containsKey(book) && !books.get(book)) {
+            books.put(book, true);
+            return true;
+        }
+        return false;
     }
 }

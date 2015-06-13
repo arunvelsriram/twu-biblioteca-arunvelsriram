@@ -105,15 +105,15 @@ public class BooksTest {
     }
 
     @Test
-    public void shouldReturnFalseOnUnSuccessfulCheckOutCausedByPassingAWrongBook() throws Exception {
-        boolean actual = books.checkOut(new Book("Twilight", "Stephenie Meyer", 2002));
+    public void shouldReturnFalseOnUnSuccessfulCheckOutCausedByPassingNull() throws Exception {
+        boolean actual = books.checkOut(null);
 
         assertFalse(actual);
     }
 
     @Test
-    public void shouldReturnFalseOnUnSuccessfulCheckOutCausedByPassingNull() throws Exception {
-        boolean actual = books.checkOut(null);
+    public void shouldReturnFalseOnUnSuccessfulCheckOutCausedByPassingAWrongBook() throws Exception {
+        boolean actual = books.checkOut(new Book("Twilight", "Stephenie Meyer", 2002));
 
         assertFalse(actual);
     }
@@ -125,6 +125,41 @@ public class BooksTest {
         books = new Books(bookDetails);
 
         boolean actual = books.checkOut(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
+
+        assertFalse(actual);
+    }
+
+    @Test
+    public void shouldReturnTrueOnSuccessfulReturn() throws Exception {
+        Map<Book, Boolean> bookDetails = new LinkedHashMap<>();
+        bookDetails.put(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000), false);
+        books = new Books(bookDetails);
+        boolean actual = books.returnBook(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
+
+        assertTrue(actual);
+    }
+
+    @Test
+    public void shouldReturnFalseOnUnSuccessfulReturnCausedByPassingNull() throws Exception {
+        boolean actual = books.returnBook(null);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    public void shouldReturnFalseOnUnSuccessfulReturnCausedByPassingAWrongBook() throws Exception {
+        boolean actual = books.returnBook(new Book("Twilight", "Stephenie Meyer", 2002));
+
+        assertFalse(actual);
+    }
+
+    @Test
+    public void shouldReturnFalseOnUnSuccessfulCheckOutCausedByPassingABookThatIsNotIssued() throws Exception {
+        Map<Book, Boolean> bookDetails = new LinkedHashMap<>();
+        bookDetails.put(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000), true);
+        books = new Books(bookDetails);
+
+        boolean actual = books.returnBook(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
 
         assertFalse(actual);
     }

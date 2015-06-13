@@ -107,6 +107,8 @@ public class BooksControllerTest {
                 .thenReturn("Harry Potter and The Sorcer's Stone");
         when(booksStub.search("Harry Potter and The Sorcer's Stone"))
                 .thenReturn(bookStub);
+        when(booksStub.returnBook(bookStub))
+                .thenReturn(true);
         booksController.returnBook();
 
         verify(viewStub).write("Thank you for returning the book.");
@@ -118,6 +120,8 @@ public class BooksControllerTest {
                 .thenReturn("Twilight");
         when(booksStub.search("Twilight"))
                 .thenReturn(null);
+        when(booksStub.returnBook(null))
+                .thenReturn(false);
         booksController.returnBook();
 
         verify(viewStub).write("That is not a valid book to return.");
