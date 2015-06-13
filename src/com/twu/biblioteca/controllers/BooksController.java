@@ -20,8 +20,7 @@ public class BooksController {
 
     public void checkoutBook() {
         Book book = getBook();
-        if (book != null) {
-            books.checkOut(book);
+        if (books.checkOut(book)) {
             view.write("Thank you! Enjoy the book!");
         } else {
             view.write("That book is not available!");

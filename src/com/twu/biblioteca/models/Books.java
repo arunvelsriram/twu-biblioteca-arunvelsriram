@@ -11,15 +11,20 @@ public class Books {
 
     public Book search(String title) {
         for (Map.Entry<Book, Boolean> entry : books.entrySet()) {
-            if (bookIsAvailable(title, entry)) {
-                return entry.getKey();
+            Book book = entry.getKey();
+            if (book.match(title)) {
+                return book;
             }
         }
         return null;
     }
 
-    public void checkOut(Book book) {
-        books.put(book, false);
+    public boolean checkOut(Book book) {
+        if(book != null && books.containsKey(book) && books.get(book)) {
+            books.put(book, false);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -46,12 +51,6 @@ public class Books {
     @Override
     public int hashCode() {
         return books != null ? books.hashCode() : 0;
-    }
-
-    private boolean bookIsAvailable(String title, Map.Entry<Book, Boolean> entry) {
-        Book book = entry.getKey();
-        Boolean checkedOut = entry.getValue();
-        return book.match(title) && checkedOut;
     }
 
     public void returnBook(Book book) {

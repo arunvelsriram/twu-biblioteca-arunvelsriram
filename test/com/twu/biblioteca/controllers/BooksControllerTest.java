@@ -70,6 +70,8 @@ public class BooksControllerTest {
                 .thenReturn("Harry Potter and The Sorcer's Stone");
         when(booksStub.search("Harry Potter and The Sorcer's Stone"))
                 .thenReturn(bookStub);
+        when(booksStub.checkOut(bookStub))
+                .thenReturn(true);
         booksController.checkoutBook();
 
         verify(viewStub).write("Thank you! Enjoy the book!");
@@ -81,6 +83,8 @@ public class BooksControllerTest {
                 .thenReturn("Twilight");
         when(booksStub.search("Twilight"))
                 .thenReturn(null);
+        when(booksStub.checkOut(null))
+                .thenReturn(false);
         booksController.checkoutBook();
 
         verify(viewStub).write("That book is not available!");

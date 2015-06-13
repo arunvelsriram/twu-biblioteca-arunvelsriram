@@ -10,6 +10,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class BooksTest {
 
@@ -97,31 +98,34 @@ public class BooksTest {
     }
 
     @Test
-    public void shouldBeAbleToFlagABookOnCheckout() throws Exception {
-        Map<Book, Boolean> expectedBookDetails = new LinkedHashMap<>();
-        expectedBookDetails.put(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999), false);
-        expectedBookDetails.put(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000), true);
-        Books expectedBooks = new Books(expectedBookDetails);
+    public void shouldReturnTrueOnSuccessfulCheckOut() throws Exception {
+        boolean actual = books.checkOut(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
 
-        books.checkOut(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
-
-        assertThat(books, is(equalTo(expectedBooks)));
+        assertTrue(actual);
     }
 
     @Test
-    public void shouldBeAbleToFlagABookOnReturn() throws Exception {
-        Map<Book, Boolean> bookDetails = new LinkedHashMap<>();
-        bookDetails.put(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999), false);
-        bookDetails.put(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000), true);
-        books = new Books(bookDetails);
-        Map<Book, Boolean> expectedBookDetails = new LinkedHashMap<>();
-        expectedBookDetails.put(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999), true);
-        expectedBookDetails.put(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000), true);
-        Books expectedBooks = new Books(expectedBookDetails);
+    public void shouldReturnFalseOnUnSuccessfulCheckOutCausedByPassingAWrongBook() throws Exception {
+        boolean actual = books.checkOut(new Book("Twilight", "Stephenie Meyer", 2002));
 
-        books.returnBook(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
-
-        assertThat(books, is(equalTo(expectedBooks)));
+        assertFalse(actual);
     }
 
+    @Test
+    public void shouldReturnFalseOnUnSuccessfulCheckOutCausedByPassingNull() throws Exception {
+        boolean actual = books.checkOut(null);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    public void shouldReturnFalseOnUnSuccessfulCheckOutCausedByPassingABookThatIsAlreadyIssued() throws Exception {
+        Map<Book, Boolean> bookDetails = new LinkedHashMap<>();
+        bookDetails.put(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000), false);
+        books = new Books(bookDetails);
+
+        boolean actual = books.checkOut(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
+
+        assertFalse(actual);
+    }
 }
