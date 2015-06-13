@@ -32,6 +32,7 @@ public class BooksController {
         Book book = getBook();
         if(book != null) {
             books.returnBook(book);
+            view.write("Thank you for returning the book.");
         }
     }
 

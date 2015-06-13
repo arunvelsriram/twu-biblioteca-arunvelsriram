@@ -96,4 +96,15 @@ public class BooksControllerTest {
 
         verify(booksStub).returnBook(bookStub);
     }
+
+    @Test
+    public void shouldBeAbleToDisplaySuccessMessageOnSuccessfulReturn() throws Exception {
+        when(viewStub.read())
+                .thenReturn("Harry Potter and The Sorcer's Stone");
+        when(booksStub.search("Harry Potter and The Sorcer's Stone"))
+                .thenReturn(bookStub);
+        booksController.returnBook();
+
+        verify(viewStub).write("Thank you for returning the book.");
+    }
 }
