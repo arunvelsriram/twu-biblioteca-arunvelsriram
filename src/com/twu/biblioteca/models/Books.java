@@ -20,8 +20,16 @@ public class Books {
     }
 
     public boolean checkOut(Book book) {
-        if(book != null && books.containsKey(book) && books.get(book)) {
+        if (hasTheBook(book) && !bookIsAlreadyIssued(book)) {
             books.put(book, false);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean returnBook(Book book) {
+        if (hasTheBook(book) && bookIsAlreadyIssued(book)) {
+            books.put(book, true);
             return true;
         }
         return false;
@@ -53,11 +61,12 @@ public class Books {
         return books != null ? books.hashCode() : 0;
     }
 
-    public boolean returnBook(Book book) {
-        if(book != null && books.containsKey(book) && !books.get(book)) {
-            books.put(book, true);
-            return true;
-        }
-        return false;
+
+    private boolean bookIsAlreadyIssued(Book book) {
+        return !books.get(book);
+    }
+
+    private boolean hasTheBook(Book book) {
+        return book != null && books.containsKey(book);
     }
 }
