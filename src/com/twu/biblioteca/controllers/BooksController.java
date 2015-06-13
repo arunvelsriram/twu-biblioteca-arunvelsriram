@@ -19,13 +19,17 @@ public class BooksController {
     }
 
     public void checkoutBook() {
-        String title = view.read();
-        Book book = books.search(title);
+        Book book = getBook();
         if (book != null) {
             books.checkOut(book);
             view.write("Thank you! Enjoy the book!");
         } else {
             view.write("That book is not available!");
         }
+    }
+
+    private Book getBook() {
+        String title = view.read();
+        return books.search(title);
     }
 }

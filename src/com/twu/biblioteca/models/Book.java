@@ -38,7 +38,6 @@ public class Book {
         if (yearOfPublication != book.yearOfPublication) return false;
         if (title != null ? !title.equals(book.title) : book.title != null) return false;
         return !(author != null ? !author.equals(book.author) : book.author != null);
-
     }
 
     @Override

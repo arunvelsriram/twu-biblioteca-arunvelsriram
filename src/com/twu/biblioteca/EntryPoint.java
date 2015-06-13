@@ -16,7 +16,7 @@ public class EntryPoint {
 
         Map<Book, Boolean> availableBooks = new LinkedHashMap<>();
         availableBooks.put(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999), true);
-        availableBooks.put(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000), false);
+        availableBooks.put(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000), true);
 
         Books books = new Books(availableBooks);
         BooksController booksController = new BooksController(books, view);

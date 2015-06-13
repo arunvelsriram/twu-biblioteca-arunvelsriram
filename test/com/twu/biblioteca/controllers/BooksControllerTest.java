@@ -38,6 +38,13 @@ public class BooksControllerTest {
     }
 
     @Test
+    public void shouldBeAbleToReadTitleFromTheUser() {
+        booksController.checkoutBook();
+
+        verify(viewStub).read();
+    }
+
+    @Test
     public void shouldBeAbleToSearchABookUsingTitle() throws Exception {
         when(viewStub.read())
                 .thenReturn("Harry Potter and The Sorcer's Stone");
@@ -78,4 +85,5 @@ public class BooksControllerTest {
 
         verify(viewStub).write("That book is not available!");
     }
+
 }

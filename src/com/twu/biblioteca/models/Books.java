@@ -26,7 +26,9 @@ public class Books {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (Book book : books.keySet()) {
-            sb.append(book).append("\n");
+            if (books.get(book)) {
+                sb.append(book).append("\n");
+            }
         }
         return sb.toString();
     }
