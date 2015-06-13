@@ -3,8 +3,8 @@ package com.twu.biblioteca.models;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -16,10 +16,10 @@ public class BooksTest {
 
     @Before
     public void setUp() throws Exception {
-        List<Book> bookList = new ArrayList<>();
-        bookList.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
-        bookList.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
-        books = new Books(bookList);
+        Map<Book, Boolean> availableBooks = new LinkedHashMap<>();
+        availableBooks.put(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999), true);
+        availableBooks.put(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000), true);
+        books = new Books(availableBooks);
     }
 
     @Test

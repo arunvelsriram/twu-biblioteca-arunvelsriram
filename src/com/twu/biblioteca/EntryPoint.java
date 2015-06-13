@@ -8,19 +8,17 @@ import com.twu.biblioteca.models.Menu;
 import com.twu.biblioteca.models.MenuItem;
 import com.twu.biblioteca.views.View;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class EntryPoint {
     public static void main(String[] args) {
         View view = new View(new Scanner(System.in));
 
-        List<Book> bookList = new ArrayList<>();
-        bookList.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
-        bookList.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
+        Map<Book, Boolean> availableBooks = new LinkedHashMap<>();
+        availableBooks.put(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999), true);
+        availableBooks.put(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000), false);
 
-        Books books = new Books(bookList);
+        Books books = new Books(availableBooks);
         BooksController booksController = new BooksController(books, view);
 
         List<MenuItem> menuItems = new ArrayList<>();

@@ -1,17 +1,19 @@
 package com.twu.biblioteca.models;
 
-import java.util.List;
+import java.util.Map;
 
 public class Books {
-    private List<Book> books;
+    private Map<Book, Boolean> books;
 
-    public Books(List<Book> books) {
+    public Books(Map<Book, Boolean> books) {
         this.books = books;
     }
 
     public Book search(String title) {
-        for(Book book : books) {
-            if(book.match(title)) {
+        for(Map.Entry<Book, Boolean> entry : books.entrySet()) {
+            Book book = entry.getKey();
+            Boolean isAvailable = entry.getValue();
+            if(book.match(title) && isAvailable) {
                 return book;
             }
         }
@@ -25,7 +27,7 @@ public class Books {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (Book book : books) {
+        for (Book book : books.keySet()) {
             sb.append(book).append("\n");
         }
         return sb.toString();
