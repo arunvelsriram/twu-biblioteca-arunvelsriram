@@ -76,7 +76,7 @@ public class BooksControllerTest {
     }
 
     @Test
-    public void shouldBeAbleToPassErrorMessageToView() throws Exception {
+    public void shouldBeAbleToPassErrorMessageToViewOnUnsuccessfulCheckout() throws Exception {
         when(viewStub.read())
                 .thenReturn("Twilight");
         when(booksStub.search("Twilight"))
@@ -106,5 +106,16 @@ public class BooksControllerTest {
         booksController.returnBook();
 
         verify(viewStub).write("Thank you for returning the book.");
+    }
+
+    @Test
+    public void shouldBeAbleToPassErrorMessageToViewOnUnsuccessfulReturn() throws Exception {
+        when(viewStub.read())
+                .thenReturn("Twilight");
+        when(booksStub.search("Twilight"))
+                .thenReturn(null);
+        booksController.returnBook();
+
+        verify(viewStub).write("That is not a valid book to return.");
     }
 }
