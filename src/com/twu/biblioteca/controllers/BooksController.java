@@ -22,7 +22,7 @@ public class BooksController {
         String title = view.read();
         Book book = books.search(title);
         if (book != null) {
-            books.remove(book);
+            books.checkOut(book);
             view.write("Thank you! Enjoy the book!");
         } else {
             view.write("That book is not available!");

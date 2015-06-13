@@ -29,7 +29,7 @@ public class BooksControllerTest {
     }
 
     @Test
-    public void shouldSendBookDetailsToTheViewForDisplaying() throws Exception {
+    public void shouldSendBookDetailsToTheViewForDisplayingIt() throws Exception {
         when(booksStub.toString())
                 .thenReturn("Book details");
         booksController.listBooks();
@@ -38,14 +38,33 @@ public class BooksControllerTest {
     }
 
     @Test
-    public void shouldBeAbleToGetABookUsingBookName() throws Exception {
+    public void shouldBeAbleToSearchABookUsingTitle() throws Exception {
+        when(viewStub.read())
+                .thenReturn("Harry Potter and The Sorcer's Stone");
+        booksController.checkoutBook();
+
+        verify(booksStub).search("Harry Potter and The Sorcer's Stone");
+    }
+
+    @Test
+    public void shouldBeAbleToCheckoutABook() throws Exception {
         when(viewStub.read())
                 .thenReturn("Harry Potter and The Sorcer's Stone");
         when(booksStub.search("Harry Potter and The Sorcer's Stone"))
                 .thenReturn(bookStub);
         booksController.checkoutBook();
 
-        verify(booksStub).remove(bookStub);
+        verify(booksStub).checkOut(bookStub);
+    }
+
+    @Test
+    public void shouldBeAbleToDisplaySuccessMessageOnSuccessfulCheckout() throws Exception {
+        when(viewStub.read())
+                .thenReturn("Harry Potter and The Sorcer's Stone");
+        when(booksStub.search("Harry Potter and The Sorcer's Stone"))
+                .thenReturn(bookStub);
+        booksController.checkoutBook();
+
         verify(viewStub).write("Thank you! Enjoy the book!");
     }
 
