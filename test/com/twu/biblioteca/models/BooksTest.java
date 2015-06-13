@@ -107,4 +107,21 @@ public class BooksTest {
 
         assertThat(books, is(equalTo(expectedBooks)));
     }
+
+    @Test
+    public void shouldBeAbleToFlagABookOnReturn() throws Exception {
+        Map<Book, Boolean> bookDetails = new LinkedHashMap<>();
+        bookDetails.put(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999), false);
+        bookDetails.put(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000), true);
+        books = new Books(bookDetails);
+        Map<Book, Boolean> expectedBookDetails = new LinkedHashMap<>();
+        expectedBookDetails.put(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999), true);
+        expectedBookDetails.put(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000), true);
+        Books expectedBooks = new Books(expectedBookDetails);
+
+        books.returnBook(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
+
+        assertThat(books, is(equalTo(expectedBooks)));
+    }
+
 }

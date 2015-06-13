@@ -53,4 +53,8 @@ public class Books {
         Boolean checkedOut = entry.getValue();
         return book.match(title) && checkedOut;
     }
+
+    public void returnBook(Book book) {
+        books.put(book, true);
+    }
 }
