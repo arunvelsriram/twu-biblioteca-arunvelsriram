@@ -9,9 +9,9 @@ public class Books {
         this.books = books;
     }
 
-    public Book book(String title) {
+    public Book search(String title) {
         for(Book book : books) {
-            if(book.exist(title)) {
+            if(book.match(title)) {
                 return book;
             }
         }

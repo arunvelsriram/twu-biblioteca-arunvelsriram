@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.controllers.BooksController;
+
 public class CheckoutBookAction implements MenuItemAction {
     private BooksController booksController;
 

@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.controllers;
 
 import com.twu.biblioteca.models.Menu;
 import com.twu.biblioteca.models.MenuItem;

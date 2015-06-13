@@ -70,16 +70,16 @@ public class BookTest {
     }
 
     @Test
-    public void shouldBeAbleToTellIfABookExist() throws Exception {
+    public void shouldReturnTrueWhenABooksTitleMatchesWithTheGivenTitle() throws Exception {
         Book book = new Book("Harry Potter an The Sorcer's Stone", "JK Rowling", 1999);
 
-        assertTrue(book.exist("Harry Potter an The Sorcer's Stone"));
+        assertTrue(book.match("Harry Potter an The Sorcer's Stone"));
     }
 
     @Test
-    public void shouldBeAbleToTellIfABookDoesNotExist() throws Exception {
+    public void shouldReturnFalseWhenABooksTitleDoesNotMatchTheGivenTitle() throws Exception {
         Book book = new Book("Harry Potter an The Sorcer's Stone", "JK Rowling", 1999);
 
-        assertFalse(book.exist("Twilight"));
+        assertFalse(book.match("Twilight"));
     }
 }

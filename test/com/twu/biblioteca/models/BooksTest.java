@@ -32,14 +32,14 @@ public class BooksTest {
 
     @Test
     public void shouldBeAbleToRetrieveABookUsingTheTitle() throws Exception {
-        Book actualBook = books.book("Harry Potter and The Chamber of Secrets");
+        Book actualBook = books.search("Harry Potter and The Chamber of Secrets");
 
         assertThat(actualBook, is(equalTo(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000))));
     }
 
     @Test
     public void shouldReturnNullWhenABookDoesNotExist() throws Exception {
-        Book actualBook = books.book("Twilight");
+        Book actualBook = books.search("Twilight");
 
         assertThat(actualBook, is(equalTo(null)));
     }

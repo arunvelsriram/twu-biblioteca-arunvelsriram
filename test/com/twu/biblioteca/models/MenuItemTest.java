@@ -1,6 +1,6 @@
 package com.twu.biblioteca.models;
 
-import com.twu.biblioteca.BooksController;
+import com.twu.biblioteca.controllers.BooksController;
 import com.twu.biblioteca.ListBooksAction;
 import com.twu.biblioteca.MenuItemAction;
 import org.junit.Test;
@@ -25,7 +25,7 @@ public class MenuItemTest {
     private MenuItemAction menuItemActionStub;
 
     @Test
-    public void shouldBeAbleToReturnAMenuItem() throws Exception {
+    public void shouldBeAbleToReturnMenuItemName() throws Exception {
         MenuItem menuItem = new MenuItem("List Books", new ListBooksAction(booksControllerStub));
 
         String actualMenuItem = menuItem.toString();

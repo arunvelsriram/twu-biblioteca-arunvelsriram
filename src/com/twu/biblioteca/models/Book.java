@@ -11,7 +11,7 @@ public class Book {
         this.yearOfPublication = yearOfPublication;
     }
 
-    public boolean exist(String title) {
+    public boolean match(String title) {
         return this.title.equals(title);
     }
 

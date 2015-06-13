@@ -11,7 +11,7 @@ public class Menu {
 
     public MenuItem menuItem(int option) {
         option--;
-        return !(option < 0 || option >= menuItems.size()) ? menuItems.get(option) : null;
+        return invalidOption(option) ? menuItems.get(option) : null;
     }
 
     @Override
@@ -23,5 +23,9 @@ public class Menu {
         }
         sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
+    }
+
+    private boolean invalidOption(int option) {
+        return !(option < 0 || option >= menuItems.size());
     }
 }

@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.controllers.BooksController;
+
 public class ListBooksAction implements MenuItemAction {
 
     private BooksController booksController;

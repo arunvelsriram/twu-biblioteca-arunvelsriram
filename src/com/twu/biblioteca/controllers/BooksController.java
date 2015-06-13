@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.controllers;
 
 import com.twu.biblioteca.models.Book;
 import com.twu.biblioteca.models.Books;
@@ -20,7 +20,7 @@ public class BooksController {
 
     public void checkoutBook() {
         String title = view.read();
-        Book book = books.book(title);
+        Book book = books.search(title);
         if (book != null) {
             books.remove(book);
             view.write("Thank you! Enjoy the book!");

@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.controllers;
 
 import com.twu.biblioteca.models.Book;
 import com.twu.biblioteca.models.Books;
@@ -41,7 +41,7 @@ public class BooksControllerTest {
     public void shouldBeAbleToGetABookUsingBookName() throws Exception {
         when(viewStub.read())
                 .thenReturn("Harry Potter and The Sorcer's Stone");
-        when(booksStub.book("Harry Potter and The Sorcer's Stone"))
+        when(booksStub.search("Harry Potter and The Sorcer's Stone"))
                 .thenReturn(bookStub);
         booksController.checkoutBook();
 
@@ -53,7 +53,7 @@ public class BooksControllerTest {
     public void shouldBeAbleToPassErrorMessageToView() throws Exception {
         when(viewStub.read())
                 .thenReturn("Twilight");
-        when(booksStub.book("Twilight"))
+        when(booksStub.search("Twilight"))
                 .thenReturn(null);
         booksController.checkoutBook();
 

@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.controllers.BooksController;
+import com.twu.biblioteca.controllers.MenuController;
 import com.twu.biblioteca.models.Books;
 import com.twu.biblioteca.models.Menu;
 import com.twu.biblioteca.views.View;
