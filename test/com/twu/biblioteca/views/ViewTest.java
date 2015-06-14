@@ -34,7 +34,7 @@ public class ViewTest {
     }
 
     @Test
-    public void shouldBeAbleToReadAMenuOptionFromTheUser() throws Exception {
+    public void shouldBeAbleToReadAMenuOptionFromTheUserAndReturnIt() throws Exception {
         String inputData = "1 ";
         byteArrayInputStream = new ByteArrayInputStream(inputData.getBytes());
         System.setIn(byteArrayInputStream);
@@ -43,6 +43,18 @@ public class ViewTest {
         int actualOption = view.readInt();
 
         assertThat(actualOption, is(equalTo(1)));
+    }
+
+    @Test
+    public void shouldBeAbleToReturnZeroOnReadingInvalidMenuOptionFromTheUser() throws Exception {
+        String inputData = "hello";
+        byteArrayInputStream = new ByteArrayInputStream(inputData.getBytes());
+        System.setIn(byteArrayInputStream);
+        View view = new View(new Scanner(System.in));
+
+        int actualOption = view.readInt();
+
+        assertThat(actualOption, is(equalTo(0)));
     }
 
     @Test

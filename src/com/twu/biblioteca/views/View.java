@@ -1,5 +1,6 @@
 package com.twu.biblioteca.views;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class View {
@@ -14,8 +15,14 @@ public class View {
     }
 
     public int readInt() {
-        int option = scanner.nextInt();
-        scanner.nextLine();
+        int option = 0;
+        try {
+            option = scanner.nextInt();
+        } catch (InputMismatchException exception) {
+            option = 0;
+        } finally {
+            scanner.nextLine();
+        }
         return option;
     }
 
