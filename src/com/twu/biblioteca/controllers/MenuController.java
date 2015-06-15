@@ -29,4 +29,8 @@ public class MenuController {
         }
         return true;
     }
+
+    public void invalidOption() {
+        view.write("Select a valid option!");
+    }
 }

@@ -78,4 +78,11 @@ public class MenuControllerTest {
 
         verify(viewStub).write(menuStub.toString());
     }
+
+    @Test
+    public void shouldBeAbleToPrintAMessageThroughTheView() throws Exception {
+        menuController.invalidOption();
+
+        verify(viewStub).write("Select a valid option!");
+    }
 }
