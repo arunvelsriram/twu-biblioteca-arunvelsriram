@@ -11,7 +11,7 @@ public class Menu {
 
     public MenuItem menuItem(int option) {
         option--;
-        return invalidOption(option) ? menuItems.get(option) : null;
+        return invalidOption(option) ? menuItems.get(option) : menuItems.get(menuItems.size() - 1);
     }
 
     @Override
