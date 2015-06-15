@@ -1,5 +1,6 @@
 package com.twu.biblioteca.controllers;
 
+import com.twu.biblioteca.InvalidOptionAction;
 import com.twu.biblioteca.models.Menu;
 import com.twu.biblioteca.models.MenuItem;
 import com.twu.biblioteca.views.View;
@@ -22,6 +23,8 @@ public class MenuControllerTest {
     private View viewStub;
     @Mock
     private MenuItem menuItemStub;
+    @Mock
+    private InvalidOptionAction invalidOptionActionStub;
 
     private MenuController menuController;
 
@@ -31,25 +34,13 @@ public class MenuControllerTest {
     }
 
     @Test
-    public void shouldReturnTrueOnValidInput() throws Exception {
+    public void shouldReturnTrueOnChoosingManuOptionsOtherThanQuit() throws Exception {
         when(viewStub.readInt())
                 .thenReturn(1);
         when(menuStub.menuItem(1))
                 .thenReturn(menuItemStub);
         when(menuItemStub.isExit())
                 .thenReturn(false);
-
-        boolean actual = menuController.chooseOption();
-
-        assertTrue(actual);
-    }
-
-    @Test
-    public void shouldReturnTrueOnInvalidInput() throws Exception {
-        when(viewStub.readInt())
-                .thenReturn(10);
-        when(menuStub.menuItem(10))
-                .thenReturn(null);
 
         boolean actual = menuController.chooseOption();
 
@@ -68,15 +59,6 @@ public class MenuControllerTest {
         boolean actual = menuController.chooseOption();
 
         assertFalse(actual);
-    }
-
-    @Test
-    public void shouldSentMenuItemsToViewForDisplaying() throws Exception {
-        when(menuStub.toString())
-                .thenReturn("Menu");
-        menuController.showMenu();
-
-        verify(viewStub).write(menuStub.toString());
     }
 
     @Test
