@@ -22,7 +22,7 @@ public class Movie implements Item {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("| ").append(name).append(" | ").append(directorName).append(" | ")
-                .append(year).append(" | ").append(rating).append(" |\n");
+                .append(year).append(" | ").append(rating).append(" |");
         return sb.toString();
     }
 

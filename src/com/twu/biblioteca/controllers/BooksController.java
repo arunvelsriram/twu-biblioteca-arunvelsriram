@@ -13,19 +13,27 @@ public class BooksController {
     }
 
     public void listAvailableBooks() {
-        String bookDetails = section.availableBooks();
+        String bookDetails = section.availableItems();
         view.write(bookDetails);
     }
 
     public void checkoutABook() {
         String title = view.read();
-        String message = section.checkoutBook(title);
-        view.write(message);
+        if(section.checkoutItem(title)) {
+            view.write("Thank you! Enjoy the book.");
+        }
+        else {
+            view.write("That book is not available.");
+        }
     }
 
     public void returnABook() {
         String title = view.read();
-        String message = section.returnBook(title);
-        view.write(message);
+        if(section.returnItem(title)) {
+            view.write("Thank you for returning the book.");
+        }
+        else {
+            view.write("That is not a valid book to return.");
+        }
     }
 }

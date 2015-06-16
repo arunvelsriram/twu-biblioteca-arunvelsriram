@@ -8,58 +8,92 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class SectionTest {
-
     private Section section;
-    private List<Book> availableBooks;
-    private List<Book> issuedBooks;
+    private List<Item> availableItems;
+    private List<Item> issuedItems;
 
     @Before
-    public void setUp() throws Exception {
-        availableBooks = new ArrayList<>();
-        availableBooks.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
-        availableBooks.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
-        issuedBooks = new ArrayList<>();
-        issuedBooks.add(new Book("Twilight", "Unknown", 2000));
-        section = new Section(availableBooks, issuedBooks);
+    public void setUp() {
+        availableItems = new ArrayList<>();
+        availableItems.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
+        availableItems.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
+        availableItems.add(new Movie("Inception", "Christopher Nolan", 2010, 10));
+        availableItems.add(new Movie("The Prestige", "Christopher Nolan", 2008, 10));
+        issuedItems = new ArrayList<>();
+        issuedItems.add(new Book("Twilight", "Unknown", 2000));
+        issuedItems.add(new Movie("Lucy", "Unknown Director", 2014, 10));
+        section = new Section(availableItems, issuedItems);
     }
 
     @Test
     public void shouldBeAbleToReturnAvailableBookDetails() {
-        String actualBookDetails = section.availableBooks();
+        String actualBookDetails = section.availableItems();
 
         assertThat(actualBookDetails, is(equalTo("| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n" +
-                "| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |\n")));
+                "| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |\n" +
+                "| Inception | Christopher Nolan | 2010 | 10 |\n" +
+                "| The Prestige | Christopher Nolan | 2008 | 10 |\n")));
     }
 
 
     @Test
-    public void shouldReturnSuccessMessageOnSuccessfulCheckout() {
-        String actualMessage = section.checkoutBook("Harry Potter and The Chamber of Secrets");
+    public void shouldReturnTrueOnSuccessfulCheckoutOfABook() {
+        boolean actual = section.checkoutItem("Harry Potter and The Chamber of Secrets");
 
-        assertThat(actualMessage, is(equalTo("Thank you! Enjoy the book.")));
+        assertTrue(actual);
     }
 
     @Test
-    public void shouldReturnErrorMessageOnUnSuccessfulCheckout() {
-        String actualMessage = section.checkoutBook("Twilight");
+    public void shouldReturnFalseOnUnSuccessfulCheckoutOfABook() {
+        boolean actual = section.checkoutItem("Twilight");
 
-        assertThat(actualMessage, is(equalTo("That book is not available!")));
+        assertFalse(actual);
     }
 
     @Test
-    public void shouldBeAbleToReturnSuccessMessageOnSuccessfulReturn() {
-        String actualMessage = section.returnBook("Twilight");
+    public void shouldReturnTrueOnSuccessfulReturnOfABook() {
+        boolean actual = section.returnItem("Twilight");
 
-        assertThat(actualMessage, is(equalTo("Thank you for returning the book.")));
+        assertTrue(actual);
     }
 
     @Test
-    public void shouldBeAbleToReturnErrorMessageOnUnSuccessfulReturn() {
-        String actualMessage = section.returnBook("Harry Potter and The Chamber of Secrets");
+    public void shouldReturnTrueOnUnSuccessfulReturnOfABook() {
+        boolean actual = section.returnItem("Harry Potter and The Chamber of Secrets");
 
-        assertThat(actualMessage, is(equalTo("That is not a valid book to return.")));
+        assertFalse(actual);
+    }
+
+    @Test
+    public void shouldReturnTrueOnSuccessfulCheckoutOfAMovie() {
+        boolean actual = section.checkoutItem("Inception");
+
+        assertTrue(actual);
+    }
+
+    @Test
+    public void shouldReturnFalseOnUnSuccessfulCheckoutOfAMovie() {
+        boolean actual = section.checkoutItem("Lucy");
+
+        assertFalse(actual);
+    }
+
+    @Test
+    public void shouldReturnTrueOnSuccessfulReturnOfAMovie() {
+        boolean actual = section.returnItem("Twilight");
+
+        assertTrue(actual);
+    }
+
+    @Test
+    public void shouldReturnFalseOnUnSuccessfulReturnOfAMovie() {
+        boolean actual = section.returnItem("Inception");
+
+        assertFalse(actual);
     }
 }

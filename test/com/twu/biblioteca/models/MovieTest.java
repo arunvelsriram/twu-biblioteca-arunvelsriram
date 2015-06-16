@@ -79,6 +79,6 @@ public class MovieTest {
 
         String actualBook = movie.toString();
 
-        assertThat(actualBook, is(equalTo("| The Prestige | Christopher Nolan | 2006 | 10 |\n")));
+        assertThat(actualBook, is(equalTo("| The Prestige | Christopher Nolan | 2006 | 10 |")));
     }
 }

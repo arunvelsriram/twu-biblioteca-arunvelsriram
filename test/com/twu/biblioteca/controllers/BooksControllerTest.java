@@ -34,7 +34,7 @@ public class BooksControllerTest {
                 .thenReturn("Book details");
         booksController.listAvailableBooks();
 
-        verify(viewStub).write(sectionStub.availableBooks());
+        verify(viewStub).write(sectionStub.availableItems());
     }
 
     @Test
@@ -44,25 +44,67 @@ public class BooksControllerTest {
         verify(viewStub).read();
     }
 
+
     @Test
-    public void shouldBeAbleToCheckoutABookThroughTheLibraryUsingTheTitle() {
+    public void shouldBeAbleToInvokeCheckout() {
         when(viewStub.read())
                 .thenReturn("Harry Potter and The Chamber of Secrets");
-        when(sectionStub.checkoutBook("Harry Potter and The Chamber of Secrets"))
-                .thenReturn("Thank you! Enjoy the book.");
+        booksController.checkoutABook();
+
+        verify(sectionStub).checkoutItem("Harry Potter and The Chamber of Secrets");
+    }
+
+    @Test
+    public void shouldBeAbleToDisplaySuccessMessageThroughTheViewOnSuccessfulCheckout() {
+        when(viewStub.read())
+                .thenReturn("Harry Potter and The Chamber of Secrets");
+        when(sectionStub.checkoutItem("Harry Potter and The Chamber of Secrets"))
+                .thenReturn(true);
         booksController.checkoutABook();
 
         verify(viewStub).write("Thank you! Enjoy the book.");
     }
 
     @Test
-    public void shouldBeAbleToReturnABookThroughTheLibraryUsingTheTitle() {
+    public void shouldBeAbleToDisplayFailureMessageThroughTheViewOnUnSuccessfulCheckout() {
+        when(viewStub.read())
+                .thenReturn("Harry Potter and The Chamber of Secrets");
+        when(sectionStub.checkoutItem("Harry Potter and The Chamber of Secrets"))
+                .thenReturn(false);
+        booksController.checkoutABook();
+
+        verify(viewStub).write("That book is not available.");
+    }
+
+    @Test
+    public void shouldBeAbleToInvokeReturn() {
+        when(viewStub.read())
+                .thenReturn("Harry Potter and The Chamber of Secrets");
+        booksController.returnABook();
+
+        verify(sectionStub).returnItem("Harry Potter and The Chamber of Secrets");
+    }
+
+
+    @Test
+    public void shouldBeAbleToDisplaySuccessMessageThroughTheViewOnSuccessfulReturn() {
         when(viewStub.read())
                 .thenReturn("Twilight");
-        when(sectionStub.returnBook("Twilight"))
-                .thenReturn("Thank you for returning the book.");
+        when(sectionStub.returnItem("Twilight"))
+                .thenReturn(true);
         booksController.returnABook();
 
         verify(viewStub).write("Thank you for returning the book.");
+    }
+
+    @Test
+    public void shouldBeAbleToDisplayFailureMessageThroughTheViewOnUnSuccessfulReturn() {
+        when(viewStub.read())
+                .thenReturn("Twilight");
+        when(sectionStub.returnItem("Twilight"))
+                .thenReturn(false);
+        booksController.returnABook();
+
+        verify(viewStub).write("That is not a valid book to return.");
     }
 }

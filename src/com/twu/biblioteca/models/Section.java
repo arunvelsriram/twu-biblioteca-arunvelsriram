@@ -4,47 +4,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Section {
-    private List<Book> issuedBooks;
-    private List<Book> availableBooks;
+    private List<Item> availableItems;
+    private List<Item> issuedItems;
 
-    public Section(List<Book> availableBooks, List<Book> issuedBooks) {
-        this.availableBooks = availableBooks;
-        this.issuedBooks = issuedBooks;
+    public Section(List<Item> availableItems, List<Item> issuedItems) {
+        this.availableItems = availableItems;
+        this.issuedItems = issuedItems;
     }
 
-    public String availableBooks() {
+    public String availableItems() {
         StringBuilder sb = new StringBuilder();
-        for (Book book : availableBooks) {
-            sb.append(book).append("\n");
+        for (Item item : availableItems) {
+            sb.append(item).append("\n");
         }
         return sb.toString();
     }
 
-    public String checkoutBook(String title) {
-        List<Book> result = search(title, availableBooks);
-        for (Book book : result) {
-            availableBooks.remove(book);
-            issuedBooks.add(book);
-            return "Thank you! Enjoy the book.";
+    public boolean checkoutItem(String title) {
+        List<Item> result = search(title, availableItems);
+        for (Item item : result) {
+            availableItems.remove(item);
+            issuedItems.add(item);
+            return true;
         }
-        return "That book is not available!";
+        return false;
     }
 
-    public String returnBook(String title) {
-        List<Book> result = search(title, issuedBooks);
-        for (Book book : result) {
-            issuedBooks.remove(book);
-            availableBooks.add(book);
-            return "Thank you for returning the book.";
+    public boolean returnItem(String title) {
+        List<Item> result = search(title, issuedItems);
+        for (Item item : result) {
+            issuedItems.remove(item);
+            availableItems.add(item);
+            return true;
         }
-        return "That is not a valid book to return.";
+        return false;
     }
 
-    private List<Book> search(String title, List<Book> books) {
-        List<Book> result = new ArrayList<>();
-        for (Book book : books) {
-            if (book.match(title)) {
-                result.add(book);
+    private List<Item> search(String title, List<Item> books) {
+        List<Item> result = new ArrayList<>();
+        for (Item item : books) {
+            if (item.match(title)) {
+                result.add(item);
             }
         }
         return result;

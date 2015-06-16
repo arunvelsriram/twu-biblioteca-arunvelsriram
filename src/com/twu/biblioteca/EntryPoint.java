@@ -6,22 +6,21 @@ import com.twu.biblioteca.menuitemactions.CheckoutBookAction;
 import com.twu.biblioteca.menuitemactions.InvalidOptionAction;
 import com.twu.biblioteca.menuitemactions.ListBooksAction;
 import com.twu.biblioteca.menuitemactions.ReturnBookAction;
-import com.twu.biblioteca.models.Book;
-import com.twu.biblioteca.models.Section;
-import com.twu.biblioteca.models.Menu;
-import com.twu.biblioteca.models.MenuItem;
+import com.twu.biblioteca.models.*;
 import com.twu.biblioteca.views.View;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class EntryPoint {
     public static void main(String[] args) {
         View view = new View(new Scanner(System.in));
 
-        List<Book> availableBooks = new ArrayList<>();
+        List<Item> availableBooks = new ArrayList<>();
         availableBooks.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
         availableBooks.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
-        List<Book> issuedBooks = new ArrayList<>();
+        List<Item> issuedBooks = new ArrayList<>();
 
         Section section = new Section(availableBooks, issuedBooks);
         BooksController booksController = new BooksController(section, view);
