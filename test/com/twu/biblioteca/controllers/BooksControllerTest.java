@@ -13,7 +13,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class SectionControllerTest {
+public class BooksControllerTest {
     @Mock
     private Section sectionStub;
     @Mock
