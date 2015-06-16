@@ -35,9 +35,7 @@ public class Movie implements Item {
 
         if (year != movie.year) return false;
         if (rating != movie.rating) return false;
-        if (!name.equals(movie.name)) return false;
-        return directorName.equals(movie.directorName);
-
+        return name.equals(movie.name) && directorName.equals(movie.directorName);
     }
 
     @Override
