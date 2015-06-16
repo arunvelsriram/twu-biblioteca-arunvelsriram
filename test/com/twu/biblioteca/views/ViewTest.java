@@ -18,13 +18,13 @@ public class ViewTest {
     private ByteArrayInputStream byteArrayInputStream;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         byteArrayOutputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(byteArrayOutputStream));
     }
 
     @Test
-    public void shouldBeAbleToPrintWelcomeMessage() throws Exception {
+    public void shouldBeAbleToPrintWelcomeMessage() {
         View view = new View(new Scanner(System.in));
         view.write("***Welcome to Biblioteca***");
 
@@ -34,7 +34,7 @@ public class ViewTest {
     }
 
     @Test
-    public void shouldBeAbleToReadAMenuOptionFromTheUserAndReturnIt() throws Exception {
+    public void shouldBeAbleToReadAMenuOptionFromTheUserAndReturnIt() {
         String inputData = "1 ";
         byteArrayInputStream = new ByteArrayInputStream(inputData.getBytes());
         System.setIn(byteArrayInputStream);
@@ -46,7 +46,7 @@ public class ViewTest {
     }
 
     @Test
-    public void shouldBeAbleToReturnZeroOnReadingInvalidMenuOptionFromTheUser() throws Exception {
+    public void shouldBeAbleToReturnZeroOnReadingInvalidMenuOptionFromTheUser() {
         String inputData = "hello";
         byteArrayInputStream = new ByteArrayInputStream(inputData.getBytes());
         System.setIn(byteArrayInputStream);
@@ -58,7 +58,7 @@ public class ViewTest {
     }
 
     @Test
-    public void shouldBeAbleToReadBookNameFromThConsole() throws Exception {
+    public void shouldBeAbleToReadBookNameFromThConsole() {
         String inputData = "Harry Potter and The Sorcer's Stone";
         byteArrayInputStream = new ByteArrayInputStream(inputData.getBytes());
         System.setIn(byteArrayInputStream);
@@ -70,7 +70,7 @@ public class ViewTest {
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         System.setOut(null);
         System.setIn(System.in);
     }

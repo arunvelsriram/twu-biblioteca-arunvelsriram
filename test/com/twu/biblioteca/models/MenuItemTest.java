@@ -25,7 +25,7 @@ public class MenuItemTest {
     private MenuItemAction menuItemActionStub;
 
     @Test
-    public void shouldBeAbleToReturnMenuItemName() throws Exception {
+    public void shouldBeAbleToReturnMenuItemName() {
         MenuItem menuItem = new MenuItem("List Books", new ListBooksAction(booksControllerStub));
 
         String actualMenuItem = menuItem.toString();
@@ -34,7 +34,7 @@ public class MenuItemTest {
     }
 
     @Test
-    public void shouldBeAbleToPerformAnActionByInvokingMethodOnMenuItemAction() throws Exception {
+    public void shouldBeAbleToPerformAnActionByInvokingMethodOnMenuItemAction() {
         MenuItem menuItem = new MenuItem("List Books", menuItemActionStub);
         menuItem.performAction();
 
@@ -92,14 +92,14 @@ public class MenuItemTest {
     }
 
     @Test
-    public void shouldReturnFalseForOptionsOtherThanExit() throws Exception {
+    public void shouldReturnFalseForOptionsOtherThanExit() {
         MenuItem menuItem = new MenuItem("List Books", menuItemActionStub);
 
         assertFalse(menuItem.isExit());
     }
 
     @Test
-    public void shouldReturnTrueForExitOption() throws Exception {
+    public void shouldReturnTrueForExitOption() {
         MenuItem menuItem = new MenuItem("Quit", null);
 
         assertTrue(menuItem.isExit());

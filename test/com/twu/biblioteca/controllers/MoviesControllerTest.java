@@ -29,7 +29,7 @@ public class MoviesControllerTest {
     }
 
     @Test
-    public void shouldSendMovieDetailsToTheViewForDisplayingIt() throws Exception {
+    public void shouldSendMovieDetailsToTheViewForDisplayingIt() {
         when(sectionStub.toString())
                 .thenReturn("Movie details");
         moviesController.listAvailableMovies();
@@ -38,7 +38,7 @@ public class MoviesControllerTest {
     }
 
     @Test
-    public void shouldGetMovieNameFromTheUserThroughTheView() throws Exception {
+    public void shouldGetMovieNameFromTheUserThroughTheView() {
         moviesController.checkoutAMovie();
 
         verify(viewStub).read();

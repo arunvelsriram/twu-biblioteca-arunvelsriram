@@ -11,7 +11,7 @@ import static org.junit.Assert.assertTrue;
 public class BookTest {
 
     @Test
-    public void shouldBeAbleToReturnBookDetail() throws Exception {
+    public void shouldBeAbleToReturnBookDetail() {
         Book book = new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999);
 
         String actualBook = book.toString();
@@ -70,14 +70,14 @@ public class BookTest {
     }
 
     @Test
-    public void shouldReturnTrueWhenABooksTitleMatchesWithTheGivenTitle() throws Exception {
+    public void shouldReturnTrueWhenABooksTitleMatchesWithTheGivenTitle() {
         Book book = new Book("Harry Potter an The Sorcer's Stone", "JK Rowling", 1999);
 
         assertTrue(book.match("Harry Potter an The Sorcer's Stone"));
     }
 
     @Test
-    public void shouldReturnFalseWhenABooksTitleDoesNotMatchTheGivenTitle() throws Exception {
+    public void shouldReturnFalseWhenABooksTitleDoesNotMatchTheGivenTitle() {
         Book book = new Book("Harry Potter an The Sorcer's Stone", "JK Rowling", 1999);
 
         assertFalse(book.match("Twilight"));

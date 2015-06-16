@@ -1,4 +1,4 @@
-package com.twu.biblioteca.menuitemaction;
+package com.twu.biblioteca.menuitemactions;
 
 import com.twu.biblioteca.controllers.BooksController;
 import com.twu.biblioteca.menuitemactions.ReturnBookAction;
@@ -14,7 +14,7 @@ public class ReturnBookActionTest {
     private BooksController booksControllerStub;
 
     @Test
-    public void shouldBeAbleToInvokeReturnBookOnBooksController() throws Exception {
+    public void shouldBeAbleToInvokeReturnBookOnBooksController() {
         ReturnBookAction returnBookAction = new ReturnBookAction(booksControllerStub);
         returnBookAction.performAction();
 

@@ -34,26 +34,26 @@ public class BibliotecaAppTest {
     private BibliotecaApp bibliotecaApp;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         bibliotecaApp = new BibliotecaApp(viewStub, sectionStub, menuStub, menuControllerStub, booksControllerStub, moviesControllerStub);
     }
 
     @Test
-    public void shouldDisplayAWelcomeMessageThroughTheView() throws Exception {
+    public void shouldDisplayAWelcomeMessageThroughTheView() {
         bibliotecaApp.start();
 
         verify(viewStub).write("***Welcome to Biblioteca***");
     }
 
     @Test
-    public void shouldInteractWithControllerToDisplayMenuInTheView() throws Exception {
+    public void shouldInteractWithControllerToDisplayMenuInTheView() {
         bibliotecaApp.start();
 
         verify(menuControllerStub).showMenu();
     }
 
     @Test
-    public void shouldInteractWithControllerToChooseAnOption() throws Exception {
+    public void shouldInteractWithControllerToChooseAnOption() {
         when(menuControllerStub.chooseOption())
                 .thenReturn(true, false);
         bibliotecaApp.start();

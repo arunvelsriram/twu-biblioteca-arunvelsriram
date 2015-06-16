@@ -1,7 +1,6 @@
-package com.twu.biblioteca.menuitemaction;
+package com.twu.biblioteca.menuitemactions;
 
 import com.twu.biblioteca.controllers.BooksController;
-import com.twu.biblioteca.menuitemactions.CheckoutBookAction;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,12 +16,12 @@ public class CheckoutBookActionTest {
     private CheckoutBookAction checkoutBookAction;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         checkoutBookAction = new CheckoutBookAction(booksControllerStub);
     }
 
     @Test
-    public void shouldBeAbleToPerformCheckOutBookAction() throws Exception {
+    public void shouldBeAbleToPerformCheckOutBookAction() {
         checkoutBookAction.performAction();
 
         Mockito.verify(booksControllerStub).checkoutABook();

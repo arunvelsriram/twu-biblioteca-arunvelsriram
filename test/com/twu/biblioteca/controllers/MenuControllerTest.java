@@ -29,7 +29,7 @@ public class MenuControllerTest {
     private MenuController menuController;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         menuController = new MenuController(menuStub, viewStub);
     }
 

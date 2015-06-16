@@ -24,12 +24,12 @@ public class BooksControllerTest {
     private BooksController booksController;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         booksController = new BooksController(sectionStub, viewStub);
     }
 
     @Test
-    public void shouldSendBookDetailsToTheViewForDisplayingIt() throws Exception {
+    public void shouldSendBookDetailsToTheViewForDisplayingIt() {
         when(sectionStub.toString())
                 .thenReturn("Book details");
         booksController.listAvailableBooks();
@@ -38,7 +38,7 @@ public class BooksControllerTest {
     }
 
     @Test
-    public void shouldGetBookTitleFromTheUserThroughTheView() throws Exception {
+    public void shouldGetBookTitleFromTheUserThroughTheView() {
         booksController.checkoutABook();
 
         verify(viewStub).read();

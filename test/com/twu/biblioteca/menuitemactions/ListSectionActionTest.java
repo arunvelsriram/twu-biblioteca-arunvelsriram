@@ -1,4 +1,4 @@
-package com.twu.biblioteca.menuitemaction;
+package com.twu.biblioteca.menuitemactions;
 
 import com.twu.biblioteca.controllers.BooksController;
 import com.twu.biblioteca.menuitemactions.ListBooksAction;
@@ -15,7 +15,7 @@ public class ListSectionActionTest {
     private BooksController booksControllerStub;
 
     @Test
-    public void shouldDisplayBookDetailsThroughView() throws Exception {
+    public void shouldDisplayBookDetailsThroughView() {
         ListBooksAction listBooksAction = new ListBooksAction(booksControllerStub);
         listBooksAction.performAction();
 

@@ -25,7 +25,7 @@ public class MenuTest {
     private Menu menu;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         menuItems = new ArrayList<>();
         menuItems.add(new MenuItem("List Library", menuItemActionStub));
         menuItems.add(new MenuItem("Checkout Book", menuItemActionStub));
@@ -50,7 +50,7 @@ public class MenuTest {
     }
 
     @Test
-    public void shouldReturnInvalidOptionMenuItemOnProvidingAnInvalidOption() throws Exception {
+    public void shouldReturnInvalidOptionMenuItemOnProvidingAnInvalidOption() {
         MenuItem actualMenuItem = menu.menuItem(10);
 
         assertThat(actualMenuItem, is(equalTo(menuItems.get(4))));
