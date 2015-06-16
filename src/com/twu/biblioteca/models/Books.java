@@ -1,49 +1,43 @@
 package com.twu.biblioteca.models;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Books {
-    private Map<Book, Boolean> books;
+    private List<Book> issuedBooks;
+    private List<Book> availableBooks;
 
-    public Books(Map<Book, Boolean> books) {
-        this.books = books;
+    public Books(List<Book> availableBooks, List<Book> issuedBooks) {
+        this.availableBooks = availableBooks;
+        this.issuedBooks = issuedBooks;
     }
 
-    public Book search(String title) {
-        for (Map.Entry<Book, Boolean> entry : books.entrySet()) {
-            Book book = entry.getKey();
-            if (book.match(title)) {
-                return book;
-            }
-        }
-        return null;
-    }
-
-    public boolean checkOut(Book book) {
-        if (hasTheBook(book) && !bookIsAlreadyIssued(book)) {
-            books.put(book, false);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean returnBook(Book book) {
-        if (hasTheBook(book) && bookIsAlreadyIssued(book)) {
-            books.put(book, true);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public String toString() {
+    public String availableBooks() {
         StringBuilder sb = new StringBuilder();
-        for (Book book : books.keySet()) {
-            if (books.get(book)) {
-                sb.append(book).append("\n");
-            }
+        for (Book book : availableBooks) {
+            sb.append(book).append("\n");
         }
         return sb.toString();
+    }
+
+    public String checkoutBook(String title) {
+        List<Book> result = search(title, availableBooks);
+        for (Book book : result) {
+            availableBooks.remove(book);
+            issuedBooks.add(book);
+            return "Thank you! Enjoy the book.";
+        }
+        return "That book is not available!";
+    }
+
+    public String returnBook(String title) {
+        List<Book> result = search(title, issuedBooks);
+        for (Book book : result) {
+            issuedBooks.remove(book);
+            availableBooks.add(book);
+            return "Thank you for returning the book.";
+        }
+        return "That is not a valid book to return.";
     }
 
     @Override
@@ -51,22 +45,27 @@ public class Books {
         if (this == o) return true;
         if (!(o instanceof Books)) return false;
 
-        Books otherBooks = (Books) o;
+        Books books = (Books) o;
 
-        return !(books != null ? !books.equals(otherBooks.books) : otherBooks.books != null);
+        if (!issuedBooks.equals(books.issuedBooks)) return false;
+        return availableBooks.equals(books.availableBooks);
+
     }
 
     @Override
     public int hashCode() {
-        return books != null ? books.hashCode() : 0;
+        int result = issuedBooks.hashCode();
+        result = 31 * result + availableBooks.hashCode();
+        return result;
     }
 
-
-    private boolean bookIsAlreadyIssued(Book book) {
-        return !books.get(book);
-    }
-
-    private boolean hasTheBook(Book book) {
-        return book != null && books.containsKey(book);
+    private List<Book> search(String title, List<Book> books) {
+        List<Book> result = new ArrayList<>();
+        for (Book book : books) {
+            if (book.match(title)) {
+                result.add(book);
+            }
+        }
+        return result;
     }
 }

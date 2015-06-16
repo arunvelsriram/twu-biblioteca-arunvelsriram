@@ -32,98 +32,37 @@ public class BooksControllerTest {
     public void shouldSendBookDetailsToTheViewForDisplayingIt() throws Exception {
         when(booksStub.toString())
                 .thenReturn("Book details");
-        booksController.listBooks();
+        booksController.listAvailableBooks();
 
-        verify(viewStub).write(booksStub.toString());
+        verify(viewStub).write(booksStub.availableBooks());
     }
 
     @Test
-    public void shouldBeAbleToReadTitleFromTheUser() {
-        booksController.checkoutBook();
+    public void shouldGetTitleFromTheUserThroughTheView() throws Exception {
+        booksController.checkoutABook();
 
         verify(viewStub).read();
     }
 
     @Test
-    public void shouldBeAbleToSearchABookUsingTitle() throws Exception {
+    public void shouldBeAbleToCheckoutABookThroughTheLibraryUsingTheTitle() {
         when(viewStub.read())
-                .thenReturn("Harry Potter and The Sorcer's Stone");
-        booksController.checkoutBook();
+                .thenReturn("Harry Potter and The Chamber of Secrets");
+        when(booksStub.checkoutBook("Harry Potter and The Chamber of Secrets"))
+                .thenReturn("Thank you! Enjoy the book.");
+        booksController.checkoutABook();
 
-        verify(booksStub).search("Harry Potter and The Sorcer's Stone");
+        verify(viewStub).write("Thank you! Enjoy the book.");
     }
 
     @Test
-    public void shouldBeAbleToCheckoutABook() throws Exception {
-        when(viewStub.read())
-                .thenReturn("Harry Potter and The Sorcer's Stone");
-        when(booksStub.search("Harry Potter and The Sorcer's Stone"))
-                .thenReturn(bookStub);
-        booksController.checkoutBook();
-
-        verify(booksStub).checkOut(bookStub);
-    }
-
-    @Test
-    public void shouldBeAbleToDisplaySuccessMessageOnSuccessfulCheckout() throws Exception {
-        when(viewStub.read())
-                .thenReturn("Harry Potter and The Sorcer's Stone");
-        when(booksStub.search("Harry Potter and The Sorcer's Stone"))
-                .thenReturn(bookStub);
-        when(booksStub.checkOut(bookStub))
-                .thenReturn(true);
-        booksController.checkoutBook();
-
-        verify(viewStub).write("Thank you! Enjoy the book!");
-    }
-
-    @Test
-    public void shouldBeAbleToPassErrorMessageToViewOnUnsuccessfulCheckout() throws Exception {
+    public void shouldBeAbleToReturnABookThroughTheLibraryUsingTheTitle() {
         when(viewStub.read())
                 .thenReturn("Twilight");
-        when(booksStub.search("Twilight"))
-                .thenReturn(null);
-        when(booksStub.checkOut(null))
-                .thenReturn(false);
-        booksController.checkoutBook();
-
-        verify(viewStub).write("That book is not available!");
-    }
-
-    @Test
-    public void shouldBeAbleToReturnABook() throws Exception {
-        when(viewStub.read())
-                .thenReturn("Harry Potter and The Sorcer's Stone");
-        when(booksStub.search("Harry Potter and The Sorcer's Stone"))
-                .thenReturn(bookStub);
-        booksController.returnBook();
-
-        verify(booksStub).returnBook(bookStub);
-    }
-
-    @Test
-    public void shouldBeAbleToDisplaySuccessMessageOnSuccessfulReturn() throws Exception {
-        when(viewStub.read())
-                .thenReturn("Harry Potter and The Sorcer's Stone");
-        when(booksStub.search("Harry Potter and The Sorcer's Stone"))
-                .thenReturn(bookStub);
-        when(booksStub.returnBook(bookStub))
-                .thenReturn(true);
-        booksController.returnBook();
+        when(booksStub.returnBook("Twilight"))
+                .thenReturn("Thank you for returning the book.");
+        booksController.returnABook();
 
         verify(viewStub).write("Thank you for returning the book.");
-    }
-
-    @Test
-    public void shouldBeAbleToPassErrorMessageToViewOnUnsuccessfulReturn() throws Exception {
-        when(viewStub.read())
-                .thenReturn("Twilight");
-        when(booksStub.search("Twilight"))
-                .thenReturn(null);
-        when(booksStub.returnBook(null))
-                .thenReturn(false);
-        booksController.returnBook();
-
-        verify(viewStub).write("That is not a valid book to return.");
     }
 }

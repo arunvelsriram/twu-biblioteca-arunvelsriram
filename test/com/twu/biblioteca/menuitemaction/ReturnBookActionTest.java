@@ -18,6 +18,6 @@ public class ReturnBookActionTest {
         ReturnBookAction returnBookAction = new ReturnBookAction(booksControllerStub);
         returnBookAction.performAction();
 
-        Mockito.verify(booksControllerStub).returnBook();
+        Mockito.verify(booksControllerStub).returnABook();
     }
 }

@@ -25,6 +25,6 @@ public class CheckoutBookActionTest {
     public void shouldBeAbleToPerformCheckOutBookAction() throws Exception {
         checkoutBookAction.performAction();
 
-        Mockito.verify(booksControllerStub).checkoutBook();
+        Mockito.verify(booksControllerStub).checkoutABook();
     }
 }

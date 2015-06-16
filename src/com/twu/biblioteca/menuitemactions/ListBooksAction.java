@@ -12,6 +12,6 @@ public class ListBooksAction implements MenuItemAction {
 
     @Override
     public void performAction() {
-        booksController.listBooks();
+        booksController.listAvailableBooks();
     }
 }

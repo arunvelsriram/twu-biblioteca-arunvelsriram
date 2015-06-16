@@ -1,6 +1,5 @@
 package com.twu.biblioteca.controllers;
 
-import com.twu.biblioteca.models.Book;
 import com.twu.biblioteca.models.Books;
 import com.twu.biblioteca.views.View;
 
@@ -13,31 +12,20 @@ public class BooksController {
         this.view = view;
     }
 
-    public void listBooks() {
-        String bookDetails = books.toString();
+    public void listAvailableBooks() {
+        String bookDetails = books.availableBooks();
         view.write(bookDetails);
     }
 
-    public void checkoutBook() {
-        Book book = getBook();
-        if (books.checkOut(book)) {
-            view.write("Thank you! Enjoy the book!");
-        } else {
-            view.write("That book is not available!");
-        }
-    }
-
-    public void returnBook() {
-        Book book = getBook();
-        if (books.returnBook(book)) {
-            view.write("Thank you for returning the book.");
-        } else {
-            view.write("That is not a valid book to return.");
-        }
-    }
-
-    private Book getBook() {
+    public void checkoutABook() {
         String title = view.read();
-        return books.search(title);
+        String message = books.checkoutBook(title);
+        view.write(message);
+    }
+
+    public void returnABook() {
+        String title = view.read();
+        String message = books.returnBook(title);
+        view.write(message);
     }
 }

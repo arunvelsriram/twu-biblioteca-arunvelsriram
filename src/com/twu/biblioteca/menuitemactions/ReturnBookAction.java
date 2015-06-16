@@ -11,6 +11,6 @@ public class ReturnBookAction implements MenuItemAction {
 
     @Override
     public void performAction() {
-        booksController.returnBook();
+        booksController.returnABook();
     }
 }

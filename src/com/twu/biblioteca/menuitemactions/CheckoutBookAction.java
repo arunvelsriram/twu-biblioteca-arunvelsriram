@@ -11,6 +11,6 @@ public class CheckoutBookAction implements MenuItemAction {
 
     @Override
     public void performAction() {
-        booksController.checkoutBook();
+        booksController.checkoutABook();
     }
 }

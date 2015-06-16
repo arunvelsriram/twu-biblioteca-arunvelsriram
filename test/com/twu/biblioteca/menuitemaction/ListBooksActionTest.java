@@ -19,6 +19,6 @@ public class ListBooksActionTest {
         ListBooksAction listBooksAction = new ListBooksAction(booksControllerStub);
         listBooksAction.performAction();
 
-        verify(booksControllerStub).listBooks();
+        verify(booksControllerStub).listAvailableBooks();
     }
 }

@@ -18,11 +18,12 @@ public class EntryPoint {
     public static void main(String[] args) {
         View view = new View(new Scanner(System.in));
 
-        Map<Book, Boolean> availableBooks = new LinkedHashMap<>();
-        availableBooks.put(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999), true);
-        availableBooks.put(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000), true);
+        List<Book> availableBooks = new ArrayList<>();
+        availableBooks.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
+        availableBooks.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
+        List<Book> issuedBooks = new ArrayList<>();
 
-        Books books = new Books(availableBooks);
+        Books books = new Books(availableBooks, issuedBooks);
         BooksController booksController = new BooksController(books, view);
 
         List<MenuItem> menuItems = new ArrayList<>();
