@@ -4,22 +4,22 @@ import com.twu.biblioteca.models.Section;
 import com.twu.biblioteca.views.View;
 
 public class BooksController {
-    private Section section;
+    private Section bookSection;
     private View view;
 
-    public BooksController(Section section, View view) {
-        this.section = section;
+    public BooksController(Section bookSection, View view) {
+        this.bookSection = bookSection;
         this.view = view;
     }
 
     public void listAvailableBooks() {
-        String bookDetails = section.availableItems();
+        String bookDetails = bookSection.availableItems();
         view.write(bookDetails);
     }
 
     public void checkoutABook() {
         String title = view.read();
-        if(section.checkoutItem(title)) {
+        if(bookSection.checkoutItem(title)) {
             view.write("Thank you! Enjoy the book.");
         }
         else {
@@ -29,7 +29,7 @@ public class BooksController {
 
     public void returnABook() {
         String title = view.read();
-        if(section.returnItem(title)) {
+        if(bookSection.returnItem(title)) {
             view.write("Thank you for returning the book.");
         }
         else {
