@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.controllers.MenuController;
+import com.twu.biblioteca.views.View;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -11,13 +11,13 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class InvalidOptionActionTest {
     @Mock
-    private MenuController menuControllerStub;
+    private View viewStub;
 
     @Test
     public void shouldInvokeInvalidOptionOnMenuController() throws Exception {
-        InvalidOptionAction invalidOptionAction = new InvalidOptionAction(menuControllerStub);
+        InvalidOptionAction invalidOptionAction = new InvalidOptionAction(viewStub);
         invalidOptionAction.performAction();
 
-        verify(menuControllerStub).invalidOption();
+        verify(viewStub).write("Select a valid option!");
     }
 }

@@ -26,6 +26,7 @@ public class EntryPoint {
         menuItems.add(new MenuItem("Checkout Book", new CheckoutBookAction(booksController)));
         menuItems.add(new MenuItem("Return Book", new ReturnBookAction(booksController)));
         menuItems.add(new MenuItem("Quit", null));
+        menuItems.add(new MenuItem("Invalid Option", new InvalidOptionAction(view)));
 
         Menu menu = new Menu(menuItems);
         MenuController menuController = new MenuController(menu, view);

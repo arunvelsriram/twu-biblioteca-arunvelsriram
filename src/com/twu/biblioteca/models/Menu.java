@@ -17,9 +17,9 @@ public class Menu {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        int i = 1;
-        for (MenuItem menuItem : menuItems) {
-            sb.append(i++).append(". ").append(menuItem).append("\n");
+        for (int i = 0; i < menuItems.size() - 1; i++) {
+            MenuItem menuItem = menuItems.get(i);
+            sb.append(i + 1).append(". ").append(menuItem).append("\n");
         }
         sb.deleteCharAt(sb.length() - 1);
         return sb.toString();

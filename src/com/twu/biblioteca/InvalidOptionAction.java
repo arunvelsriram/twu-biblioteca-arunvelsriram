@@ -1,16 +1,17 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.controllers.MenuController;
+import com.twu.biblioteca.views.View;
 
 public class InvalidOptionAction implements MenuItemAction {
-    private MenuController menuController;
 
-    public InvalidOptionAction(MenuController menuController) {
-        this.menuController = menuController;
+    private View view;
+
+    public InvalidOptionAction(View view) {
+        this.view = view;
     }
 
     @Override
     public void performAction() {
-        menuController.invalidOption();
+        view.write("Select a valid option!");
     }
 }
