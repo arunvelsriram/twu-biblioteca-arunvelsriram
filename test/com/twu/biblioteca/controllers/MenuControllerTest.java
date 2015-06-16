@@ -44,7 +44,7 @@ public class MenuControllerTest {
     }
 
     @Test
-    public void shouldReturnTrueOnChoosingManuOptionsOtherThanQuit() {
+    public void shouldReturnTrueOnChoosingMenuOptionsOtherThanQuit() {
         when(viewStub.readInt())
                 .thenReturn(1);
         when(menuStub.menuItem(1))
