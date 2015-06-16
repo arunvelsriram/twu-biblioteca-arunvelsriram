@@ -1,25 +1,25 @@
 package com.twu.biblioteca.models;
 
-public class Book {
-    private String title;
+public class Book implements Item {
+    private String name;
     private String author;
     private int yearOfPublication;
 
-    public Book(String title, String author, int yearOfPublication) {
-        this.title = title;
+    public Book(String name, String author, int yearOfPublication) {
+        this.name = name;
         this.author = author;
         this.yearOfPublication = yearOfPublication;
     }
 
     public boolean match(String title) {
-        return this.title.equals(title);
+        return this.name.equals(title);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("| ")
-                .append(title)
+                .append(name)
                 .append(" | ")
                 .append(author)
                 .append(" | ")
@@ -36,13 +36,13 @@ public class Book {
         Book book = (Book) o;
 
         if (yearOfPublication != book.yearOfPublication) return false;
-        if (title != null ? !title.equals(book.title) : book.title != null) return false;
+        if (name != null ? !name.equals(book.name) : book.name != null) return false;
         return !(author != null ? !author.equals(book.author) : book.author != null);
     }
 
     @Override
     public int hashCode() {
-        int result = title != null ? title.hashCode() : 0;
+        int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (author != null ? author.hashCode() : 0);
         result = 31 * result + yearOfPublication;
         return result;
