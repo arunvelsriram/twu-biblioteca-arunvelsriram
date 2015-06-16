@@ -19,6 +19,14 @@ public class Movie implements Item {
     }
 
     @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("| ").append(name).append(" | ").append(directorName).append(" | ")
+                .append(year).append(" | ").append(rating).append(" |\n");
+        return sb.toString();
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Movie)) return false;

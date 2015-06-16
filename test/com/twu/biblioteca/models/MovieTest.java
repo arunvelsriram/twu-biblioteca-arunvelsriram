@@ -10,15 +10,15 @@ import static org.junit.Assert.assertTrue;
 
 public class MovieTest {
     @Test
-    public void shouldReturnTrueWhenABooksTitleMatchesWithTheGivenTitle() throws Exception {
+    public void shouldReturnTrueWhenABooksTitleMatchesWithTheGivenTitle() {
         Movie movie = new Movie("The Prestige", "Christopher Nolan", 2006, 10);
 
         assertTrue(movie.match("The Prestige"));
     }
 
     @Test
-    public void shouldReturnFalseWhenABooksTitleDoesNotMatchTheGivenTitle() throws Exception {
-        Movie movie= new Movie("The Dark Knight", "Christopher Nolan", 1999, 10);
+    public void shouldReturnFalseWhenABooksTitleDoesNotMatchTheGivenTitle() {
+        Movie movie = new Movie("The Dark Knight", "Christopher Nolan", 1999, 10);
 
         assertFalse(movie.match("Twilight"));
     }
@@ -71,5 +71,14 @@ public class MovieTest {
 
         assertThat(movieOne, is(equalTo(movieTwo)));
         assertThat(movieOne.hashCode(), is(equalTo(movieTwo.hashCode())));
+    }
+
+    @Test
+    public void shouldBeAbleToReturnTheMovieDetails() {
+        Movie movie = new Movie("The Prestige", "Christopher Nolan", 2006, 10);
+
+        String actualBook = movie.toString();
+
+        assertThat(actualBook, is(equalTo("| The Prestige | Christopher Nolan | 2006 | 10 |\n")));
     }
 }
