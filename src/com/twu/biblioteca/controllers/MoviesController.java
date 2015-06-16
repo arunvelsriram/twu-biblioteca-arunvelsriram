@@ -26,4 +26,14 @@ public class MoviesController {
             view.write("That movie is not available.");
         }
     }
+
+    public void returnAMovie() {
+        String title = view.read();
+        if(moviesSection.returnItem(title)) {
+            view.write("Thank you for returning the movie.");
+        }
+        else {
+            view.write("That is not a valid movie to return.");
+        }
+    }
 }

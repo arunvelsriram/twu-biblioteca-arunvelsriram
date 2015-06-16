@@ -75,4 +75,35 @@ public class MoviesControllerTest {
 
         verify(viewStub).write("That movie is not available.");
     }
+
+    @Test
+    public void shouldBeAbleToInvokeReturn() {
+        when(viewStub.read())
+                .thenReturn("Twilight");
+        moviesController.returnAMovie();
+
+        verify(sectionStub).returnItem("Twilight");
+    }
+
+    @Test
+    public void shouldBeAbleToDisplaySuccessMessageThroughTheViewOnSuccessfulReturnOfAMovie() {
+        when(viewStub.read())
+                .thenReturn("Lucy");
+        when(sectionStub.returnItem("Lucy"))
+                .thenReturn(true);
+        moviesController.returnAMovie();
+
+        verify(viewStub).write("Thank you for returning the movie.");
+    }
+
+    @Test
+    public void shouldBeAbleToDisplayFailureMessageThroughTheViewOnUnSuccessfulReturnOfAMovie() {
+        when(viewStub.read())
+                .thenReturn("Twilight");
+        when(sectionStub.returnItem("Twilight"))
+                .thenReturn(false);
+        moviesController.returnAMovie();
+
+        verify(viewStub).write("That is not a valid movie to return.");
+    }
 }
