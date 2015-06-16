@@ -40,25 +40,6 @@ public class Library {
         return "That is not a valid book to return.";
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Library)) return false;
-
-        Library library = (Library) o;
-
-        if (!issuedBooks.equals(library.issuedBooks)) return false;
-        return availableBooks.equals(library.availableBooks);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = issuedBooks.hashCode();
-        result = 31 * result + availableBooks.hashCode();
-        return result;
-    }
-
     private List<Book> search(String title, List<Book> books) {
         List<Book> result = new ArrayList<>();
         for (Book book : books) {

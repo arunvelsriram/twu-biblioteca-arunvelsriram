@@ -8,7 +8,6 @@ import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 
 public class LibraryTest {
@@ -62,55 +61,5 @@ public class LibraryTest {
         String actualMessage = library.returnBook("Harry Potter and The Chamber of Secrets");
 
         assertThat(actualMessage, is(equalTo("That is not a valid book to return.")));
-    }
-
-    @Test
-    public void equalityShouldSatisfyReflexivity() {
-        Library libraryOne = new Library(availableBooks, availableBooks);
-
-        assertThat(libraryOne, is(equalTo(libraryOne)));
-    }
-
-    @Test
-    public void equalityShouldSatisfySymmetricity() {
-        Library libraryOne = new Library(availableBooks, availableBooks);
-        Library libraryTwo = new Library(availableBooks, availableBooks);
-
-        assertThat(libraryOne, is(equalTo(libraryTwo)));
-        assertThat(libraryTwo, is(equalTo(libraryOne)));
-    }
-
-    @Test
-    public void equalityShouldSatisfyTransitivity() {
-        Library libraryOne = new Library(availableBooks, availableBooks);
-        Library libraryTwo = new Library(availableBooks, availableBooks);
-        Library libraryThree = new Library(availableBooks, availableBooks);
-
-        assertThat(libraryOne, is(equalTo(libraryTwo)));
-        assertThat(libraryTwo, is(equalTo(libraryThree)));
-        assertThat(libraryOne, is(equalTo(libraryThree)));
-    }
-
-    @Test
-    public void equalityShouldReturnFalseOnPassingNull() {
-        Library libraryOne = new Library(availableBooks, availableBooks);
-
-        assertFalse(libraryOne.equals(null));
-    }
-
-    @Test
-    public void equalityShouldReturnFalseOnPassingOtherObject() {
-        Library libraryOne = new Library(availableBooks, availableBooks);
-
-        assertFalse(libraryOne.equals(new String("Hello, World")));
-    }
-
-    @Test
-    public void whenTwoObjectsAreEqualThenTheirHashCodeMustBeEqual() {
-        Library libraryOne = new Library(availableBooks, availableBooks);
-        Library libraryTwo = new Library(availableBooks, availableBooks);
-
-        assertThat(libraryOne, is(equalTo(libraryTwo)));
-        assertThat(libraryOne.hashCode(), is(equalTo(libraryTwo.hashCode())));
     }
 }
