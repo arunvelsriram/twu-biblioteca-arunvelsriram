@@ -10,9 +10,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class LibraryTest {
+public class SectionTest {
 
-    private Library library;
+    private Section section;
     private List<Book> availableBooks;
     private List<Book> issuedBooks;
 
@@ -23,12 +23,12 @@ public class LibraryTest {
         availableBooks.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
         issuedBooks = new ArrayList<>();
         issuedBooks.add(new Book("Twilight", "Unknown", 2000));
-        library = new Library(availableBooks, issuedBooks);
+        section = new Section(availableBooks, issuedBooks);
     }
 
     @Test
     public void shouldBeAbleToReturnAvailableBookDetails() {
-        String actualBookDetails = library.availableBooks();
+        String actualBookDetails = section.availableBooks();
 
         assertThat(actualBookDetails, is(equalTo("| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n" +
                 "| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |\n")));
@@ -37,28 +37,28 @@ public class LibraryTest {
 
     @Test
     public void shouldReturnSuccessMessageOnSuccessfulCheckout() {
-        String actualMessage = library.checkoutBook("Harry Potter and The Chamber of Secrets");
+        String actualMessage = section.checkoutBook("Harry Potter and The Chamber of Secrets");
 
         assertThat(actualMessage, is(equalTo("Thank you! Enjoy the book.")));
     }
 
     @Test
     public void shouldReturnErrorMessageOnUnSuccessfulCheckout() {
-        String actualMessage = library.checkoutBook("Twilight");
+        String actualMessage = section.checkoutBook("Twilight");
 
         assertThat(actualMessage, is(equalTo("That book is not available!")));
     }
 
     @Test
     public void shouldBeAbleToReturnSuccessMessageOnSuccessfulReturn() {
-        String actualMessage = library.returnBook("Twilight");
+        String actualMessage = section.returnBook("Twilight");
 
         assertThat(actualMessage, is(equalTo("Thank you for returning the book.")));
     }
 
     @Test
     public void shouldBeAbleToReturnErrorMessageOnUnSuccessfulReturn() {
-        String actualMessage = library.returnBook("Harry Potter and The Chamber of Secrets");
+        String actualMessage = section.returnBook("Harry Potter and The Chamber of Secrets");
 
         assertThat(actualMessage, is(equalTo("That is not a valid book to return.")));
     }

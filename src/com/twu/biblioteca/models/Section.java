@@ -3,11 +3,11 @@ package com.twu.biblioteca.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Library {
+public class Section {
     private List<Book> issuedBooks;
     private List<Book> availableBooks;
 
-    public Library(List<Book> availableBooks, List<Book> issuedBooks) {
+    public Section(List<Book> availableBooks, List<Book> issuedBooks) {
         this.availableBooks = availableBooks;
         this.issuedBooks = issuedBooks;
     }

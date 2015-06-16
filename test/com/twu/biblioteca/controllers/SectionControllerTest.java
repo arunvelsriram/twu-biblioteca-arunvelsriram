@@ -1,7 +1,7 @@
 package com.twu.biblioteca.controllers;
 
 import com.twu.biblioteca.models.Book;
-import com.twu.biblioteca.models.Library;
+import com.twu.biblioteca.models.Section;
 import com.twu.biblioteca.views.View;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,9 +13,9 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class LibraryControllerTest {
+public class SectionControllerTest {
     @Mock
-    private Library libraryStub;
+    private Section sectionStub;
     @Mock
     private Book bookStub;
     @Mock
@@ -25,16 +25,16 @@ public class LibraryControllerTest {
 
     @Before
     public void setUp() throws Exception {
-        booksController = new BooksController(libraryStub, viewStub);
+        booksController = new BooksController(sectionStub, viewStub);
     }
 
     @Test
     public void shouldSendBookDetailsToTheViewForDisplayingIt() throws Exception {
-        when(libraryStub.toString())
+        when(sectionStub.toString())
                 .thenReturn("Book details");
         booksController.listAvailableBooks();
 
-        verify(viewStub).write(libraryStub.availableBooks());
+        verify(viewStub).write(sectionStub.availableBooks());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class LibraryControllerTest {
     public void shouldBeAbleToCheckoutABookThroughTheLibraryUsingTheTitle() {
         when(viewStub.read())
                 .thenReturn("Harry Potter and The Chamber of Secrets");
-        when(libraryStub.checkoutBook("Harry Potter and The Chamber of Secrets"))
+        when(sectionStub.checkoutBook("Harry Potter and The Chamber of Secrets"))
                 .thenReturn("Thank you! Enjoy the book.");
         booksController.checkoutABook();
 
@@ -59,7 +59,7 @@ public class LibraryControllerTest {
     public void shouldBeAbleToReturnABookThroughTheLibraryUsingTheTitle() {
         when(viewStub.read())
                 .thenReturn("Twilight");
-        when(libraryStub.returnBook("Twilight"))
+        when(sectionStub.returnBook("Twilight"))
                 .thenReturn("Thank you for returning the book.");
         booksController.returnABook();
 

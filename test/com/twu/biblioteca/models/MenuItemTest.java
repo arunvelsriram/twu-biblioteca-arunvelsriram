@@ -18,7 +18,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class MenuItemTest {
     @Mock
-    private Library libraryStub;
+    private Section sectionStub;
     @Mock
     private BooksController booksControllerStub;
     @Mock
@@ -26,16 +26,16 @@ public class MenuItemTest {
 
     @Test
     public void shouldBeAbleToReturnMenuItemName() throws Exception {
-        MenuItem menuItem = new MenuItem("List Library", new ListBooksAction(booksControllerStub));
+        MenuItem menuItem = new MenuItem("List Books", new ListBooksAction(booksControllerStub));
 
         String actualMenuItem = menuItem.toString();
 
-        assertThat(actualMenuItem, is(equalTo("List Library")));
+        assertThat(actualMenuItem, is(equalTo("List Books")));
     }
 
     @Test
     public void shouldBeAbleToPerformAnActionByInvokingMethodOnMenuItemAction() throws Exception {
-        MenuItem menuItem = new MenuItem("List Library", menuItemActionStub);
+        MenuItem menuItem = new MenuItem("List Books", menuItemActionStub);
         menuItem.performAction();
 
         verify(menuItemActionStub).performAction();
@@ -43,15 +43,15 @@ public class MenuItemTest {
 
     @Test
     public void equalityShouldSatisfyReflexivity() {
-        MenuItem menuItemOne = new MenuItem("List Library", menuItemActionStub);
+        MenuItem menuItemOne = new MenuItem("List Books", menuItemActionStub);
 
         assertThat(menuItemOne, is(equalTo(menuItemOne)));
     }
 
     @Test
     public void equalityShouldSatisfySymmetricity() {
-        MenuItem menuItemOne = new MenuItem("List Library", menuItemActionStub);
-        MenuItem menuItemTwo = new MenuItem("List Library", menuItemActionStub);
+        MenuItem menuItemOne = new MenuItem("List Books", menuItemActionStub);
+        MenuItem menuItemTwo = new MenuItem("List Books", menuItemActionStub);
 
         assertThat(menuItemOne, is(equalTo(menuItemTwo)));
         assertThat(menuItemTwo, is(equalTo(menuItemOne)));
@@ -59,9 +59,9 @@ public class MenuItemTest {
 
     @Test
     public void equalityShouldSatisfyTransitivity() {
-        MenuItem menuItemOne = new MenuItem("List Library", menuItemActionStub);
-        MenuItem menuItemTwo = new MenuItem("List Library", menuItemActionStub);
-        MenuItem menuItemThree = new MenuItem("List Library", menuItemActionStub);
+        MenuItem menuItemOne = new MenuItem("List Books", menuItemActionStub);
+        MenuItem menuItemTwo = new MenuItem("List Books", menuItemActionStub);
+        MenuItem menuItemThree = new MenuItem("List Books", menuItemActionStub);
 
         assertThat(menuItemOne, is(equalTo(menuItemTwo)));
         assertThat(menuItemTwo, is(equalTo(menuItemThree)));
@@ -70,22 +70,22 @@ public class MenuItemTest {
 
     @Test
     public void equalityShouldReturnFalseOnPassingNull() {
-        MenuItem menuItemOne = new MenuItem("List Library", menuItemActionStub);
+        MenuItem menuItemOne = new MenuItem("List Books", menuItemActionStub);
 
         assertFalse(menuItemOne.equals(null));
     }
 
     @Test
     public void equalityShouldReturnFalseOnPassingOtherObject() {
-        MenuItem menuItemOne = new MenuItem("List Library", menuItemActionStub);
+        MenuItem menuItemOne = new MenuItem("List Books", menuItemActionStub);
 
         assertFalse(menuItemOne.equals(new String("Hello, World")));
     }
 
     @Test
     public void whenTwoObjectsAreEqualThenTheirHashCodeMustBeEqual() {
-        MenuItem menuItemOne = new MenuItem("List Library", menuItemActionStub);
-        MenuItem menuItemTwo = new MenuItem("List Library", menuItemActionStub);
+        MenuItem menuItemOne = new MenuItem("List Books", menuItemActionStub);
+        MenuItem menuItemTwo = new MenuItem("List Books", menuItemActionStub);
 
         assertThat(menuItemOne, is(equalTo(menuItemTwo)));
         assertThat(menuItemOne.hashCode(), is(equalTo(menuItemTwo.hashCode())));
@@ -93,7 +93,7 @@ public class MenuItemTest {
 
     @Test
     public void shouldReturnFalseForOptionsOtherThanExit() throws Exception {
-        MenuItem menuItem = new MenuItem("List Library", menuItemActionStub);
+        MenuItem menuItem = new MenuItem("List Books", menuItemActionStub);
 
         assertFalse(menuItem.isExit());
     }

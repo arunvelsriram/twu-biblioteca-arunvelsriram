@@ -2,7 +2,7 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.controllers.BooksController;
 import com.twu.biblioteca.controllers.MenuController;
-import com.twu.biblioteca.models.Library;
+import com.twu.biblioteca.models.Section;
 import com.twu.biblioteca.models.Menu;
 import com.twu.biblioteca.views.View;
 import org.junit.Before;
@@ -20,7 +20,7 @@ public class BibliotecaAppTest {
     @Mock
     private View viewStub;
     @Mock
-    private Library libraryStub;
+    private Section sectionStub;
     @Mock
     private Menu menuStub;
     @Mock
@@ -32,7 +32,7 @@ public class BibliotecaAppTest {
 
     @Before
     public void setUp() throws Exception {
-        bibliotecaApp = new BibliotecaApp(viewStub, libraryStub, menuStub, menuControllerStub, booksControllerStub);
+        bibliotecaApp = new BibliotecaApp(viewStub, sectionStub, menuStub, menuControllerStub, booksControllerStub);
     }
 
     @Test

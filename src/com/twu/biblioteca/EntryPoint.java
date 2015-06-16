@@ -7,7 +7,7 @@ import com.twu.biblioteca.menuitemactions.InvalidOptionAction;
 import com.twu.biblioteca.menuitemactions.ListBooksAction;
 import com.twu.biblioteca.menuitemactions.ReturnBookAction;
 import com.twu.biblioteca.models.Book;
-import com.twu.biblioteca.models.Library;
+import com.twu.biblioteca.models.Section;
 import com.twu.biblioteca.models.Menu;
 import com.twu.biblioteca.models.MenuItem;
 import com.twu.biblioteca.views.View;
@@ -23,8 +23,8 @@ public class EntryPoint {
         availableBooks.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
         List<Book> issuedBooks = new ArrayList<>();
 
-        Library library = new Library(availableBooks, issuedBooks);
-        BooksController booksController = new BooksController(library, view);
+        Section section = new Section(availableBooks, issuedBooks);
+        BooksController booksController = new BooksController(section, view);
 
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(new MenuItem("List Books", new ListBooksAction(booksController)));
@@ -36,7 +36,7 @@ public class EntryPoint {
         Menu menu = new Menu(menuItems);
         MenuController menuController = new MenuController(menu, view);
 
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(view, library, menu, menuController, booksController);
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(view, section, menu, menuController, booksController);
         bibliotecaApp.start();
     }
 }
