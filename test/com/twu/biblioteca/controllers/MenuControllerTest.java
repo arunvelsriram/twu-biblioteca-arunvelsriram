@@ -12,6 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -33,7 +34,17 @@ public class MenuControllerTest {
     }
 
     @Test
-    public void shouldReturnTrueOnChoosingManuOptionsOtherThanQuit() throws Exception {
+    public void shouldBeAbleToDisplayTheMenuThroughTheView() {
+        when(menuStub.toString())
+                .thenReturn("menu");
+        MenuController menuController = new MenuController(menuStub, viewStub);
+        menuController.showMenu();
+
+        verify(viewStub).write("menu");
+    }
+
+    @Test
+    public void shouldReturnTrueOnChoosingManuOptionsOtherThanQuit() {
         when(viewStub.readInt())
                 .thenReturn(1);
         when(menuStub.menuItem(1))
@@ -47,7 +58,7 @@ public class MenuControllerTest {
     }
 
     @Test
-    public void shouldReturnFalseWhenUserSelectsQuitOption() throws Exception {
+    public void shouldReturnFalseWhenUserSelectsQuitOption() {
         when(viewStub.readInt())
                 .thenReturn(3);
         when(menuStub.menuItem(3))
