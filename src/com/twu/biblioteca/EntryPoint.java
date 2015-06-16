@@ -40,7 +40,7 @@ public class EntryPoint {
         menuItems.add(new MenuItem("Checkout Book", new CheckoutBookAction(booksController)));
         menuItems.add(new MenuItem("Return Book", new ReturnBookAction(booksController)));
         menuItems.add(new MenuItem("List Movies", new ListMoviesAction(moviesController)));
-        menuItems.add(new MenuItem("Checkout", new CheckoutMovieAction(moviesController)));
+        menuItems.add(new MenuItem("Checkout Movie", new CheckoutMovieAction(moviesController)));
         menuItems.add(new MenuItem("Quit", null));
         menuItems.add(new MenuItem("Invalid Option", new InvalidOptionAction(view)));
 
