@@ -1,8 +1,8 @@
 package com.twu.biblioteca.models;
 
 import com.twu.biblioteca.controllers.BooksController;
-import com.twu.biblioteca.ListBooksAction;
-import com.twu.biblioteca.MenuItemAction;
+import com.twu.biblioteca.menuitemactions.ListBooksAction;
+import com.twu.biblioteca.menuitemactions.MenuItemAction;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;

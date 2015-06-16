@@ -1,17 +1,16 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.menuitemactions;
 
 import com.twu.biblioteca.controllers.BooksController;
 
-public class ListBooksAction implements MenuItemAction {
-
+public class CheckoutBookAction implements MenuItemAction {
     private BooksController booksController;
 
-    public ListBooksAction(BooksController booksController) {
+    public CheckoutBookAction(BooksController booksController) {
         this.booksController = booksController;
     }
 
     @Override
     public void performAction() {
-        booksController.listBooks();
+        booksController.checkoutBook();
     }
 }

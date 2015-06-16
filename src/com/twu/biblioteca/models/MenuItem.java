@@ -1,6 +1,6 @@
 package com.twu.biblioteca.models;
 
-import com.twu.biblioteca.MenuItemAction;
+import com.twu.biblioteca.menuitemactions.MenuItemAction;
 
 public class MenuItem {
     private String name;

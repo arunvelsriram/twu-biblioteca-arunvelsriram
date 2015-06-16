@@ -2,6 +2,10 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.controllers.BooksController;
 import com.twu.biblioteca.controllers.MenuController;
+import com.twu.biblioteca.menuitemactions.CheckoutBookAction;
+import com.twu.biblioteca.menuitemactions.InvalidOptionAction;
+import com.twu.biblioteca.menuitemactions.ListBooksAction;
+import com.twu.biblioteca.menuitemactions.ReturnBookAction;
 import com.twu.biblioteca.models.Book;
 import com.twu.biblioteca.models.Books;
 import com.twu.biblioteca.models.Menu;

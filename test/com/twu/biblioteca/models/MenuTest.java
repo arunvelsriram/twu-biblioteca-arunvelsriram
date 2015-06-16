@@ -1,6 +1,7 @@
 package com.twu.biblioteca.models;
 
-import com.twu.biblioteca.*;
+import com.twu.biblioteca.menuitemactions.InvalidOptionAction;
+import com.twu.biblioteca.menuitemactions.MenuItemAction;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

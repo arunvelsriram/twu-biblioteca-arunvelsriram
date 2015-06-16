@@ -1,6 +1,6 @@
 package com.twu.biblioteca.controllers;
 
-import com.twu.biblioteca.InvalidOptionAction;
+import com.twu.biblioteca.menuitemactions.InvalidOptionAction;
 import com.twu.biblioteca.models.Menu;
 import com.twu.biblioteca.models.MenuItem;
 import com.twu.biblioteca.views.View;
