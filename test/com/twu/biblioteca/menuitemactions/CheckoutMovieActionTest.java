@@ -17,7 +17,7 @@ public class CheckoutMovieActionTest {
     public void shouldBeABleToInteractWithTheMovieControllerToDisplayMovieDetails() {
         CheckoutMovieAction checkoutMovieAction = new CheckoutMovieAction(moviesControllerStub);
         checkoutMovieAction.performAction();
-        
+
         verify(moviesControllerStub).checkoutAMovie();
     }
 }
