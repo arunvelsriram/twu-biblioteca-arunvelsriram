@@ -36,4 +36,43 @@ public class MoviesControllerTest {
 
         verify(viewStub).write(sectionStub.availableItems());
     }
+
+    @Test
+    public void shouldGetMovieNameFromTheUserThroughTheView() throws Exception {
+        moviesController.checkoutAMovie();
+
+        verify(viewStub).read();
+    }
+
+
+    @Test
+    public void shouldBeAbleToInvokeCheckout() {
+        when(viewStub.read())
+                .thenReturn("Inception");
+        moviesController.checkoutAMovie();
+
+        verify(sectionStub).checkoutItem("Inception");
+    }
+
+    @Test
+    public void shouldBeAbleToDisplaySuccessMessageThroughTheViewOnSuccessfulCheckout() {
+        when(viewStub.read())
+                .thenReturn("Inception");
+        when(sectionStub.checkoutItem("Inception"))
+                .thenReturn(true);
+        moviesController.checkoutAMovie();
+
+        verify(viewStub).write("Thank you! Enjoy the movie.");
+    }
+
+    @Test
+    public void shouldBeAbleToDisplayFailureMessageThroughTheViewOnUnSuccessfulCheckout() {
+        when(viewStub.read())
+                .thenReturn("Twilight");
+        when(sectionStub.checkoutItem(""))
+                .thenReturn(false);
+        moviesController.checkoutAMovie();
+
+        verify(viewStub).write("That movie is not available.");
+    }
 }

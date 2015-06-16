@@ -16,4 +16,14 @@ public class MoviesController {
         String movieDetails = moviesSection.availableItems();
         view.write(movieDetails);
     }
+
+    public void checkoutAMovie() {
+        String title = view.read();
+        if(moviesSection.checkoutItem(title)) {
+            view.write("Thank you! Enjoy the movie.");
+        }
+        else {
+            view.write("That movie is not available.");
+        }
+    }
 }
