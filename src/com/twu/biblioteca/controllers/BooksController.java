@@ -1,31 +1,31 @@
 package com.twu.biblioteca.controllers;
 
-import com.twu.biblioteca.models.Books;
+import com.twu.biblioteca.models.Library;
 import com.twu.biblioteca.views.View;
 
 public class BooksController {
-    private Books books;
+    private Library library;
     private View view;
 
-    public BooksController(Books books, View view) {
-        this.books = books;
+    public BooksController(Library library, View view) {
+        this.library = library;
         this.view = view;
     }
 
     public void listAvailableBooks() {
-        String bookDetails = books.availableBooks();
+        String bookDetails = library.availableBooks();
         view.write(bookDetails);
     }
 
     public void checkoutABook() {
         String title = view.read();
-        String message = books.checkoutBook(title);
+        String message = library.checkoutBook(title);
         view.write(message);
     }
 
     public void returnABook() {
         String title = view.read();
-        String message = books.returnBook(title);
+        String message = library.returnBook(title);
         view.write(message);
     }
 }

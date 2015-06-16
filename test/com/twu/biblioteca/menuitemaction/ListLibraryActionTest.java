@@ -10,7 +10,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ListBooksActionTest {
+public class ListLibraryActionTest {
     @Mock
     private BooksController booksControllerStub;
 

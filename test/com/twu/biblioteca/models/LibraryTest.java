@@ -11,9 +11,9 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 
-public class BooksTest {
+public class LibraryTest {
 
-    private Books books;
+    private Library library;
     private List<Book> availableBooks;
     private List<Book> issuedBooks;
 
@@ -24,12 +24,12 @@ public class BooksTest {
         availableBooks.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
         issuedBooks = new ArrayList<>();
         issuedBooks.add(new Book("Twilight", "Unknown", 2000));
-        books = new Books(availableBooks, issuedBooks);
+        library = new Library(availableBooks, issuedBooks);
     }
 
     @Test
     public void shouldBeAbleToReturnAvailableBookDetails() {
-        String actualBookDetails = books.availableBooks();
+        String actualBookDetails = library.availableBooks();
 
         assertThat(actualBookDetails, is(equalTo("| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n" +
                 "| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |\n")));
@@ -38,79 +38,79 @@ public class BooksTest {
 
     @Test
     public void shouldReturnSuccessMessageOnSuccessfulCheckout() {
-        String actualMessage = books.checkoutBook("Harry Potter and The Chamber of Secrets");
+        String actualMessage = library.checkoutBook("Harry Potter and The Chamber of Secrets");
 
         assertThat(actualMessage, is(equalTo("Thank you! Enjoy the book.")));
     }
 
     @Test
     public void shouldReturnErrorMessageOnUnSuccessfulCheckout() {
-        String actualMessage = books.checkoutBook("Twilight");
+        String actualMessage = library.checkoutBook("Twilight");
 
         assertThat(actualMessage, is(equalTo("That book is not available!")));
     }
 
     @Test
     public void shouldBeAbleToReturnSuccessMessageOnSuccessfulReturn() {
-        String actualMessage = books.returnBook("Twilight");
+        String actualMessage = library.returnBook("Twilight");
 
         assertThat(actualMessage, is(equalTo("Thank you for returning the book.")));
     }
 
     @Test
     public void shouldBeAbleToReturnErrorMessageOnUnSuccessfulReturn() {
-        String actualMessage = books.returnBook("Harry Potter and The Chamber of Secrets");
+        String actualMessage = library.returnBook("Harry Potter and The Chamber of Secrets");
 
         assertThat(actualMessage, is(equalTo("That is not a valid book to return.")));
     }
 
     @Test
     public void equalityShouldSatisfyReflexivity() {
-        Books booksOne = new Books(availableBooks, availableBooks);
+        Library libraryOne = new Library(availableBooks, availableBooks);
 
-        assertThat(booksOne, is(equalTo(booksOne)));
+        assertThat(libraryOne, is(equalTo(libraryOne)));
     }
 
     @Test
     public void equalityShouldSatisfySymmetricity() {
-        Books booksOne = new Books(availableBooks, availableBooks);
-        Books booksTwo = new Books(availableBooks, availableBooks);
+        Library libraryOne = new Library(availableBooks, availableBooks);
+        Library libraryTwo = new Library(availableBooks, availableBooks);
 
-        assertThat(booksOne, is(equalTo(booksTwo)));
-        assertThat(booksTwo, is(equalTo(booksOne)));
+        assertThat(libraryOne, is(equalTo(libraryTwo)));
+        assertThat(libraryTwo, is(equalTo(libraryOne)));
     }
 
     @Test
     public void equalityShouldSatisfyTransitivity() {
-        Books booksOne = new Books(availableBooks, availableBooks);
-        Books booksTwo = new Books(availableBooks, availableBooks);
-        Books booksThree = new Books(availableBooks, availableBooks);
+        Library libraryOne = new Library(availableBooks, availableBooks);
+        Library libraryTwo = new Library(availableBooks, availableBooks);
+        Library libraryThree = new Library(availableBooks, availableBooks);
 
-        assertThat(booksOne, is(equalTo(booksTwo)));
-        assertThat(booksTwo, is(equalTo(booksThree)));
-        assertThat(booksOne, is(equalTo(booksThree)));
+        assertThat(libraryOne, is(equalTo(libraryTwo)));
+        assertThat(libraryTwo, is(equalTo(libraryThree)));
+        assertThat(libraryOne, is(equalTo(libraryThree)));
     }
 
     @Test
     public void equalityShouldReturnFalseOnPassingNull() {
-        Books booksOne = new Books(availableBooks, availableBooks);
+        Library libraryOne = new Library(availableBooks, availableBooks);
 
-        assertFalse(booksOne.equals(null));
+        assertFalse(libraryOne.equals(null));
     }
 
     @Test
     public void equalityShouldReturnFalseOnPassingOtherObject() {
-        Books booksOne = new Books(availableBooks, availableBooks);
+        Library libraryOne = new Library(availableBooks, availableBooks);
 
-        assertFalse(booksOne.equals(new String("Hello, World")));
+        assertFalse(libraryOne.equals(new String("Hello, World")));
     }
 
     @Test
     public void whenTwoObjectsAreEqualThenTheirHashCodeMustBeEqual() {
-        Books booksOne = new Books(availableBooks, availableBooks);
-        Books booksTwo = new Books(availableBooks, availableBooks);
+        Library libraryOne = new Library(availableBooks, availableBooks);
+        Library libraryTwo = new Library(availableBooks, availableBooks);
 
-        assertThat(booksOne, is(equalTo(booksTwo)));
-        assertThat(booksOne.hashCode(), is(equalTo(booksTwo.hashCode())));
+        assertThat(libraryOne, is(equalTo(libraryTwo)));
+        assertThat(libraryOne.hashCode(), is(equalTo(libraryTwo.hashCode())));
     }
 }

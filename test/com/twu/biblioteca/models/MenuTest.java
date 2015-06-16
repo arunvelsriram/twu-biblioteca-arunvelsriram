@@ -27,7 +27,7 @@ public class MenuTest {
     @Before
     public void setUp() throws Exception {
         menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem("List Books", menuItemActionStub));
+        menuItems.add(new MenuItem("List Library", menuItemActionStub));
         menuItems.add(new MenuItem("Checkout Book", menuItemActionStub));
         menuItems.add(new MenuItem("Return Book", menuItemActionStub));
         menuItems.add(new MenuItem("Quit", null));
@@ -39,7 +39,7 @@ public class MenuTest {
     public void shouldBeAbleToDisplayAMenuWithListOfOptions() {
         String actualMenu = menu.toString();
 
-        assertThat(actualMenu, is(equalTo("1. List Books\n2. Checkout Book\n3. Return Book\n4. Quit")));
+        assertThat(actualMenu, is(equalTo("1. List Library\n2. Checkout Book\n3. Return Book\n4. Quit")));
     }
 
     @Test

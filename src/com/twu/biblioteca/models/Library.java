@@ -3,11 +3,11 @@ package com.twu.biblioteca.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Books {
+public class Library {
     private List<Book> issuedBooks;
     private List<Book> availableBooks;
 
-    public Books(List<Book> availableBooks, List<Book> issuedBooks) {
+    public Library(List<Book> availableBooks, List<Book> issuedBooks) {
         this.availableBooks = availableBooks;
         this.issuedBooks = issuedBooks;
     }
@@ -43,12 +43,12 @@ public class Books {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Books)) return false;
+        if (!(o instanceof Library)) return false;
 
-        Books books = (Books) o;
+        Library library = (Library) o;
 
-        if (!issuedBooks.equals(books.issuedBooks)) return false;
-        return availableBooks.equals(books.availableBooks);
+        if (!issuedBooks.equals(library.issuedBooks)) return false;
+        return availableBooks.equals(library.availableBooks);
 
     }
 
