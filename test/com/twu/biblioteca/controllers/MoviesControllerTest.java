@@ -55,7 +55,7 @@ public class MoviesControllerTest {
     }
 
     @Test
-    public void shouldBeAbleToDisplaySuccessMessageThroughTheViewOnSuccessfulCheckout() {
+    public void shouldBeAbleToDisplaySuccessMessageThroughTheViewOnSuccessfulCheckoutAMovie() {
         when(viewStub.read())
                 .thenReturn("Inception");
         when(sectionStub.checkoutItem("Inception"))
@@ -66,7 +66,7 @@ public class MoviesControllerTest {
     }
 
     @Test
-    public void shouldBeAbleToDisplayFailureMessageThroughTheViewOnUnSuccessfulCheckout() {
+    public void shouldBeAbleToDisplayFailureMessageThroughTheViewOnUnSuccessfulCheckoutAMovie() {
         when(viewStub.read())
                 .thenReturn("Twilight");
         when(sectionStub.checkoutItem(""))

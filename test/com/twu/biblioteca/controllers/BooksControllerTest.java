@@ -38,7 +38,7 @@ public class BooksControllerTest {
     }
 
     @Test
-    public void shouldGetTitleFromTheUserThroughTheView() throws Exception {
+    public void shouldGetBookTitleFromTheUserThroughTheView() throws Exception {
         booksController.checkoutABook();
 
         verify(viewStub).read();
@@ -55,7 +55,7 @@ public class BooksControllerTest {
     }
 
     @Test
-    public void shouldBeAbleToDisplaySuccessMessageThroughTheViewOnSuccessfulCheckout() {
+    public void shouldBeAbleToDisplaySuccessMessageThroughTheViewOnSuccessfulCheckoutOfABook() {
         when(viewStub.read())
                 .thenReturn("Harry Potter and The Chamber of Secrets");
         when(sectionStub.checkoutItem("Harry Potter and The Chamber of Secrets"))
@@ -66,7 +66,7 @@ public class BooksControllerTest {
     }
 
     @Test
-    public void shouldBeAbleToDisplayFailureMessageThroughTheViewOnUnSuccessfulCheckout() {
+    public void shouldBeAbleToDisplayFailureMessageThroughTheViewOnUnSuccessfulCheckoutOfABook() {
         when(viewStub.read())
                 .thenReturn("Harry Potter and The Chamber of Secrets");
         when(sectionStub.checkoutItem("Harry Potter and The Chamber of Secrets"))
@@ -87,7 +87,7 @@ public class BooksControllerTest {
 
 
     @Test
-    public void shouldBeAbleToDisplaySuccessMessageThroughTheViewOnSuccessfulReturn() {
+    public void shouldBeAbleToDisplaySuccessMessageThroughTheViewOnSuccessfulReturnOfABook() {
         when(viewStub.read())
                 .thenReturn("Twilight");
         when(sectionStub.returnItem("Twilight"))
