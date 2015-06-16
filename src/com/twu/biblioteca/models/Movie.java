@@ -17,4 +17,27 @@ public class Movie implements Item {
     public boolean match(String name) {
         return name.equals(this.name);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Movie)) return false;
+
+        Movie movie = (Movie) o;
+
+        if (year != movie.year) return false;
+        if (rating != movie.rating) return false;
+        if (!name.equals(movie.name)) return false;
+        return directorName.equals(movie.directorName);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + directorName.hashCode();
+        result = 31 * result + year;
+        result = 31 * result + rating;
+        return result;
+    }
 }
