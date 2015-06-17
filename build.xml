@@ -10,7 +10,7 @@
         <delete dir="out"/>
     </target>
 
-    <target name="compile">
+    <target name="compile" depends="clean">
         <mkdir dir="out/src/classes"/>
         <javac srcdir="src" destdir="out/src/classes"/>
     </target>
