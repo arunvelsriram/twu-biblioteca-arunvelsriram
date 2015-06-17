@@ -21,11 +21,11 @@ public class SectionTest {
         availableItems = new ArrayList<>();
         availableItems.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
         availableItems.add(new Book("Harry Potter and The Chamber of Secrets", "JK Rowling", 2000));
-        availableItems.add(new Movie("Inception", "Christopher Nolan", 2010, 10));
-        availableItems.add(new Movie("The Prestige", "Christopher Nolan", 2008, 10));
+        availableItems.add(new Movie("Inception", "Christopher Nolan", 2010, "10"));
+        availableItems.add(new Movie("The Prestige", "Christopher Nolan", 2008, "10"));
         issuedItems = new ArrayList<>();
         issuedItems.add(new Book("Twilight", "Unknown", 2000));
-        issuedItems.add(new Movie("Lucy", "Unknown Director", 2014, 10));
+        issuedItems.add(new Movie("Lucy", "Unknown Director", 2014, "10"));
         section = new Section(availableItems, issuedItems);
     }
 

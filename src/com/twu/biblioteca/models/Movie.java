@@ -4,9 +4,9 @@ public class Movie implements Item {
     private String name;
     private String directorName;
     private int year;
-    private int rating;
+    private String rating;
 
-    public Movie(String name, String directorName, int year, int rating) {
+    public Movie(String name, String directorName, int year, String rating) {
         this.name = name;
         this.directorName = directorName;
         this.year = year;
@@ -34,8 +34,10 @@ public class Movie implements Item {
         Movie movie = (Movie) o;
 
         if (year != movie.year) return false;
-        if (rating != movie.rating) return false;
-        return name.equals(movie.name) && directorName.equals(movie.directorName);
+        if (!name.equals(movie.name)) return false;
+        if (!directorName.equals(movie.directorName)) return false;
+        return rating.equals(movie.rating);
+
     }
 
     @Override
@@ -43,7 +45,7 @@ public class Movie implements Item {
         int result = name.hashCode();
         result = 31 * result + directorName.hashCode();
         result = 31 * result + year;
-        result = 31 * result + rating;
+        result = 31 * result + rating.hashCode();
         return result;
     }
 }

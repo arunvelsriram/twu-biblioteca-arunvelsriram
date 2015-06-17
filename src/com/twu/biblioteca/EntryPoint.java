@@ -21,8 +21,8 @@ public class EntryPoint {
         Section booksSection = new Section(availableBooks, issuedBooks);
 
         List<Item> availableMovies = new ArrayList<>();
-        availableMovies.add(new Movie("Inception", "Christopher Nolan", 2010, 10));
-        availableMovies.add(new Movie("The Prestige", "Christopher Nolan", 2008, 10));
+        availableMovies.add(new Movie("Inception", "Christopher Nolan", 2010, "10"));
+        availableMovies.add(new Movie("The Prestige", "Christopher Nolan", 2008, "10"));
         List<Item> issuedMovies = new ArrayList<>();
         Section moviesSection = new Section(availableMovies, issuedMovies);
 
