@@ -1,7 +1,10 @@
 package com.twu.biblioteca.menuitemactions;
 
 import com.twu.biblioteca.controllers.ItemController;
+import com.twu.biblioteca.models.Item;
 import com.twu.biblioteca.models.Section;
+
+import java.util.List;
 
 import static com.twu.biblioteca.constants.Constants.MOVIE_RETURN_FAILURE_MESSAGE;
 import static com.twu.biblioteca.constants.Constants.MOVIE_RETURN_SUCCESS_MESSAGE;
@@ -17,6 +20,12 @@ public class ReturnMovieAction implements MenuItemAction {
 
     @Override
     public void performAction() {
-        itemController.returnAnItem(moviesSection, MOVIE_RETURN_SUCCESS_MESSAGE, MOVIE_RETURN_FAILURE_MESSAGE);
+        List<Item> items = itemController.searchIssuedItems(moviesSection);
+        for(Item item : items) {
+            itemController.returnAnItem(moviesSection, item);
+            itemController.result(MOVIE_RETURN_SUCCESS_MESSAGE);
+            return;
+        }
+        itemController.result(MOVIE_RETURN_FAILURE_MESSAGE);
     }
 }

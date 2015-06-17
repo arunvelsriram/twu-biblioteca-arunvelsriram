@@ -1,7 +1,10 @@
 package com.twu.biblioteca.controllers;
 
+import com.twu.biblioteca.models.Item;
 import com.twu.biblioteca.models.Section;
 import com.twu.biblioteca.views.View;
+
+import java.util.List;
 
 public class ItemController {
     private View view;
@@ -11,16 +14,29 @@ public class ItemController {
     }
 
     public void listAvailableItems(Section section) {
-        view.write(section.availableItems());
+        String availableItems = section.availableItems();
+        view.write(availableItems);
     }
 
-    public void checkoutAnItem(Section section, String successMessage, String failureMessage) {
-        String title = view.read();
-        view.write(section.checkoutItem(title, successMessage, failureMessage));
+    public List<Item> searchAvailableItems(Section section) {
+        String name = view.read();
+        return section.searchAvailableItems(name);
     }
 
-    public void returnAnItem(Section section, String successMessage, String failureMessage) {
-        String title = view.read();
-        view.write(section.returnItem(title, successMessage, failureMessage));
+    public List<Item> searchIssuedItems(Section section) {
+        String name = view.read();
+        return section.searchIssuedItems(name);
+    }
+
+    public void checkoutAnItem(Section section, Item item) {
+        section.checkoutItem(item);
+    }
+
+    public void returnAnItem(Section section, Item item) {
+        section.returnItem(item);
+    }
+
+    public void result(String message) {
+        view.write(message);
     }
 }

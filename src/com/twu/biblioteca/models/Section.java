@@ -12,32 +12,30 @@ public class Section {
         this.issuedItems = issuedItems;
     }
 
+    public void checkoutItem(Item item) {
+        availableItems.remove(item);
+        issuedItems.add(item);
+    }
+
+    public void returnItem(Item item) {
+        issuedItems.remove(item);
+        availableItems.add(item);
+    }
+
+    public List<Item> searchAvailableItems(String title) {
+        return search(title, availableItems);
+    }
+
+    public List<Item> searchIssuedItems(String title) {
+        return search(title, issuedItems);
+    }
+
     public String availableItems() {
-        StringBuilder sb = new StringBuilder();
-        for (Item item : availableItems) {
-            sb.append(item).append("\n");
-        }
-        return sb.toString();
+        return items(availableItems);
     }
 
-    public String checkoutItem(String title, String successMessage, String failureMessage) {
-        List<Item> result = search(title, availableItems);
-        for (Item item : result) {
-            availableItems.remove(item);
-            issuedItems.add(item);
-            return successMessage;
-        }
-        return failureMessage;
-    }
-
-    public String returnItem(String title, String successMessage, String failureMessage) {
-        List<Item> result = search(title, issuedItems);
-        for (Item item : result) {
-            issuedItems.remove(item);
-            availableItems.add(item);
-            return successMessage;
-        }
-        return failureMessage;
+    public String issuedItems() {
+        return items(issuedItems);
     }
 
     private List<Item> search(String title, List<Item> books) {
@@ -48,5 +46,13 @@ public class Section {
             }
         }
         return result;
+    }
+
+    private String items(List<Item> list) {
+        StringBuilder sb = new StringBuilder();
+        for (Item item : list) {
+            sb.append(item).append("\n");
+        }
+        return sb.toString();
     }
 }

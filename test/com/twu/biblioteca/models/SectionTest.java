@@ -6,7 +6,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.twu.biblioteca.constants.Constants.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -30,69 +29,87 @@ public class SectionTest {
     }
 
     @Test
-    public void shouldBeAbleToReturnAvailableBookDetails() {
-        String actualBookDetails = section.availableItems();
+    public void shouldBeAbleToReturnAvailableItemDetails() {
+        String actualItemDetails = section.availableItems();
 
-        assertThat(actualBookDetails, is(equalTo("| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n" +
+        assertThat(actualItemDetails, is(equalTo("| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n" +
                 "| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |\n" +
                 "| Inception | Christopher Nolan | 2010 | 10 |\n" +
                 "| The Prestige | Christopher Nolan | 2008 | 10 |\n")));
     }
 
-
     @Test
-    public void shouldReturnSuccessMessageOnSuccessfulCheckoutOfABook() {
-        String actualMessage = section.checkoutItem("Harry Potter and The Chamber of Secrets", BOOK_CHECKOUT_SUCCESS_MESSAGE, BOOK_CHECKOUT_FAILURE_MESSAGE);
+    public void shouldBeAbleToReturnIssuedItemDetails() {
+        String actualItemDetails = section.issuedItems();
 
-        assertThat(actualMessage, is(equalTo(BOOK_CHECKOUT_SUCCESS_MESSAGE)));
+        assertThat(actualItemDetails, is(equalTo("| Twilight | Unknown | 2000 |\n" +
+                "| Lucy | Unknown Director | 2014 | 10 |\n")));
     }
 
     @Test
-    public void shouldReturnFailureMessageOnUnSuccessfulCheckoutOfABook() {
-        String actualMessage = section.checkoutItem("Twilight", BOOK_CHECKOUT_SUCCESS_MESSAGE, BOOK_CHECKOUT_FAILURE_MESSAGE);
+    public void shouldReturnAListOfAvailableItemsThatMatchesTheGivenName() {
+        List<Item> expectedResult = new ArrayList<>();
+        expectedResult.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
+        List<Item> actualResult = section.searchAvailableItems("Harry Potter and The Sorcer's Stone");
 
-        assertThat(actualMessage, is(equalTo(BOOK_CHECKOUT_FAILURE_MESSAGE)));
+        assertThat(actualResult, is(equalTo(expectedResult)));
     }
 
     @Test
-    public void shouldReturnSuccessMessageOnSuccessfulReturnOfABook() {
-        String actualMessage = section.returnItem("Twilight", BOOK_RETURN_SUCCESS_MESSAGE, BOOK_RETURN_FAILURE_MESSAGE);
+    public void shouldReturnAnEmptyListIfNoAvailableItemMatchesTheGivenName() {
+        List<Item> expectedResult = new ArrayList<>();
+        List<Item> actualResult = section.searchAvailableItems("Twilight");
 
-        assertThat(actualMessage, is(equalTo(BOOK_RETURN_SUCCESS_MESSAGE)));
+        assertThat(actualResult, is(equalTo(expectedResult)));
     }
 
     @Test
-    public void shouldReturnFailureMessageOnUnSuccessfulReturnOfABook() {
-        String actualMessage = section.returnItem("Harry Potter and The Chamber of Secrets", BOOK_RETURN_SUCCESS_MESSAGE, BOOK_RETURN_FAILURE_MESSAGE);
+    public void shouldReturnAListOfIssuedItemsThatMatchesTheGivenName() {
+        List<Item> expectedResult = new ArrayList<>();
+        expectedResult.add(new Book("Twilight", "Unknown", 2000));
+        List<Item> actualResult = section.searchIssuedItems("Twilight");
 
-        assertThat(actualMessage, is(equalTo(BOOK_RETURN_FAILURE_MESSAGE)));
+        assertThat(actualResult, is(equalTo(expectedResult)));
     }
 
     @Test
-    public void shouldReturnSuccessMessageOnSuccessfulCheckoutOfAMovie() {
-        String actualMessage = section.checkoutItem("Inception", MOVIE_CHECKOUT_SUCCESS_MESSAGE, MOVIE_CHECKOUT_FAILURE_MESSAGE);
+    public void shouldReturnAnEmptyListIfNoIssuedItemMatchesTheGivenName() {
+        List<Item> expectedResult = new ArrayList<>();
+        List<Item> actualResult = section.searchIssuedItems("Inception");
 
-        assertThat(actualMessage, is(equalTo(MOVIE_CHECKOUT_SUCCESS_MESSAGE)));
+        assertThat(actualResult, is(equalTo(expectedResult)));
     }
 
     @Test
-    public void shouldReturnFailureMessageOnUnSuccessfulCheckoutOfAMovie() {
-        String actualMessage = section.checkoutItem("Lucy", MOVIE_CHECKOUT_SUCCESS_MESSAGE, MOVIE_CHECKOUT_FAILURE_MESSAGE);
+    public void shouldBeAbleToCheckoutABook() {
+        section.checkoutItem(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
 
-        assertThat(actualMessage, is(equalTo(MOVIE_CHECKOUT_FAILURE_MESSAGE)));
+        String actualAvailableItemDetails = section.availableItems();
+        String actualIssuedItemDetails = section.issuedItems();
+
+        assertThat(actualAvailableItemDetails, is(equalTo("| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |\n" +
+                "| Inception | Christopher Nolan | 2010 | 10 |\n" +
+                "| The Prestige | Christopher Nolan | 2008 | 10 |\n")));
+
+
+        assertThat(actualIssuedItemDetails, is(equalTo("| Twilight | Unknown | 2000 |\n" +
+                "| Lucy | Unknown Director | 2014 | 10 |\n" +
+                "| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n")));
     }
 
     @Test
-    public void shouldReturnSuccessMessageOnSuccessfulReturnOfAMovie() {
-        String actualMessage = section.returnItem("Twilight", MOVIE_RETURN_SUCCESS_MESSAGE, MOVIE_RETURN_FAILURE_MESSAGE);
+    public void shouldBeAbleToReturnABook() {
+        section.returnItem(new Movie("Lucy", "Unknown Director", 2014, "10"));
 
-        assertThat(actualMessage, is(equalTo(MOVIE_RETURN_SUCCESS_MESSAGE)));
-    }
+        String actualAvailableItemDetails = section.availableItems();
+        String actualIssuedItemDetails = section.issuedItems();
 
-    @Test
-    public void shouldReturnFailureMessageOnUnSuccessfulReturnOfAMovie() {
-        String actualMessage = section.returnItem("Inception", MOVIE_RETURN_SUCCESS_MESSAGE, MOVIE_RETURN_FAILURE_MESSAGE);
+        assertThat(actualAvailableItemDetails, is(equalTo("| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n" +
+                "| Harry Potter and The Chamber of Secrets | JK Rowling | 2000 |\n" +
+                "| Inception | Christopher Nolan | 2010 | 10 |\n" +
+                "| The Prestige | Christopher Nolan | 2008 | 10 |\n" +
+                "| Lucy | Unknown Director | 2014 | 10 |\n")));
 
-        assertThat(actualMessage, is(equalTo(MOVIE_RETURN_FAILURE_MESSAGE)));
+        assertThat(actualIssuedItemDetails, is(equalTo("| Twilight | Unknown | 2000 |\n")));
     }
 }
