@@ -6,11 +6,10 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.twu.biblioteca.constants.Constants.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 public class SectionTest {
     private Section section;
@@ -42,58 +41,58 @@ public class SectionTest {
 
 
     @Test
-    public void shouldReturnTrueOnSuccessfulCheckoutOfABook() {
-        boolean actual = section.checkoutItem("Harry Potter and The Chamber of Secrets");
+    public void shouldReturnSuccessMessageOnSuccessfulCheckoutOfABook() {
+        String actualMessage = section.checkoutItem("Harry Potter and The Chamber of Secrets", BOOK_CHECKOUT_SUCCESS_MESSAGE, BOOK_CHECKOUT_FAILURE_MESSAGE);
 
-        assertTrue(actual);
+        assertThat(actualMessage, is(equalTo(BOOK_CHECKOUT_SUCCESS_MESSAGE)));
     }
 
     @Test
-    public void shouldReturnFalseOnUnSuccessfulCheckoutOfABook() {
-        boolean actual = section.checkoutItem("Twilight");
+    public void shouldReturnFailureMessageOnUnSuccessfulCheckoutOfABook() {
+        String actualMessage = section.checkoutItem("Twilight", BOOK_CHECKOUT_SUCCESS_MESSAGE, BOOK_CHECKOUT_FAILURE_MESSAGE);
 
-        assertFalse(actual);
+        assertThat(actualMessage, is(equalTo(BOOK_CHECKOUT_FAILURE_MESSAGE)));
     }
 
     @Test
-    public void shouldReturnTrueOnSuccessfulReturnOfABook() {
-        boolean actual = section.returnItem("Twilight");
+    public void shouldReturnSuccessMessageOnSuccessfulReturnOfABook() {
+        String actualMessage = section.returnItem("Twilight", BOOK_RETURN_SUCCESS_MESSAGE, BOOK_RETURN_FAILURE_MESSAGE);
 
-        assertTrue(actual);
+        assertThat(actualMessage, is(equalTo(BOOK_RETURN_SUCCESS_MESSAGE)));
     }
 
     @Test
-    public void shouldReturnTrueOnUnSuccessfulReturnOfABook() {
-        boolean actual = section.returnItem("Harry Potter and The Chamber of Secrets");
+    public void shouldReturnFailureMessageOnUnSuccessfulReturnOfABook() {
+        String actualMessage = section.returnItem("Harry Potter and The Chamber of Secrets", BOOK_RETURN_SUCCESS_MESSAGE, BOOK_RETURN_FAILURE_MESSAGE);
 
-        assertFalse(actual);
+        assertThat(actualMessage, is(equalTo(BOOK_RETURN_FAILURE_MESSAGE)));
     }
 
     @Test
-    public void shouldReturnTrueOnSuccessfulCheckoutOfAMovie() {
-        boolean actual = section.checkoutItem("Inception");
+    public void shouldReturnSuccessMessageOnSuccessfulCheckoutOfAMovie() {
+        String actualMessage = section.checkoutItem("Inception", MOVIE_CHECKOUT_SUCCESS_MESSAGE, MOVIE_CHECKOUT_FAILURE_MESSAGE);
 
-        assertTrue(actual);
+        assertThat(actualMessage, is(equalTo(MOVIE_CHECKOUT_SUCCESS_MESSAGE)));
     }
 
     @Test
-    public void shouldReturnFalseOnUnSuccessfulCheckoutOfAMovie() {
-        boolean actual = section.checkoutItem("Lucy");
+    public void shouldReturnFailureMessageOnUnSuccessfulCheckoutOfAMovie() {
+        String actualMessage = section.checkoutItem("Lucy", MOVIE_CHECKOUT_SUCCESS_MESSAGE, MOVIE_CHECKOUT_FAILURE_MESSAGE);
 
-        assertFalse(actual);
+        assertThat(actualMessage, is(equalTo(MOVIE_CHECKOUT_FAILURE_MESSAGE)));
     }
 
     @Test
-    public void shouldReturnTrueOnSuccessfulReturnOfAMovie() {
-        boolean actual = section.returnItem("Twilight");
+    public void shouldReturnSuccessMessageOnSuccessfulReturnOfAMovie() {
+        String actualMessage = section.returnItem("Twilight", MOVIE_RETURN_SUCCESS_MESSAGE, MOVIE_RETURN_FAILURE_MESSAGE);
 
-        assertTrue(actual);
+        assertThat(actualMessage, is(equalTo(MOVIE_RETURN_SUCCESS_MESSAGE)));
     }
 
     @Test
-    public void shouldReturnFalseOnUnSuccessfulReturnOfAMovie() {
-        boolean actual = section.returnItem("Inception");
+    public void shouldReturnFailureMessageOnUnSuccessfulReturnOfAMovie() {
+        String actualMessage = section.returnItem("Inception", MOVIE_RETURN_SUCCESS_MESSAGE, MOVIE_RETURN_FAILURE_MESSAGE);
 
-        assertFalse(actual);
+        assertThat(actualMessage, is(equalTo(MOVIE_RETURN_FAILURE_MESSAGE)));
     }
 }

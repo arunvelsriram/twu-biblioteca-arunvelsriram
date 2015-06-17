@@ -1,10 +1,8 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.controllers.BooksController;
 import com.twu.biblioteca.controllers.MenuController;
-import com.twu.biblioteca.controllers.MoviesController;
-import com.twu.biblioteca.models.Section;
 import com.twu.biblioteca.models.Menu;
+import com.twu.biblioteca.models.Section;
 import com.twu.biblioteca.views.View;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,9 +10,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BibliotecaAppTest {
@@ -26,16 +22,12 @@ public class BibliotecaAppTest {
     private Menu menuStub;
     @Mock
     private MenuController menuControllerStub;
-    @Mock
-    private BooksController booksControllerStub;
-    @Mock
-    private MoviesController moviesControllerStub;
 
     private BibliotecaApp bibliotecaApp;
 
     @Before
     public void setUp() {
-        bibliotecaApp = new BibliotecaApp(viewStub, sectionStub, menuStub, menuControllerStub, booksControllerStub, moviesControllerStub);
+        bibliotecaApp = new BibliotecaApp(viewStub, sectionStub, menuStub, menuControllerStub);
     }
 
     @Test

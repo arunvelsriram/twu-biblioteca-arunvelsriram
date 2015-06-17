@@ -20,24 +20,24 @@ public class Section {
         return sb.toString();
     }
 
-    public boolean checkoutItem(String title) {
+    public String checkoutItem(String title, String successMessage, String failureMessage) {
         List<Item> result = search(title, availableItems);
         for (Item item : result) {
             availableItems.remove(item);
             issuedItems.add(item);
-            return true;
+            return successMessage;
         }
-        return false;
+        return failureMessage;
     }
 
-    public boolean returnItem(String title) {
+    public String returnItem(String title, String successMessage, String failureMessage) {
         List<Item> result = search(title, issuedItems);
         for (Item item : result) {
             issuedItems.remove(item);
             availableItems.add(item);
-            return true;
+            return successMessage;
         }
-        return false;
+        return failureMessage;
     }
 
     private List<Item> search(String title, List<Item> books) {

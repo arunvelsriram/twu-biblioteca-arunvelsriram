@@ -1,6 +1,6 @@
 package com.twu.biblioteca.models;
 
-import com.twu.biblioteca.controllers.BooksController;
+import com.twu.biblioteca.controllers.ItemController;
 import com.twu.biblioteca.menuitemactions.ListBooksAction;
 import com.twu.biblioteca.menuitemactions.MenuItemAction;
 import org.junit.Test;
@@ -10,9 +10,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -20,13 +18,13 @@ public class MenuItemTest {
     @Mock
     private Section sectionStub;
     @Mock
-    private BooksController booksControllerStub;
+    private ItemController itemControllerStub;
     @Mock
     private MenuItemAction menuItemActionStub;
 
     @Test
     public void shouldBeAbleToReturnMenuItemName() {
-        MenuItem menuItem = new MenuItem("List Books", new ListBooksAction(booksControllerStub));
+        MenuItem menuItem = new MenuItem("List Books", new ListBooksAction(itemControllerStub, sectionStub));
 
         String actualMenuItem = menuItem.toString();
 

@@ -1,6 +1,5 @@
 package com.twu.biblioteca.menuitemactions;
 
-import com.twu.biblioteca.menuitemactions.InvalidOptionAction;
 import com.twu.biblioteca.views.View;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +14,7 @@ public class InvalidOptionActionTest {
     private View viewStub;
 
     @Test
-    public void shouldInvokeInvalidOptionOnMenuController() {
+    public void shouldWriteMessageAboutInvalidOptionToTheView() {
         InvalidOptionAction invalidOptionAction = new InvalidOptionAction(viewStub);
         invalidOptionAction.performAction();
 

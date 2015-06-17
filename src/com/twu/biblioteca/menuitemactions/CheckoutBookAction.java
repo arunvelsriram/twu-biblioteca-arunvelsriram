@@ -1,16 +1,22 @@
 package com.twu.biblioteca.menuitemactions;
 
-import com.twu.biblioteca.controllers.BooksController;
+import com.twu.biblioteca.controllers.ItemController;
+import com.twu.biblioteca.models.Section;
+
+import static com.twu.biblioteca.constants.Constants.BOOK_CHECKOUT_FAILURE_MESSAGE;
+import static com.twu.biblioteca.constants.Constants.BOOK_CHECKOUT_SUCCESS_MESSAGE;
 
 public class CheckoutBookAction implements MenuItemAction {
-    private BooksController booksController;
+    private ItemController itemController;
+    private Section bookSection;
 
-    public CheckoutBookAction(BooksController booksController) {
-        this.booksController = booksController;
+    public CheckoutBookAction(ItemController itemController, Section bookSection) {
+        this.itemController = itemController;
+        this.bookSection = bookSection;
     }
 
     @Override
     public void performAction() {
-        booksController.checkoutABook();
+        itemController.checkoutAnItem(bookSection, BOOK_CHECKOUT_SUCCESS_MESSAGE, BOOK_CHECKOUT_FAILURE_MESSAGE);
     }
 }

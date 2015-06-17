@@ -5,6 +5,7 @@ public class Book implements Item {
     private String author;
     private int yearOfPublication;
 
+
     public Book(String name, String author, int yearOfPublication) {
         this.name = name;
         this.author = author;

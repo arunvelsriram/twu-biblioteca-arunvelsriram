@@ -10,16 +10,16 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ListMoviesActionTest {
+public class ListBooksActionTest {
     @Mock
     private ItemController itemControllerStub;
     @Mock
     private Section sectionStub;
 
     @Test
-    public void shouldBeABleToInteractWithTheItemControllerToDisplayMovieDetails() {
-        ListMoviesAction listMoviesAction = new ListMoviesAction(itemControllerStub, sectionStub);
-        listMoviesAction.performAction();
+    public void shouldBeAbleToInteractWithTheItemControllerToDisplayBookDetails() {
+        ListBooksAction listBooksAction = new ListBooksAction(itemControllerStub, sectionStub);
+        listBooksAction.performAction();
 
         verify(itemControllerStub).listAvailableItems(sectionStub);
     }
