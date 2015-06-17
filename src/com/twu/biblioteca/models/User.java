@@ -18,10 +18,6 @@ public class User {
     }
 
     public boolean valid(String libraryNumber, char[] password) {
-        return validUser(libraryNumber, password) ? true : false;
-    }
-
-    private boolean validUser(String libraryNumber, char[] password) {
         return libraryNumber.equals(this.libraryNumber) && Arrays.equals(password, this.password);
     }
 }
