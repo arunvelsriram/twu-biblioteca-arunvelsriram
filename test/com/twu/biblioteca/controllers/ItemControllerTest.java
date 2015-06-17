@@ -43,7 +43,7 @@ public class ItemControllerTest {
     }
 
     @Test
-    public void shoulBeAbleToCheckoutAnItemThroughTheCorrespondingSection() {
+    public void shouldBeAbleToCheckoutAnItemThroughTheCorrespondingSection() {
         when(viewStub.read())
                 .thenReturn("Item name");
         itemController.checkoutAnItem(sectionStub, BOOK_CHECKOUT_SUCCESS_MESSAGE, BOOK_CHECKOUT_FAILURE_MESSAGE);
@@ -52,7 +52,7 @@ public class ItemControllerTest {
     }
 
     @Test
-    public void shoulBeAbleToReturnAnItemThroughTheCorrespondingSection() {
+    public void shouldBeAbleToReturnAnItemThroughTheCorrespondingSection() {
         when(viewStub.read())
                 .thenReturn("Item name");
         itemController.returnAnItem(sectionStub, MOVIE_RETURN_SUCCESS_MESSAGE, MOVIE_RETURN_FAILURE_MESSAGE);
