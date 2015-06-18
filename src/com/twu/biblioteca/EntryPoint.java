@@ -32,7 +32,7 @@ public class EntryPoint {
 
         List<User> userDetails = new ArrayList<>();
         userDetails.add(new Member("B1012", "password", "Arun", "arunvelsriram@gmail.com", "919629722335"));
-        userDetails.add(new Member("B1011", "passwd", "Murali", "murali123@gmail.com", "919976767676"));
+        userDetails.add(new Librarian("B1011", "passwd", "Murali", "murali123@gmail.com", "919976767676"));
         Users users = new Users(userDetails);
 
         MenuDispatcher menuDispatcher = new MenuDispatcher();

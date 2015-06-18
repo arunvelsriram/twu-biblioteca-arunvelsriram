@@ -18,11 +18,16 @@ public class MenuDispatcher implements Visitor {
 
     @Override
     public void visit(Librarian librarian) {
-
+        do {
+            librarianMenuController.showMenu();
+        } while(librarianMenuController.chooseOption());
     }
 
     @Override
     public void visit(Member member) {
+        do {
+            memberMenuController.showMenu();
+        } while(memberMenuController.chooseOption());
     }
 
     public void setControllers(MenuController guestMenuController, MenuController memberMenuController,

@@ -50,4 +50,40 @@ public class MenuDispatcherTest {
 
         verify(menuControllerStub, times(2)).chooseOption();
     }
+
+    @Test
+    public void shouldBeToAbleShowLibrarianMenuInfinitely() {
+        when(menuControllerStub.chooseOption())
+                .thenReturn(true, false);
+        menuDispatcher.visit(librarianStub);
+
+        verify(menuControllerStub, times(2)).chooseOption();
+    }
+
+    @Test
+    public void shouldBeToAbleChooseAnOptionFromLibrarianMenuInfinitely() {
+        when(menuControllerStub.chooseOption())
+                .thenReturn(true, false);
+        menuDispatcher.visit(librarianStub);
+
+        verify(menuControllerStub, times(2)).chooseOption();
+    }
+
+    @Test
+    public void shouldBeToAbleShowMemberMenuInfinitely() {
+        when(menuControllerStub.chooseOption())
+                .thenReturn(true, false);
+        menuDispatcher.visit(guestStub);
+
+        verify(menuControllerStub, times(2)).chooseOption();
+    }
+
+    @Test
+    public void shouldBeToAbleChooseAnOptionFromMemberMenuInfinitely() {
+        when(menuControllerStub.chooseOption())
+                .thenReturn(true, false);
+        menuDispatcher.visit(guestStub);
+
+        verify(menuControllerStub, times(2)).chooseOption();
+    }
 }
