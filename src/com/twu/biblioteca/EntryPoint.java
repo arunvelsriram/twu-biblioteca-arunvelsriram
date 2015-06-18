@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class EntryPoint {
     public static void main(String[] args) {
-        View view = new View(new Scanner(System.in));
+        View view = new View(new Scanner(System.in), System.console());
 
         List<Item> availableBooks = new ArrayList<>();
         availableBooks.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
