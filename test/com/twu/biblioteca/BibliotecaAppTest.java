@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.controllers.MenuController;
+import com.twu.biblioteca.controllers.MenuDispatcher;
+import com.twu.biblioteca.models.Guest;
 import com.twu.biblioteca.models.Section;
 import com.twu.biblioteca.views.View;
 import org.junit.Before;
@@ -9,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BibliotecaAppTest {
@@ -18,13 +19,15 @@ public class BibliotecaAppTest {
     @Mock
     private Section sectionStub;
     @Mock
-    private MenuController menuControllerStub;
+    private MenuDispatcher menuDispatcherStub;
+    @Mock
+    private Guest guestStub;
 
     private BibliotecaApp bibliotecaApp;
 
     @Before
     public void setUp() {
-        bibliotecaApp = new BibliotecaApp(viewStub, sectionStub, menuControllerStub);
+        bibliotecaApp = new BibliotecaApp(viewStub, sectionStub, menuDispatcherStub, guestStub);
     }
 
     @Test
@@ -35,18 +38,9 @@ public class BibliotecaAppTest {
     }
 
     @Test
-    public void shouldInteractWithControllerToDisplayMenuInTheView() {
+    public void shouldInteractMenuDispatcherAsGuestUser() {
         bibliotecaApp.start();
 
-        verify(menuControllerStub).showMenu();
-    }
-
-    @Test
-    public void shouldInteractWithControllerToChooseAnOption() {
-        when(menuControllerStub.chooseOption())
-                .thenReturn(true, false);
-        bibliotecaApp.start();
-
-        verify(menuControllerStub, times(2)).chooseOption();
+        verify(menuDispatcherStub).visit(guestStub);
     }
 }

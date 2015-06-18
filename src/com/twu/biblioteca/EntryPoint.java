@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.controllers.ItemController;
 import com.twu.biblioteca.controllers.LoginController;
 import com.twu.biblioteca.controllers.MenuController;
+import com.twu.biblioteca.controllers.MenuDispatcher;
 import com.twu.biblioteca.menuitemactions.*;
 import com.twu.biblioteca.models.*;
 import com.twu.biblioteca.views.View;
@@ -35,11 +36,11 @@ public class EntryPoint {
         LoginController loginController = new LoginController(users, view);
         ItemController itemController = new ItemController(view);
 
-        List<MenuItem> anonymousUserMenuItems = new ArrayList<>();
-        anonymousUserMenuItems.add(new MenuItem("List Books", new ListBooksAction(itemController, booksSection)));
-        anonymousUserMenuItems.add(new MenuItem("List Movies", new ListMoviesAction(itemController, moviesSection)));
-        anonymousUserMenuItems.add(new MenuItem("Login", new LoginAction(loginController)));
-        anonymousUserMenuItems.add(new MenuItem("Invalid Option", new InvalidOptionAction(view)));
+        List<MenuItem> guestMenuItems = new ArrayList<>();
+        guestMenuItems.add(new MenuItem("List Books", new ListBooksAction(itemController, booksSection)));
+        guestMenuItems.add(new MenuItem("List Movies", new ListMoviesAction(itemController, moviesSection)));
+        guestMenuItems.add(new MenuItem("Login", new LoginAction(loginController)));
+        guestMenuItems.add(new MenuItem("Invalid Option", new InvalidOptionAction(view)));
 
         List<MenuItem> memberMenuItems = new ArrayList<>();
         memberMenuItems.add(new MenuItem("List Books", new ListBooksAction(itemController, booksSection)));
@@ -63,17 +64,19 @@ public class EntryPoint {
         librarianMenuItems.add(new MenuItem("Quit", null));
         librarianMenuItems.add(new MenuItem("Invalid Option", new InvalidOptionAction(view)));
 
-        Menu anonymousUserMenu = new Menu(anonymousUserMenuItems);
+        Menu guestMenu = new Menu(guestMenuItems);
         Menu memberMenu = new Menu(memberMenuItems);
         Menu librarianMenu = new Menu(librarianMenuItems);
 
-        MenuController anonymousUserMenuController = new MenuController(anonymousUserMenu, view);
-//        MenuController memberMenuController = new MenuController(memberMenu, view);
-//        MenuController librarianMenuController = new MenuController(librarianMenu, view);
-//
-//        MenuDispatcher menuDispatcher = new MenuDispatcher(anonymousUserMenuController, memberMenuController, librarianMenuController);
+        MenuController guestMenuController = new MenuController(guestMenu, view);
+        MenuController memberMenuController = new MenuController(memberMenu, view);
+        MenuController librarianMenuController = new MenuController(librarianMenu, view);
 
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(view, booksSection, anonymousUserMenuController);
+        MenuDispatcher menuDispatcher = new MenuDispatcher(guestMenuController, memberMenuController, librarianMenuController);
+
+        Guest guest = new Guest();
+
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(view, booksSection, menuDispatcher, guest);
         bibliotecaApp.start();
     }
 }

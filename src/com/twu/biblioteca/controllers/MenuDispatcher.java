@@ -3,21 +3,22 @@ package com.twu.biblioteca.controllers;
 import com.twu.biblioteca.models.User;
 
 public class MenuDispatcher implements Visitor {
-    private MenuController anonymousUserMenuController;
+    private MenuController guestMenuController;
     private MenuController memberMenuController;
     private MenuController librarianMenuController;
 
-    public MenuDispatcher(MenuController anonymousUserMenuController, MenuController memberMenuController,
+    public MenuDispatcher(MenuController guestMenuController, MenuController memberMenuController,
                           MenuController librarianMenuController) {
 
-        this.anonymousUserMenuController = anonymousUserMenuController;
+        this.guestMenuController = guestMenuController;
         this.memberMenuController = memberMenuController;
         this.librarianMenuController = librarianMenuController;
     }
 
     @Override
     public void visit(User guest) {
-        anonymousUserMenuController.showMenu();
-        anonymousUserMenuController.chooseOption();
+        do {
+            guestMenuController.showMenu();
+        } while(guestMenuController.chooseOption());
     }
 }
