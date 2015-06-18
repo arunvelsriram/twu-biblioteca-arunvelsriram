@@ -1,6 +1,8 @@
 package com.twu.biblioteca.models;
 
-public class User {
+import com.twu.biblioteca.controllers.Visitor;
+
+public abstract class User {
     private String libraryNumber;
     private String password;
     private String name;
@@ -43,4 +45,6 @@ public class User {
         result = 31 * result + phoneNumber.hashCode();
         return result;
     }
+
+    public abstract void accept(Visitor visitor);
 }

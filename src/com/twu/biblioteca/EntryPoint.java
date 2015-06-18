@@ -28,8 +28,8 @@ public class EntryPoint {
         Section moviesSection = new Section(availableMovies, issuedMovies);
 
         List<User> userDetails = new ArrayList<>();
-        userDetails.add(new User("B1012", "password", "Arun", "arunvelsriram@gmail.com", "919629722335"));
-        userDetails.add(new User("B1011", "passwd", "Murali", "murali123@gmail.com", "919976767676"));
+        userDetails.add(new Member("B1012", "password", "Arun", "arunvelsriram@gmail.com", "919629722335"));
+        userDetails.add(new Member("B1011", "passwd", "Murali", "murali123@gmail.com", "919976767676"));
         Users users = new Users(userDetails);
 
         LoginController loginController = new LoginController(users, view);
@@ -68,6 +68,10 @@ public class EntryPoint {
         Menu librarianMenu = new Menu(librarianMenuItems);
 
         MenuController anonymousUserMenuController = new MenuController(anonymousUserMenu, view);
+//        MenuController memberMenuController = new MenuController(memberMenu, view);
+//        MenuController librarianMenuController = new MenuController(librarianMenu, view);
+//
+//        MenuDispatcher menuDispatcher = new MenuDispatcher(anonymousUserMenuController, memberMenuController, librarianMenuController);
 
         BibliotecaApp bibliotecaApp = new BibliotecaApp(view, booksSection, anonymousUserMenuController);
         bibliotecaApp.start();
