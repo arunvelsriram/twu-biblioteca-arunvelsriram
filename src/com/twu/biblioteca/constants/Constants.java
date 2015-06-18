@@ -10,4 +10,6 @@ public interface Constants {
     String MOVIE_CHECKOUT_FAILURE_MESSAGE = "That movie is not available.";
     String MOVIE_RETURN_SUCCESS_MESSAGE = "Thank you for returning the movie.";
     String MOVIE_RETURN_FAILURE_MESSAGE = "That is not a valid movie to return.";
+    String LIBRARY_NUMBER_PROMPT_MESSAGE = "Library Number: ";
+    String PASSWORD_PROMPT_MESSAGE = "Password: ";
 }
