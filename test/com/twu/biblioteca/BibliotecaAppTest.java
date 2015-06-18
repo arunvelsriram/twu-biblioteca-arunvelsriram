@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.controllers.MenuController;
-import com.twu.biblioteca.models.Menu;
 import com.twu.biblioteca.models.Section;
 import com.twu.biblioteca.views.View;
 import org.junit.Before;
@@ -19,15 +18,13 @@ public class BibliotecaAppTest {
     @Mock
     private Section sectionStub;
     @Mock
-    private Menu menuStub;
-    @Mock
     private MenuController menuControllerStub;
 
     private BibliotecaApp bibliotecaApp;
 
     @Before
     public void setUp() {
-        bibliotecaApp = new BibliotecaApp(viewStub, sectionStub, menuStub, menuControllerStub);
+        bibliotecaApp = new BibliotecaApp(viewStub, sectionStub, menuControllerStub);
     }
 
     @Test

@@ -28,20 +28,41 @@ public class EntryPoint {
 
         ItemController itemController = new ItemController(view);
 
-        List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(new MenuItem("List Books", new ListBooksAction(itemController, booksSection)));
-        menuItems.add(new MenuItem("Checkout Book", new CheckoutBookAction(itemController, booksSection)));
-        menuItems.add(new MenuItem("Return Book", new ReturnBookAction(itemController, booksSection)));
-        menuItems.add(new MenuItem("List Movies", new ListMoviesAction(itemController, moviesSection)));
-        menuItems.add(new MenuItem("Checkout Movie", new CheckoutMovieAction(itemController, moviesSection)));
-        menuItems.add(new MenuItem("Return Movie", new ReturnMovieAction(itemController, moviesSection)));
-        menuItems.add(new MenuItem("Quit", null));
-        menuItems.add(new MenuItem("Invalid Option", new InvalidOptionAction(view)));
+        List<MenuItem> anonymousUserMenuItems = new ArrayList<>();
+        anonymousUserMenuItems.add(new MenuItem("List Books", new ListBooksAction(itemController, booksSection)));
+        anonymousUserMenuItems.add(new MenuItem("List Movies", new ListMoviesAction(itemController, moviesSection)));
+        anonymousUserMenuItems.add(new MenuItem("Login", null));
+        anonymousUserMenuItems.add(new MenuItem("Invalid Option", new InvalidOptionAction(view)));
 
-        Menu menu = new Menu(menuItems);
-        MenuController menuController = new MenuController(menu, view);
+        List<MenuItem> memberMenuItems = new ArrayList<>();
+        memberMenuItems.add(new MenuItem("List Books", new ListBooksAction(itemController, booksSection)));
+        memberMenuItems.add(new MenuItem("Checkout Book", new CheckoutBookAction(itemController, booksSection)));
+        memberMenuItems.add(new MenuItem("Return Book", new ReturnBookAction(itemController, booksSection)));
+        memberMenuItems.add(new MenuItem("List Movies", new ListMoviesAction(itemController, moviesSection)));
+        memberMenuItems.add(new MenuItem("Checkout Movie", new CheckoutMovieAction(itemController, moviesSection)));
+        memberMenuItems.add(new MenuItem("Return Movie", new ReturnMovieAction(itemController, moviesSection)));
+        memberMenuItems.add(new MenuItem("Logout", null));
+        memberMenuItems.add(new MenuItem("Invalid Option", new InvalidOptionAction(view)));
 
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(view, booksSection, menu, menuController);
+        List<MenuItem> librarianMenuItems = new ArrayList<>();
+        librarianMenuItems.add(new MenuItem("List Books", new ListBooksAction(itemController, booksSection)));
+        librarianMenuItems.add(new MenuItem("Checkout Book", new CheckoutBookAction(itemController, booksSection)));
+        librarianMenuItems.add(new MenuItem("Return Book", new ReturnBookAction(itemController, booksSection)));
+        librarianMenuItems.add(new MenuItem("List Movies", new ListMoviesAction(itemController, moviesSection)));
+        librarianMenuItems.add(new MenuItem("Checkout Movie", new CheckoutMovieAction(itemController, moviesSection)));
+        librarianMenuItems.add(new MenuItem("Return Movie", new ReturnMovieAction(itemController, moviesSection)));
+        librarianMenuItems.add(new MenuItem("Checkout History", null));
+        librarianMenuItems.add(new MenuItem("Logout", null));
+        librarianMenuItems.add(new MenuItem("Quit", null));
+        librarianMenuItems.add(new MenuItem("Invalid Option", new InvalidOptionAction(view)));
+
+        Menu anonymousUserMenu = new Menu(anonymousUserMenuItems);
+        Menu memberMenu = new Menu(memberMenuItems);
+        Menu librarianMenu = new Menu(librarianMenuItems);
+
+        MenuController anonymousUserMenuController = new MenuController(anonymousUserMenu, view);
+
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(view, booksSection, anonymousUserMenuController);
         bibliotecaApp.start();
     }
 }
