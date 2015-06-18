@@ -28,13 +28,15 @@ public class EntryPoint {
         List<Item> issuedMovies = new ArrayList<>();
         Section moviesSection = new Section(availableMovies, issuedMovies);
 
+        ItemController itemController = new ItemController(view);
+
         List<User> userDetails = new ArrayList<>();
         userDetails.add(new Member("B1012", "password", "Arun", "arunvelsriram@gmail.com", "919629722335"));
         userDetails.add(new Member("B1011", "passwd", "Murali", "murali123@gmail.com", "919976767676"));
         Users users = new Users(userDetails);
 
-        LoginController loginController = new LoginController(users, view);
-        ItemController itemController = new ItemController(view);
+        MenuDispatcher menuDispatcher = new MenuDispatcher();
+        LoginController loginController = new LoginController(users, view, menuDispatcher);
 
         List<MenuItem> guestMenuItems = new ArrayList<>();
         guestMenuItems.add(new MenuItem("List Books", new ListBooksAction(itemController, booksSection)));
@@ -72,7 +74,7 @@ public class EntryPoint {
         MenuController memberMenuController = new MenuController(memberMenu, view);
         MenuController librarianMenuController = new MenuController(librarianMenu, view);
 
-        MenuDispatcher menuDispatcher = new MenuDispatcher(guestMenuController, memberMenuController, librarianMenuController);
+        menuDispatcher.setControllers(guestMenuController, memberMenuController, librarianMenuController);
 
         Guest guest = new Guest();
 

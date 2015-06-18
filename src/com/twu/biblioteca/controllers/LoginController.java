@@ -10,10 +10,12 @@ import static com.twu.biblioteca.constants.Constants.PASSWORD_PROMPT_MESSAGE;
 public class LoginController {
     private Users users;
     private View view;
+    private MenuDispatcher menuDispatcher;
 
-    public LoginController(Users users, View view) {
+    public LoginController(Users users, View view, MenuDispatcher menuDispatcher) {
         this.users = users;
         this.view = view;
+        this.menuDispatcher = menuDispatcher;
     }
 
     public void login() {
@@ -22,5 +24,7 @@ public class LoginController {
         view.write(PASSWORD_PROMPT_MESSAGE);
         String password = view.read();
         User user = users.authenticate(libraryNumber, password);
+        view.write(user.statusMessage());
+        user.accept(menuDispatcher);
     }
 }

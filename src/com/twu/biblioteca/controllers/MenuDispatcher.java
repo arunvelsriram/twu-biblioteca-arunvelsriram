@@ -9,14 +9,6 @@ public class MenuDispatcher implements Visitor {
     private MenuController memberMenuController;
     private MenuController librarianMenuController;
 
-    public MenuDispatcher(MenuController guestMenuController, MenuController memberMenuController,
-                          MenuController librarianMenuController) {
-
-        this.guestMenuController = guestMenuController;
-        this.memberMenuController = memberMenuController;
-        this.librarianMenuController = librarianMenuController;
-    }
-
     @Override
     public void visit(Guest guest) {
         do {
@@ -31,5 +23,12 @@ public class MenuDispatcher implements Visitor {
 
     @Override
     public void visit(Member member) {
+    }
+
+    public void setControllers(MenuController guestMenuController, MenuController memberMenuController,
+                               MenuController librarianMenuController) {
+        this.guestMenuController = guestMenuController;
+        this.memberMenuController = memberMenuController;
+        this.librarianMenuController = librarianMenuController;
     }
 }
