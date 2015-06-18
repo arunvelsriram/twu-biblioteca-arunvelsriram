@@ -11,4 +11,9 @@ public class Guest extends User {
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
+
+    @Override
+    public String statusMessage() {
+        return "Login failed!";
+    }
 }

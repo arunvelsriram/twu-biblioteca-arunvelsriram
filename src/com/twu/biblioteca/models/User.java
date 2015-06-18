@@ -47,4 +47,6 @@ public abstract class User {
     }
 
     public abstract void accept(Visitor visitor);
+
+    public abstract String statusMessage();
 }

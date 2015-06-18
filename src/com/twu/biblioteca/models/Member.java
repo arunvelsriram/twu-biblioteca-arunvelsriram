@@ -11,4 +11,9 @@ public class Member extends User{
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
+
+    @Override
+    public String statusMessage() {
+        return "Hi! You are logged in as Member.";
+    }
 }

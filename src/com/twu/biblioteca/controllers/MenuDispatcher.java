@@ -31,6 +31,5 @@ public class MenuDispatcher implements Visitor {
 
     @Override
     public void visit(Member member) {
-
     }
 }

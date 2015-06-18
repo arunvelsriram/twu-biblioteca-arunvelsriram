@@ -108,4 +108,11 @@ public class MemberTest {
 
         verify(visitorStub).visit(member);
     }
+
+    @Test
+    public void shouldBeAbletToReturnAStatusMessage() {
+        String actualMessage = member.statusMessage();
+
+        assertThat(actualMessage, is(equalTo("Hi! You are logged in as Member.")));
+    }
 }

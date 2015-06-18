@@ -108,4 +108,11 @@ public class LibrarianTest {
 
         verify(visitorStub).visit(librarian);
     }
+
+    @Test
+    public void shouldBeAbleToReturnAStatusMessage() {
+        String actualMessage = librarian.statusMessage();
+
+        assertThat(actualMessage, is(equalTo("Hi! You are logged in as Librarian.")));
+    }
 }
