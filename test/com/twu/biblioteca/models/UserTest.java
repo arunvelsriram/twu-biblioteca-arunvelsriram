@@ -13,12 +13,12 @@ public class UserTest {
 
     @Before
     public void setUp() {
-        user = new User("B1011", "password".toCharArray(), "Arun", "arunvelsriram@gmail.com", "919629722335");
+        user = new User("B1012", "password".toCharArray(), "Arun", "arunvelsriram@gmail.com", "919629722335");
     }
 
     @Test
     public void shouldBeAbleToIdentifyAValidUser() {
-        boolean actual = user.valid("B1011", "password".toCharArray());
+        boolean actual = user.valid("B1012", "password".toCharArray());
 
         assertTrue(actual);
     }
@@ -32,7 +32,7 @@ public class UserTest {
 
     @Test
     public void shouldBeAbleToCheckThePassword() {
-        boolean actual = user.valid("B1011", "pasword".toCharArray());
+        boolean actual = user.valid("B1012", "pasword".toCharArray());
 
         assertFalse(actual);
     }
