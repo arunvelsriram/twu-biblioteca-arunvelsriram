@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.controllers.ItemController;
+import com.twu.biblioteca.controllers.LoginController;
 import com.twu.biblioteca.controllers.MenuController;
 import com.twu.biblioteca.menuitemactions.*;
 import com.twu.biblioteca.models.*;
@@ -26,12 +27,18 @@ public class EntryPoint {
         List<Item> issuedMovies = new ArrayList<>();
         Section moviesSection = new Section(availableMovies, issuedMovies);
 
+        List<User> userDetails = new ArrayList<>();
+        userDetails.add(new User("B1012", "password", "Arun", "arunvelsriram@gmail.com", "919629722335"));
+        userDetails.add(new User("B1011", "passwd", "Murali", "murali123@gmail.com", "919976767676"));
+        Users users = new Users(userDetails);
+
+        LoginController loginController = new LoginController(users, view);
         ItemController itemController = new ItemController(view);
 
         List<MenuItem> anonymousUserMenuItems = new ArrayList<>();
         anonymousUserMenuItems.add(new MenuItem("List Books", new ListBooksAction(itemController, booksSection)));
         anonymousUserMenuItems.add(new MenuItem("List Movies", new ListMoviesAction(itemController, moviesSection)));
-        anonymousUserMenuItems.add(new MenuItem("Login", null));
+        anonymousUserMenuItems.add(new MenuItem("Login", new LoginAction(loginController)));
         anonymousUserMenuItems.add(new MenuItem("Invalid Option", new InvalidOptionAction(view)));
 
         List<MenuItem> memberMenuItems = new ArrayList<>();

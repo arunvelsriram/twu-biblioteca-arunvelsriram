@@ -10,7 +10,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import static com.twu.biblioteca.constants.Constants.LIBRARY_NUMBER_PROMPT_MESSAGE;
 import static com.twu.biblioteca.constants.Constants.PASSWORD_PROMPT_MESSAGE;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LoginControllerTest {
@@ -34,13 +34,6 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void shouldBeAbleToReadLibraryNumberThroughTheView() {
-        loginController.login();
-
-        verify(viewStub).read();
-    }
-
-    @Test
     public void shouldBeAbleToPrintPromptMessageForPassword() {
         loginController.login();
 
@@ -48,9 +41,18 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void shouldBeAbleToReadPasswordThroughTheView() {
+    public void shouldBeAbleToReadLibraryNumberAndPasswordThroughTheView() {
         loginController.login();
 
-        verify(viewStub).readPassword();
+        verify(viewStub, times(2)).read();
+    }
+
+    @Test
+    public void shouldInteractWithUserModelToAuthenticateTheUser() {
+        when(viewStub.read())
+                .thenReturn("B1101", "pass");
+        loginController.login();
+
+        verify(usersStub).authenticate("B1101", "pass");
     }
 }

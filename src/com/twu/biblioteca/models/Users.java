@@ -10,11 +10,11 @@ public class Users {
         this.users = users;
     }
 
-    public List<User> authenticate(String libraryNumber, char[] password) {
+    public List<User> authenticate(String libraryNumber, String password) {
         return search(libraryNumber, password);
     }
 
-    private List<User> search(String libraryNumber, char[] password) {
+    private List<User> search(String libraryNumber, String password) {
         List<User> result = new ArrayList<>();
         for (User user : users) {
             if(user.valid(libraryNumber, password)) {

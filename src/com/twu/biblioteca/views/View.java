@@ -32,8 +32,4 @@ public class View {
     public String read() {
         return scanner.nextLine();
     }
-
-    public char[] readPassword() {
-        return console.readPassword();
-    }
 }

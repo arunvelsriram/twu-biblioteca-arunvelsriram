@@ -17,8 +17,8 @@ public class UsersTest {
     @Before
     public void setUp() {
         List<User> userDetails = new ArrayList<>();
-        userDetails.add(new User("B1012", "password".toCharArray(), "Arun", "arunvelsriram@gmail.com", "919629722335"));
-        userDetails.add(new User("B1011", "passwd".toCharArray(), "Murali", "murali123@gmail.com", "919976767676"));
+        userDetails.add(new User("B1012", "password", "Arun", "arunvelsriram@gmail.com", "919629722335"));
+        userDetails.add(new User("B1011", "passwd", "Murali", "murali123@gmail.com", "919976767676"));
         users = new Users(userDetails);
     }
 
@@ -26,7 +26,7 @@ public class UsersTest {
     public void shouldBeAbleToReturnAnEmptyListOnUnsuccessfulAuthenticationDueToWrongPassword() {
         List<User> expectedResult = new ArrayList<>();
 
-        List<User> actualResult = users.authenticate("B1012", "wrongpasswd".toCharArray());
+        List<User> actualResult = users.authenticate("B1012", "wrongpasswd");
 
         assertThat(expectedResult, is(equalTo(actualResult)));
     }
@@ -35,7 +35,7 @@ public class UsersTest {
     public void shouldBeAbleToReturnAnEmptyListOnUnsuccessfulAuthenticationDueToWrongLibraryNumber() {
         List<User> expectedResult = new ArrayList<>();
 
-        List<User> actualResult = users.authenticate("SomeNumber", "password".toCharArray());
+        List<User> actualResult = users.authenticate("SomeNumber", "password");
 
         assertThat(expectedResult, is(equalTo(actualResult)));
     }
@@ -44,7 +44,7 @@ public class UsersTest {
     public void shouldBeAbleToReturnAnEmptyListOnUnsuccessfulAuthenticationDueToWrongLibraryNumberAndPassword() {
         List<User> expectedResult = new ArrayList<>();
 
-        List<User> actualResult = users.authenticate("SomeNumber", "Some Password".toCharArray());
+        List<User> actualResult = users.authenticate("SomeNumber", "Some Password");
 
         assertThat(expectedResult, is(equalTo(actualResult)));
     }
@@ -52,9 +52,9 @@ public class UsersTest {
     @Test
     public void shouldBeAbleToReturnAListOfUsersOnSuccessfulAuthentication() {
         List<User> expectedResult = new ArrayList<>();
-        expectedResult.add(new User("B1012", "password".toCharArray(), "Arun", "arunvelsriram@gmail.com", "919629722335"));
+        expectedResult.add(new User("B1012", "password", "Arun", "arunvelsriram@gmail.com", "919629722335"));
 
-        List<User> actualResult = users.authenticate("B1012", "password".toCharArray());
+        List<User> actualResult = users.authenticate("B1012", "password");
 
         assertThat(expectedResult, is(equalTo(actualResult)));
     }
