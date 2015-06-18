@@ -1,6 +1,5 @@
 package com.twu.biblioteca.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Users {
@@ -10,17 +9,16 @@ public class Users {
         this.users = users;
     }
 
-    public List<User> authenticate(String libraryNumber, String password) {
+    public User authenticate(String libraryNumber, String password) {
         return search(libraryNumber, password);
     }
 
-    private List<User> search(String libraryNumber, String password) {
-        List<User> result = new ArrayList<>();
+    private User search(String libraryNumber, String password) {
         for (User user : users) {
             if(user.valid(libraryNumber, password)) {
-                   result.add(user);
+                return user;
             }
         }
-        return result;
+        return new Guest();
     }
 }
