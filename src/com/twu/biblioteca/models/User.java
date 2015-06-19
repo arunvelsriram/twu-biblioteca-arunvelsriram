@@ -1,6 +1,6 @@
 package com.twu.biblioteca.models;
 
-import com.twu.biblioteca.controllers.Visitor;
+import com.twu.biblioteca.controllers.Dispatcher;
 
 public abstract class User {
     private String libraryNumber;
@@ -46,7 +46,7 @@ public abstract class User {
         return result;
     }
 
-    public abstract void accept(Visitor visitor);
+    public abstract void accept(Dispatcher dispatcher);
 
     public abstract String statusMessage();
 }

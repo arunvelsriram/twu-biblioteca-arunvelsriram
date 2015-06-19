@@ -1,6 +1,6 @@
 package com.twu.biblioteca.models;
 
-import com.twu.biblioteca.controllers.Visitor;
+import com.twu.biblioteca.controllers.Dispatcher;
 
 public class Guest extends User {
     public Guest() {
@@ -8,8 +8,8 @@ public class Guest extends User {
     }
 
     @Override
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
+    public void accept(Dispatcher dispatcher) {
+        dispatcher.dispatch(this);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.twu.biblioteca.models;
 
-import com.twu.biblioteca.controllers.Visitor;
+import com.twu.biblioteca.controllers.Dispatcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +15,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class MemberTest {
     @Mock
-    private Visitor visitorStub;
+    private Dispatcher dispatcherStub;
 
     private Member member;
 
@@ -104,9 +104,9 @@ public class MemberTest {
 
     @Test
     public void shouldBeVisitableByTheMenuDispatcher() {
-        member.accept(visitorStub);
+        member.accept(dispatcherStub);
 
-        verify(visitorStub).visit(member);
+        verify(dispatcherStub).dispatch(member);
     }
 
     @Test

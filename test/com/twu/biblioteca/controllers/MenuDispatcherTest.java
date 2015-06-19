@@ -36,7 +36,7 @@ public class MenuDispatcherTest {
     public void shouldBeToAbleShowGuestMenuInfinitely() {
         when(menuControllerStub.chooseOption())
                 .thenReturn(true, false);
-        menuDispatcher.visit(guestStub);
+        menuDispatcher.dispatch(guestStub);
 
         verify(menuControllerStub, times(2)).chooseOption();
     }
@@ -45,7 +45,7 @@ public class MenuDispatcherTest {
     public void shouldBeToAbleChooseAnOptionFromGuestMenuInfinitely() {
         when(menuControllerStub.chooseOption())
                 .thenReturn(true, false);
-        menuDispatcher.visit(guestStub);
+        menuDispatcher.dispatch(guestStub);
 
         verify(menuControllerStub, times(2)).chooseOption();
     }
@@ -54,7 +54,7 @@ public class MenuDispatcherTest {
     public void shouldBeToAbleShowLibrarianMenuInfinitely() {
         when(menuControllerStub.chooseOption())
                 .thenReturn(true, false);
-        menuDispatcher.visit(librarianStub);
+        menuDispatcher.dispatch(librarianStub);
 
         verify(menuControllerStub, times(2)).chooseOption();
     }
@@ -63,7 +63,7 @@ public class MenuDispatcherTest {
     public void shouldBeToAbleChooseAnOptionFromLibrarianMenuInfinitely() {
         when(menuControllerStub.chooseOption())
                 .thenReturn(true, false);
-        menuDispatcher.visit(librarianStub);
+        menuDispatcher.dispatch(librarianStub);
 
         verify(menuControllerStub, times(2)).chooseOption();
     }
@@ -72,7 +72,7 @@ public class MenuDispatcherTest {
     public void shouldBeToAbleShowMemberMenuInfinitely() {
         when(menuControllerStub.chooseOption())
                 .thenReturn(true, false);
-        menuDispatcher.visit(guestStub);
+        menuDispatcher.dispatch(guestStub);
 
         verify(menuControllerStub, times(2)).chooseOption();
     }
@@ -81,7 +81,7 @@ public class MenuDispatcherTest {
     public void shouldBeToAbleChooseAnOptionFromMemberMenuInfinitely() {
         when(menuControllerStub.chooseOption())
                 .thenReturn(true, false);
-        menuDispatcher.visit(guestStub);
+        menuDispatcher.dispatch(guestStub);
 
         verify(menuControllerStub, times(2)).chooseOption();
     }

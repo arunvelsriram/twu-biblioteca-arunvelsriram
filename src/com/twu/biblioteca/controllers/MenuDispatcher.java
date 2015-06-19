@@ -4,7 +4,7 @@ import com.twu.biblioteca.models.Guest;
 import com.twu.biblioteca.models.Librarian;
 import com.twu.biblioteca.models.Member;
 
-public class MenuDispatcher implements Visitor {
+public class MenuDispatcher implements Dispatcher {
     private MenuController guestMenuController;
     private MenuController memberMenuController;
     private MenuController librarianMenuController;
@@ -17,21 +17,21 @@ public class MenuDispatcher implements Visitor {
     }
 
     @Override
-    public void visit(Guest guest) {
+    public void dispatch(Guest guest) {
         do {
             guestMenuController.showMenu();
         } while(guestMenuController.chooseOption());
     }
 
     @Override
-    public void visit(Librarian librarian) {
+    public void dispatch(Librarian librarian) {
         do {
             librarianMenuController.showMenu();
         } while(librarianMenuController.chooseOption());
     }
 
     @Override
-    public void visit(Member member) {
+    public void dispatch(Member member) {
         do {
             memberMenuController.showMenu();
         } while(memberMenuController.chooseOption());

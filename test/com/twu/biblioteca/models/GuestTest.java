@@ -1,6 +1,6 @@
 package com.twu.biblioteca.models;
 
-import com.twu.biblioteca.controllers.Visitor;
+import com.twu.biblioteca.controllers.Dispatcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +15,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class GuestTest {
     @Mock
-    private Visitor visitorStub;
+    private Dispatcher dispatcherStub;
 
     private Guest guest;
 
@@ -26,9 +26,9 @@ public class GuestTest {
 
     @Test
     public void shouldBeVisitableByTheMenuDispatcher() {
-        guest.accept(visitorStub);
+        guest.accept(dispatcherStub);
 
-        verify(visitorStub).visit(guest);
+        verify(dispatcherStub).dispatch(guest);
     }
 
     @Test

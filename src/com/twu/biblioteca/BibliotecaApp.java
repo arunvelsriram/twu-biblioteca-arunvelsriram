@@ -28,6 +28,6 @@ public class BibliotecaApp implements LoginListener {
     @Override
     public void update(User user) {
         this.user = user;
-        user.accept(menuDispatcher);
+        this.user.accept(menuDispatcher);
     }
 }

@@ -1,6 +1,6 @@
 package com.twu.biblioteca.models;
 
-import com.twu.biblioteca.controllers.Visitor;
+import com.twu.biblioteca.controllers.Dispatcher;
 
 public class Librarian extends User {
     public Librarian(String libraryNumber, String password, String name, String emailAddress, String phoneNumber) {
@@ -8,8 +8,8 @@ public class Librarian extends User {
     }
 
     @Override
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
+    public void accept(Dispatcher dispatcher) {
+        dispatcher.dispatch(this);
     }
 
     @Override
