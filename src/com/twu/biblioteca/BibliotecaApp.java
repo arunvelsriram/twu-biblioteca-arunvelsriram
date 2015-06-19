@@ -1,27 +1,33 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.controllers.LoginController;
 import com.twu.biblioteca.controllers.MenuDispatcher;
-import com.twu.biblioteca.models.Guest;
-import com.twu.biblioteca.models.Section;
+import com.twu.biblioteca.models.User;
 import com.twu.biblioteca.views.View;
 
-public class BibliotecaApp {
+public class BibliotecaApp implements LoginListener {
     private View view;
-    private Section section;
-    private Section booksSection;
     private MenuDispatcher menuDispatcher;
-    private Guest guest;
+    private User user;
+    private LoginController loginController;
 
-    public BibliotecaApp(View view, Section booksSection, MenuDispatcher menuDispatcher, Guest guest) {
+    public BibliotecaApp(View view, MenuDispatcher menuDispatcher, User guest, LoginController loginController) {
         this.view = view;
-        this.booksSection = booksSection;
         this.menuDispatcher = menuDispatcher;
-        this.guest = guest;
+        this.user = guest;
+        this.loginController = loginController;
+        this.loginController.addLoginListener(this);
     }
 
 
     public void start() {
         view.write("***Welcome to Biblioteca***");
-        menuDispatcher.visit(guest);
+        user.accept(menuDispatcher);
+    }
+
+    @Override
+    public void update(User user) {
+        this.user = user;
+        user.accept(menuDispatcher);
     }
 }

@@ -1,5 +1,6 @@
 package com.twu.biblioteca.controllers;
 
+import com.twu.biblioteca.LoginListener;
 import com.twu.biblioteca.models.User;
 import com.twu.biblioteca.models.Users;
 import com.twu.biblioteca.views.View;
@@ -10,12 +11,11 @@ import static com.twu.biblioteca.constants.Constants.PASSWORD_PROMPT_MESSAGE;
 public class LoginController {
     private Users users;
     private View view;
-    private MenuDispatcher menuDispatcher;
+    private LoginListener loginListener;
 
-    public LoginController(Users users, View view, MenuDispatcher menuDispatcher) {
+    public LoginController(Users users, View view) {
         this.users = users;
         this.view = view;
-        this.menuDispatcher = menuDispatcher;
     }
 
     public void login() {
@@ -25,6 +25,10 @@ public class LoginController {
         String password = view.read();
         User user = users.authenticate(libraryNumber, password);
         view.write(user.statusMessage());
-        user.accept(menuDispatcher);
+        loginListener.update(user);
+    }
+
+    public void addLoginListener(LoginListener loginListener) {
+        this.loginListener = loginListener;
     }
 }

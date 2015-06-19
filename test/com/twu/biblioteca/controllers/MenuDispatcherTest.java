@@ -29,8 +29,7 @@ public class MenuDispatcherTest {
 
     @Before
     public void setUp() throws Exception {
-        menuDispatcher = new MenuDispatcher();
-        menuDispatcher.setControllers(menuControllerStub, menuControllerStub, menuControllerStub);
+        menuDispatcher = new MenuDispatcher(menuControllerStub, menuControllerStub, menuControllerStub);
     }
 
     @Test

@@ -1,8 +1,9 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.controllers.LoginController;
 import com.twu.biblioteca.controllers.MenuDispatcher;
-import com.twu.biblioteca.models.Guest;
 import com.twu.biblioteca.models.Section;
+import com.twu.biblioteca.models.User;
 import com.twu.biblioteca.views.View;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,13 +22,15 @@ public class BibliotecaAppTest {
     @Mock
     private MenuDispatcher menuDispatcherStub;
     @Mock
-    private Guest guestStub;
+    private User userStub;
+    @Mock
+    private LoginController loginControllerStub;
 
     private BibliotecaApp bibliotecaApp;
 
     @Before
     public void setUp() {
-        bibliotecaApp = new BibliotecaApp(viewStub, sectionStub, menuDispatcherStub, guestStub);
+        bibliotecaApp = new BibliotecaApp(viewStub, menuDispatcherStub, userStub, loginControllerStub);
     }
 
     @Test
@@ -41,6 +44,6 @@ public class BibliotecaAppTest {
     public void shouldInteractMenuDispatcherAsGuestUser() {
         bibliotecaApp.start();
 
-        verify(menuDispatcherStub).visit(guestStub);
+        verify(userStub).accept(menuDispatcherStub);
     }
 }

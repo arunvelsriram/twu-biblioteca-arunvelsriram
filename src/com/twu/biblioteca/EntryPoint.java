@@ -35,8 +35,7 @@ public class EntryPoint {
         userDetails.add(new Librarian("B1011", "passwd", "Murali", "murali123@gmail.com", "919976767676"));
         Users users = new Users(userDetails);
 
-        MenuDispatcher menuDispatcher = new MenuDispatcher();
-        LoginController loginController = new LoginController(users, view, menuDispatcher);
+        LoginController loginController = new LoginController(users, view);
 
         List<MenuItem> guestMenuItems = new ArrayList<>();
         guestMenuItems.add(new MenuItem("List Books", new ListBooksAction(itemController, booksSection)));
@@ -74,11 +73,11 @@ public class EntryPoint {
         MenuController memberMenuController = new MenuController(memberMenu, view);
         MenuController librarianMenuController = new MenuController(librarianMenu, view);
 
-        menuDispatcher.setControllers(guestMenuController, memberMenuController, librarianMenuController);
+        MenuDispatcher menuDispatcher = new MenuDispatcher(guestMenuController, memberMenuController, librarianMenuController);
 
-        Guest guest = new Guest();
+        User guest = new Guest();
 
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(view, booksSection, menuDispatcher, guest);
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(view, menuDispatcher, guest, loginController);
         bibliotecaApp.start();
     }
 }
