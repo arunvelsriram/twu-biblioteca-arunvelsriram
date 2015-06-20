@@ -89,4 +89,19 @@ public class CheckoutHistoryTest {
 
         assertThat(actualCheckoutHistory, is(equalTo(expectedCheckoutHistory)));
     }
+
+    @Test
+    public void shouldBeAbleToReturnTheCheckoutHistoryAlongWithUserInformation() {
+        CheckoutHistory checkoutHistory = new CheckoutHistory(history);
+
+        String actualHistory = checkoutHistory.toString();
+
+        assertThat(actualHistory, is(equalTo("***User Details***\n" +
+                "Library Number: B1012\n" +
+                "Name: Arun\n" +
+                "Email Address: arunvelsriram@gmail.com\n" +
+                "Phone number: 919629722335\n\n" +
+                "***Item Details***\n" +
+                "| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n")));
+    }
 }

@@ -12,10 +12,9 @@ public class CheckoutHistory {
     }
 
     public void store(User user, Item item) {
-        if(history.containsKey(user)) {
+        if (history.containsKey(user)) {
             history.get(user).add(item);
-        }
-        else {
+        } else {
             List<Item> items = new ArrayList<>();
             items.add(item);
             history.put(user, items);
@@ -36,5 +35,22 @@ public class CheckoutHistory {
     @Override
     public int hashCode() {
         return history.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<User, List<Item>> entry : history.entrySet()) {
+            User user = entry.getKey();
+            List<Item> items = entry.getValue();
+            sb.append("***User Details***\n");
+            sb.append(user).append("\n");
+            for (Item item : items) {
+                sb.append("***Item Details***\n");
+                sb.append(item);
+                sb.append("\n");
+            }
+        }
+        return sb.toString();
     }
 }
