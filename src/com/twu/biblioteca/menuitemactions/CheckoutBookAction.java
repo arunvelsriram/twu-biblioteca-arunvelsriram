@@ -26,12 +26,13 @@ public class CheckoutBookAction implements MenuItemAction, LoginListener {
     @Override
     public void performAction() {
         List<Item> items = itemController.searchAvailableItems(bookSection);
+        if(items.isEmpty()) {
+            itemController.result(BOOK_CHECKOUT_FAILURE_MESSAGE);
+        }
         for(Item item : items) {
             itemController.checkoutAnItem(bookSection, item);
             itemController.result(BOOK_CHECKOUT_SUCCESS_MESSAGE);
-            return;
         }
-        itemController.result(BOOK_CHECKOUT_FAILURE_MESSAGE);
     }
 
     @Override

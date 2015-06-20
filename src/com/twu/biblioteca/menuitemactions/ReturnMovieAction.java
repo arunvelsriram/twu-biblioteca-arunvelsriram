@@ -26,12 +26,13 @@ public class ReturnMovieAction implements MenuItemAction, LoginListener {
     @Override
     public void performAction() {
         List<Item> items = itemController.searchIssuedItems(moviesSection);
-        for(Item item : items) {
+        if (items.isEmpty()) {
+            itemController.result(MOVIE_RETURN_FAILURE_MESSAGE);
+        }
+        for (Item item : items) {
             itemController.returnAnItem(moviesSection, item);
             itemController.result(MOVIE_RETURN_SUCCESS_MESSAGE);
-            return;
         }
-        itemController.result(MOVIE_RETURN_FAILURE_MESSAGE);
     }
 
     @Override

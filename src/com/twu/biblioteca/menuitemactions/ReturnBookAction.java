@@ -26,12 +26,13 @@ public class ReturnBookAction implements MenuItemAction, LoginListener {
     @Override
     public void performAction() {
         List<Item> items = itemController.searchIssuedItems(booksSection);
-        for(Item item : items) {
+        if (items.isEmpty()) {
+            itemController.result(BOOK_RETURN_FAILURE_MESSAGE);
+        }
+        for (Item item : items) {
             itemController.returnAnItem(booksSection, item);
             itemController.result(BOOK_RETURN_SUCCESS_MESSAGE);
-            return;
         }
-        itemController.result(BOOK_RETURN_FAILURE_MESSAGE);
     }
 
     @Override

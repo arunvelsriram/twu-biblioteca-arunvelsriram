@@ -27,12 +27,13 @@ public class CheckoutMovieAction implements MenuItemAction, LoginListener {
     @Override
     public void performAction() {
         List<Item> items = itemController.searchAvailableItems(movieSection);
+        if(items.isEmpty()) {
+            itemController.result(MOVIE_CHECKOUT_FAILURE_MESSAGE);
+        }
         for(Item item : items) {
             itemController.checkoutAnItem(movieSection, item);
             itemController.result(MOVIE_CHECKOUT_SUCCESS_MESSAGE);
-            return;
         }
-        itemController.result(MOVIE_CHECKOUT_FAILURE_MESSAGE);
     }
 
     @Override

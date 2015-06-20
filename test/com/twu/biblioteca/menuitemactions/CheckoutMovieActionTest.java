@@ -30,7 +30,7 @@ public class CheckoutMovieActionTest {
     private CheckoutMovieAction checkoutMovieAction;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         checkoutMovieAction = new CheckoutMovieAction(itemControllerStub, sectionStub, loginControllerStub);
     }
 
