@@ -1,9 +1,6 @@
 package com.twu.biblioteca;
 
-import com.twu.biblioteca.controllers.ItemController;
-import com.twu.biblioteca.controllers.LoginController;
-import com.twu.biblioteca.controllers.MenuController;
-import com.twu.biblioteca.controllers.MenuDispatcher;
+import com.twu.biblioteca.controllers.*;
 import com.twu.biblioteca.menuitemactions.*;
 import com.twu.biblioteca.models.*;
 import com.twu.biblioteca.views.View;
@@ -39,6 +36,8 @@ public class EntryPoint {
         Map<User, List<Item>> history = new LinkedHashMap<>();
         CheckoutHistory checkoutHistory = new CheckoutHistory(history);
 
+        HistoryController historyController = new HistoryController(checkoutHistory, view);
+
         CheckoutBookAction bookCheckoutAction = new CheckoutBookAction(itemController, booksSection, loginController);
         ReturnBookAction bookReturnAction = new ReturnBookAction(itemController, booksSection, loginController);
         CheckoutMovieAction movieCheckoutAction = new CheckoutMovieAction(itemController, moviesSection, loginController);
@@ -67,7 +66,7 @@ public class EntryPoint {
         librarianMenuItems.add(new MenuItem("List Movies", new ListMoviesAction(itemController, moviesSection)));
         librarianMenuItems.add(new MenuItem("Checkout Movie", movieCheckoutAction));
         librarianMenuItems.add(new MenuItem("Return Movie", movieReturnAction));
-        librarianMenuItems.add(new MenuItem("Checkout History", null));
+        librarianMenuItems.add(new MenuItem("Checkout History", new CheckoutHistoryAction(historyController)));
         librarianMenuItems.add(new MenuItem("Logout", null));
         librarianMenuItems.add(new MenuItem("Quit", null));
         librarianMenuItems.add(new MenuItem("Invalid Option", new InvalidOptionAction(view)));
