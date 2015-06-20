@@ -115,4 +115,14 @@ public class LibrarianTest {
 
         assertThat(actualMessage, is(equalTo("Hi! You are logged in as Librarian.")));
     }
+
+    @Test
+    public void shouldBeAbleToReturnUserDetails() {
+        String actualUserDetail = librarian.toString();
+
+        assertThat(actualUserDetail, is(equalTo("Library Number: B1013\n" +
+                "Name: Priya\n" +
+                "Email Address: priya33@gmail.com\n" +
+                "Phone number: 918989876767\n")));
+    }
 }

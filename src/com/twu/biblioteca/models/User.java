@@ -46,6 +46,16 @@ public abstract class User {
         return result;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Library Number: ").append(libraryNumber).append("\n")
+                .append("Name: ").append(name).append("\n")
+                .append("Email Address: ").append(emailAddress).append("\n")
+                .append("Phone number: ").append(phoneNumber).append("\n");
+        return sb.toString();
+    }
+
     public abstract void accept(Dispatcher dispatcher);
 
     public abstract String statusMessage();
