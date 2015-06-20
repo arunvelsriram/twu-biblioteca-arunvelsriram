@@ -8,9 +8,7 @@ import com.twu.biblioteca.menuitemactions.*;
 import com.twu.biblioteca.models.*;
 import com.twu.biblioteca.views.View;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class EntryPoint {
     public static void main(String[] args) {
@@ -37,6 +35,9 @@ public class EntryPoint {
 
         LoginController loginController = new LoginController(users, view);
 
+
+        Map<User, List<Item>> history = new LinkedHashMap<>();
+        CheckoutHistory checkoutHistory = new CheckoutHistory(history);
 
         CheckoutBookAction bookCheckoutAction = new CheckoutBookAction(itemController, booksSection, loginController);
         ReturnBookAction bookReturnAction = new ReturnBookAction(itemController, booksSection, loginController);
