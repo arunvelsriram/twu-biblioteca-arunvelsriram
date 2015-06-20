@@ -19,7 +19,6 @@ public class BibliotecaApp implements LoginListener {
         this.loginController.addLoginListener(this);
     }
 
-
     public void start() {
         view.write("***Welcome to Biblioteca***");
         user.accept(menuDispatcher);

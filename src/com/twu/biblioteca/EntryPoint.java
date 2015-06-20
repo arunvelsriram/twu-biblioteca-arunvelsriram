@@ -37,6 +37,12 @@ public class EntryPoint {
 
         LoginController loginController = new LoginController(users, view);
 
+
+        CheckoutBookAction bookCheckoutAction = new CheckoutBookAction(itemController, booksSection, loginController);
+        ReturnBookAction bookReturnAction = new ReturnBookAction(itemController, booksSection, loginController);
+        CheckoutMovieAction movieCheckoutAction = new CheckoutMovieAction(itemController, moviesSection, loginController);
+        ReturnMovieAction movieReturnAction = new ReturnMovieAction(itemController, moviesSection, loginController);
+
         List<MenuItem> guestMenuItems = new ArrayList<>();
         guestMenuItems.add(new MenuItem("List Books", new ListBooksAction(itemController, booksSection)));
         guestMenuItems.add(new MenuItem("List Movies", new ListMoviesAction(itemController, moviesSection)));
@@ -45,21 +51,21 @@ public class EntryPoint {
 
         List<MenuItem> memberMenuItems = new ArrayList<>();
         memberMenuItems.add(new MenuItem("List Books", new ListBooksAction(itemController, booksSection)));
-        memberMenuItems.add(new MenuItem("Checkout Book", new CheckoutBookAction(itemController, booksSection)));
-        memberMenuItems.add(new MenuItem("Return Book", new ReturnBookAction(itemController, booksSection)));
+        memberMenuItems.add(new MenuItem("Checkout Book", bookCheckoutAction));
+        memberMenuItems.add(new MenuItem("Return Book", bookReturnAction));
         memberMenuItems.add(new MenuItem("List Movies", new ListMoviesAction(itemController, moviesSection)));
-        memberMenuItems.add(new MenuItem("Checkout Movie", new CheckoutMovieAction(itemController, moviesSection)));
-        memberMenuItems.add(new MenuItem("Return Movie", new ReturnMovieAction(itemController, moviesSection)));
+        memberMenuItems.add(new MenuItem("Checkout Movie", movieCheckoutAction));
+        memberMenuItems.add(new MenuItem("Return Movie", movieReturnAction));
         memberMenuItems.add(new MenuItem("Logout", null));
         memberMenuItems.add(new MenuItem("Invalid Option", new InvalidOptionAction(view)));
 
         List<MenuItem> librarianMenuItems = new ArrayList<>();
         librarianMenuItems.add(new MenuItem("List Books", new ListBooksAction(itemController, booksSection)));
-        librarianMenuItems.add(new MenuItem("Checkout Book", new CheckoutBookAction(itemController, booksSection)));
-        librarianMenuItems.add(new MenuItem("Return Book", new ReturnBookAction(itemController, booksSection)));
+        librarianMenuItems.add(new MenuItem("Checkout Book", bookCheckoutAction));
+        librarianMenuItems.add(new MenuItem("Return Book", bookReturnAction));
         librarianMenuItems.add(new MenuItem("List Movies", new ListMoviesAction(itemController, moviesSection)));
-        librarianMenuItems.add(new MenuItem("Checkout Movie", new CheckoutMovieAction(itemController, moviesSection)));
-        librarianMenuItems.add(new MenuItem("Return Movie", new ReturnMovieAction(itemController, moviesSection)));
+        librarianMenuItems.add(new MenuItem("Checkout Movie", movieCheckoutAction));
+        librarianMenuItems.add(new MenuItem("Return Movie", movieReturnAction));
         librarianMenuItems.add(new MenuItem("Checkout History", null));
         librarianMenuItems.add(new MenuItem("Logout", null));
         librarianMenuItems.add(new MenuItem("Quit", null));

@@ -1,6 +1,7 @@
 package com.twu.biblioteca.menuitemactions;
 
 import com.twu.biblioteca.controllers.ItemController;
+import com.twu.biblioteca.controllers.LoginController;
 import com.twu.biblioteca.models.Item;
 import com.twu.biblioteca.models.Movie;
 import com.twu.biblioteca.models.Section;
@@ -23,12 +24,14 @@ public class ReturnMovieActionTest {
     private ItemController itemControllerStub;
     @Mock
     private Section sectionStub;
+    @Mock
+    private LoginController loginControllerStub;
 
     private ReturnMovieAction returnMovieAction;
 
     @Before
     public void setUp() throws Exception {
-        returnMovieAction = new ReturnMovieAction(itemControllerStub, sectionStub);
+        returnMovieAction = new ReturnMovieAction(itemControllerStub, sectionStub, loginControllerStub);
     }
 
     @Test
