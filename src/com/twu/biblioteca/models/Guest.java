@@ -16,4 +16,9 @@ public class Guest extends User {
     public String statusMessage() {
         return "Login failed!";
     }
+
+    @Override
+    public String toString() {
+        return "";
+    }
 }

@@ -155,4 +155,19 @@ public class LoginControllerTest {
 
         verify(loginListenerStub).update(librarianStub);
     }
+
+    @Test
+    public void shouldBeAbleToDisplayUserInformationOnceHeLogsIn() {
+        when(viewStub.read())
+                .thenReturn("B1104", "pword");
+        when(usersStub.authenticate("B1104", "pword"))
+                .thenReturn(librarianStub);
+        when(librarianStub.statusMessage())
+                .thenReturn("Hi! You are logged in as Librarian.");
+        when(librarianStub.toString())
+                .thenReturn("User details");
+        loginController.login();
+
+        verify(viewStub).write(librarianStub.toString());
+    }
 }

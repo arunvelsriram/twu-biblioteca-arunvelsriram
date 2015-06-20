@@ -25,6 +25,7 @@ public class LoginController {
         String password = view.read();
         User user = users.authenticate(libraryNumber, password);
         view.write(user.statusMessage());
+        view.write(user.toString());
         loginListener.update(user);
     }
 
