@@ -1,7 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.app;
 
 import com.twu.biblioteca.controllers.LoginController;
-import com.twu.biblioteca.controllers.MenuDispatcher;
+import com.twu.biblioteca.dispatchers.MenuDispatcher;
 import com.twu.biblioteca.models.Section;
 import com.twu.biblioteca.models.User;
 import com.twu.biblioteca.views.View;

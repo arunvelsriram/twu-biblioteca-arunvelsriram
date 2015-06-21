@@ -1,6 +1,6 @@
 package com.twu.biblioteca.menuitemactions;
 
-import com.twu.biblioteca.LoginListener;
+import com.twu.biblioteca.listeners.LoginListener;
 import com.twu.biblioteca.controllers.ItemController;
 import com.twu.biblioteca.controllers.LoginController;
 import com.twu.biblioteca.models.CheckoutHistory;

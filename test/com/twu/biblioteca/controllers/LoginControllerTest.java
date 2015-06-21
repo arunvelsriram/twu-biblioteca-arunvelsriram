@@ -1,6 +1,6 @@
 package com.twu.biblioteca.controllers;
 
-import com.twu.biblioteca.LoginListener;
+import com.twu.biblioteca.listeners.LoginListener;
 import com.twu.biblioteca.models.Guest;
 import com.twu.biblioteca.models.Librarian;
 import com.twu.biblioteca.models.Member;

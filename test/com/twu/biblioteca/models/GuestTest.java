@@ -1,6 +1,6 @@
 package com.twu.biblioteca.models;
 
-import com.twu.biblioteca.controllers.Dispatcher;
+import com.twu.biblioteca.dispatchers.Dispatcher;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

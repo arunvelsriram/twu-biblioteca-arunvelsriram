@@ -1,5 +1,6 @@
-package com.twu.biblioteca.controllers;
+package com.twu.biblioteca.dispatchers;
 
+import com.twu.biblioteca.controllers.MenuController;
 import com.twu.biblioteca.models.Guest;
 import com.twu.biblioteca.models.Librarian;
 import com.twu.biblioteca.models.Member;
@@ -9,9 +10,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 @RunWith(MockitoJUnitRunner.class)

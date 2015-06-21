@@ -1,6 +1,6 @@
 package com.twu.biblioteca.models;
 
-import com.twu.biblioteca.controllers.Dispatcher;
+import com.twu.biblioteca.dispatchers.Dispatcher;
 
 public class Guest extends User {
     public Guest() {

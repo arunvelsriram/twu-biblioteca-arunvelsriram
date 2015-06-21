@@ -1,6 +1,6 @@
 package com.twu.biblioteca.models;
 
-import com.twu.biblioteca.controllers.Dispatcher;
+import com.twu.biblioteca.dispatchers.Dispatcher;
 
 public abstract class User {
     private String libraryNumber;

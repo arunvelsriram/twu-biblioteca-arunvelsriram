@@ -41,7 +41,7 @@
         <mkdir dir="out/jar"/>
         <jar destfile="out/jar/EntryPoint.jar" basedir="out/src/classes">
             <manifest>
-                <attribute name="Main-Class" value="com.twu.biblioteca.EntryPoint"/>
+                <attribute name="Main-Class" value="com.twu.biblioteca.app.EntryPoint"/>
             </manifest>
         </jar>
     </target>

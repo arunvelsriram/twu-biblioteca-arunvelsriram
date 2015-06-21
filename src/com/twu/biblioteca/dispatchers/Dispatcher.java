@@ -1,4 +1,4 @@
-package com.twu.biblioteca.controllers;
+package com.twu.biblioteca.dispatchers;
 
 import com.twu.biblioteca.models.Guest;
 import com.twu.biblioteca.models.Librarian;

@@ -1,6 +1,6 @@
 package com.twu.biblioteca.models;
 
-import com.twu.biblioteca.controllers.Dispatcher;
+import com.twu.biblioteca.dispatchers.Dispatcher;
 
 public class Librarian extends User {
     public Librarian(String libraryNumber, String password, String name, String emailAddress, String phoneNumber) {
