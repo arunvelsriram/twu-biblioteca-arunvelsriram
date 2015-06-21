@@ -131,7 +131,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void shouldBeAbleToUpdateTheUserInTheAppWhenMemberLogsIn() {
+    public void shouldBeAbleToUpdateTheUserToTheListenersWhenMemberLogsIn() {
         when(viewStub.read())
                 .thenReturn("B1102", "password");
         when(usersStub.authenticate("B1102", "password"))
@@ -144,7 +144,7 @@ public class LoginControllerTest {
     }
 
     @Test
-    public void shouldBeAbleToUpdateTheUserInTheAppWhenLibrarianLogsIn() {
+    public void shouldBeAbleToUpdateTheUserToTheListenersWhenLibrarianLogsIn() {
         when(viewStub.read())
                 .thenReturn("B1104", "pword");
         when(usersStub.authenticate("B1104", "pword"))
