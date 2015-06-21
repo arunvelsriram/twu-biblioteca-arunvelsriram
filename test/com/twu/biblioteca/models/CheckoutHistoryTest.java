@@ -12,6 +12,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class CheckoutHistoryTest {
     private Map<User, List<Item>> history;
@@ -103,5 +104,45 @@ public class CheckoutHistoryTest {
                 "Phone number: 919629722335\n\n" +
                 "***Item Details***\n" +
                 "| Harry Potter and The Sorcer's Stone | JK Rowling | 1999 |\n")));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenBothUserDetailAndItemDetailIsNotAvailableInTheHistory() {
+        CheckoutHistory checkoutHistory = new CheckoutHistory(history);
+        User member = new Member("B1015", "pass", "Ajay", "ajayy@gmail.com", "917876567890");
+        Item book = new Book("Twilight", "Unknown", 2006);
+
+        boolean actual = checkoutHistory.has(member, book);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    public void shouldReturnFalseWhenUserIsNotAvailableInTheHistory() {
+        CheckoutHistory checkoutHistory = new CheckoutHistory(history);
+        User member = new Member("B1015", "pass", "Ajay", "ajayy@gmail.com", "917876567890");
+
+        boolean actual = checkoutHistory.has(member, items.get(0));
+
+        assertFalse(actual);
+    }
+
+    @Test
+    public void shouldReturnFalseWhenItemIsNotAvailableInTheHistory() {
+        CheckoutHistory checkoutHistory = new CheckoutHistory(history);
+        Item book = new Book("Twilight", "Unknown", 2006);
+
+        boolean actual = checkoutHistory.has(user, book);
+
+        assertFalse(actual);
+    }
+
+    @Test
+    public void shouldReturnTrueWhenBothUserDetailAndItemDetailIsAvailableInTheHistory() {
+        CheckoutHistory checkoutHistory = new CheckoutHistory(history);
+
+        boolean actual = checkoutHistory.has(user, items.get(0));
+
+        assertTrue(actual);
     }
 }

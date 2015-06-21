@@ -11,6 +11,14 @@ public class CheckoutHistory {
         this.history = history;
     }
 
+    public boolean has(User user, Item item) {
+        if(history.containsKey(user)) {
+            List<Item> items = history.get(user);
+            return items.contains(item);
+        }
+        return false;
+    }
+
     public void store(User user, Item item) {
         if (history.containsKey(user)) {
             history.get(user).add(item);
