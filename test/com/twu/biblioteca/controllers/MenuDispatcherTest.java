@@ -72,7 +72,7 @@ public class MenuDispatcherTest {
     public void shouldBeToAbleShowMemberMenuInfinitely() {
         when(menuControllerStub.chooseOption())
                 .thenReturn(true, false);
-        menuDispatcher.dispatch(guestStub);
+        menuDispatcher.dispatch(memberStub);
 
         verify(menuControllerStub, times(2)).chooseOption();
     }
@@ -81,7 +81,7 @@ public class MenuDispatcherTest {
     public void shouldBeToAbleChooseAnOptionFromMemberMenuInfinitely() {
         when(menuControllerStub.chooseOption())
                 .thenReturn(true, false);
-        menuDispatcher.dispatch(guestStub);
+        menuDispatcher.dispatch(memberStub);
 
         verify(menuControllerStub, times(2)).chooseOption();
     }

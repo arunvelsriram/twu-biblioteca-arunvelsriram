@@ -90,6 +90,22 @@ public class CheckoutHistoryTest {
     }
 
     @Test
+    public void shouldBeAbleToStoreAnItemIfTheUserAlreadyExists() {
+        List<Item> expectedItems = new ArrayList<>();
+        expectedItems.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
+        expectedItems.add(new Movie("The Prestige", "Christopher Nolan", 2006, "10"));
+        Map<User, List<Item>> expectedHistory = new LinkedHashMap<>();
+        expectedHistory.put(user, items);
+        CheckoutHistory expectedCheckoutHistory = new CheckoutHistory(expectedHistory);
+
+        CheckoutHistory actualCheckoutHistory = new CheckoutHistory(history);
+        actualCheckoutHistory.store(user, new Movie("The Prestige", "Christopher Nolan", 2006, "10"));
+
+        assertThat(actualCheckoutHistory, is(equalTo(expectedCheckoutHistory)));
+    }
+
+
+    @Test
     public void shouldBeAbleToReturnTheCheckoutHistoryAlongWithUserInformation() {
         CheckoutHistory checkoutHistory = new CheckoutHistory(history);
 

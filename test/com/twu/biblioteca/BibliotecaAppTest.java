@@ -46,4 +46,11 @@ public class BibliotecaAppTest {
 
         verify(userStub).accept(menuDispatcherStub);
     }
+
+    @Test
+    public void shouldBeAbleToUpdateTheUserAndSendTheMenuDispatcher() {
+        bibliotecaApp.update(userStub);
+
+        verify(userStub).accept(menuDispatcherStub);
+    }
 }
