@@ -3,6 +3,7 @@ package com.twu.biblioteca.menuitemactions;
 import com.twu.biblioteca.LoginListener;
 import com.twu.biblioteca.controllers.ItemController;
 import com.twu.biblioteca.controllers.LoginController;
+import com.twu.biblioteca.models.CheckoutHistory;
 import com.twu.biblioteca.models.Item;
 import com.twu.biblioteca.models.Section;
 import com.twu.biblioteca.models.User;
@@ -16,11 +17,14 @@ public class CheckoutMovieAction implements MenuItemAction, LoginListener {
 
     private ItemController itemController;
     private Section movieSection;
+    private CheckoutHistory checkoutHistory;
     private User user;
 
-    public CheckoutMovieAction(ItemController itemController, Section movieSection, LoginController loginController) {
+    public CheckoutMovieAction(ItemController itemController, Section movieSection,
+                               LoginController loginController, CheckoutHistory checkoutHistory) {
         this.itemController = itemController;
         this.movieSection = movieSection;
+        this.checkoutHistory = checkoutHistory;
         loginController.addLoginListener(this);
     }
 
@@ -33,6 +37,7 @@ public class CheckoutMovieAction implements MenuItemAction, LoginListener {
         for(Item item : items) {
             itemController.checkoutAnItem(movieSection, item);
             itemController.result(MOVIE_CHECKOUT_SUCCESS_MESSAGE);
+            checkoutHistory.store(user, item);
         }
     }
 
