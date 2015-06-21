@@ -39,7 +39,7 @@ public class EntryPoint {
         HistoryController historyController = new HistoryController(checkoutHistory, view);
 
         CheckoutBookAction bookCheckoutAction = new CheckoutBookAction(itemController, booksSection, loginController, checkoutHistory);
-        ReturnBookAction bookReturnAction = new ReturnBookAction(itemController, booksSection, loginController);
+        ReturnBookAction bookReturnAction = new ReturnBookAction(itemController, booksSection, loginController, checkoutHistory);
         CheckoutMovieAction movieCheckoutAction = new CheckoutMovieAction(itemController, moviesSection, loginController, checkoutHistory);
         ReturnMovieAction movieReturnAction = new ReturnMovieAction(itemController, moviesSection, loginController);
 
