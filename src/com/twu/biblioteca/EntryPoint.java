@@ -41,7 +41,7 @@ public class EntryPoint {
         CheckoutBookAction bookCheckoutAction = new CheckoutBookAction(itemController, booksSection, loginController, checkoutHistory);
         ReturnBookAction bookReturnAction = new ReturnBookAction(itemController, booksSection, loginController, checkoutHistory);
         CheckoutMovieAction movieCheckoutAction = new CheckoutMovieAction(itemController, moviesSection, loginController, checkoutHistory);
-        ReturnMovieAction movieReturnAction = new ReturnMovieAction(itemController, moviesSection, loginController);
+        ReturnMovieAction movieReturnAction = new ReturnMovieAction(itemController, moviesSection, loginController, checkoutHistory);
 
         List<MenuItem> guestMenuItems = new ArrayList<>();
         guestMenuItems.add(new MenuItem("List Books", new ListBooksAction(itemController, booksSection)));

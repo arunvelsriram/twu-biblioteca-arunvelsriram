@@ -61,7 +61,7 @@ public class ReturnBookActionTest {
     @Test
     public void shouldBeAbleToReturnTheItemIfTheIssuedItemsListIsNotEmpty() {
         List<Item> issuedItems = new ArrayList<>();
-        issuedItems.add(new Movie("Inception", "Christopher Nolan", 2010, "10"));
+        issuedItems.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
         when(itemControllerStub.searchIssuedItems(sectionStub))
                 .thenReturn(issuedItems);
         when(checkoutHistoryStub.has(userStub, issuedItems.get(0)))
@@ -75,7 +75,7 @@ public class ReturnBookActionTest {
     @Test
     public void shouldPrintSuccessMessageIfTheIssuedItemsListIsNotEmpty() {
         List<Item> issuedItems = new ArrayList<>();
-        issuedItems.add(new Movie("Inception", "Christopher Nolan", 2010, "10"));
+        issuedItems.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
         when(itemControllerStub.searchIssuedItems(sectionStub))
                 .thenReturn(issuedItems);
         when(checkoutHistoryStub.has(userStub, issuedItems.get(0)))
@@ -89,7 +89,7 @@ public class ReturnBookActionTest {
     @Test
     public void shouldBeAbleToRemoveFromHistoryIfTheIssuedItemsListIsNotEmpty() {
         List<Item> issuedItems = new ArrayList<>();
-        issuedItems.add(new Movie("Inception", "Christopher Nolan", 2010, "10"));
+        issuedItems.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
         when(itemControllerStub.searchIssuedItems(sectionStub))
                 .thenReturn(issuedItems);
         when(checkoutHistoryStub.has(userStub, issuedItems.get(0)))
@@ -103,7 +103,7 @@ public class ReturnBookActionTest {
     @Test
     public void shouldBeAbleToPrintFailureMessageIfTheCheckoutHistoryHasNoEntryForTheGivenUserAndItem() {
         List<Item> issuedItems = new ArrayList<>();
-        issuedItems.add(new Movie("Inception", "Christopher Nolan", 2010, "10"));
+        issuedItems.add(new Book("Harry Potter and The Sorcer's Stone", "JK Rowling", 1999));
         when(itemControllerStub.searchIssuedItems(sectionStub))
                 .thenReturn(issuedItems);
         when(checkoutHistoryStub.has(userStub, issuedItems.get(0)))
