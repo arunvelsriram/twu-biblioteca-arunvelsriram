@@ -38,7 +38,7 @@ public class EntryPoint {
 
         HistoryController historyController = new HistoryController(checkoutHistory, view);
 
-        CheckoutBookAction bookCheckoutAction = new CheckoutBookAction(itemController, booksSection, loginController);
+        CheckoutBookAction bookCheckoutAction = new CheckoutBookAction(itemController, booksSection, loginController, checkoutHistory);
         ReturnBookAction bookReturnAction = new ReturnBookAction(itemController, booksSection, loginController);
         CheckoutMovieAction movieCheckoutAction = new CheckoutMovieAction(itemController, moviesSection, loginController);
         ReturnMovieAction movieReturnAction = new ReturnMovieAction(itemController, moviesSection, loginController);
