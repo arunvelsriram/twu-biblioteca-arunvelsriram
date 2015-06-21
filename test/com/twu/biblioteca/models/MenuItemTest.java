@@ -93,13 +93,13 @@ public class MenuItemTest {
     public void shouldReturnFalseForOptionsOtherThanExit() {
         MenuItem menuItem = new MenuItem("List Books", menuItemActionStub);
 
-        assertFalse(menuItem.isExit());
+        assertFalse(menuItem.isLogout());
     }
 
     @Test
-    public void shouldReturnTrueForExitOption() {
-        MenuItem menuItem = new MenuItem("Quit", null);
+    public void shouldReturnTrueForLogoutOption() {
+        MenuItem menuItem = new MenuItem("Logout", null);
 
-        assertTrue(menuItem.isExit());
+        assertTrue(menuItem.isLogout());
     }
 }

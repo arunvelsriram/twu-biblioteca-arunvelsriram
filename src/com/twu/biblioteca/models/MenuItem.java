@@ -15,8 +15,8 @@ public class MenuItem {
         menuItemAction.performAction();
     }
 
-    public boolean isExit() {
-        return (this.name.compareToIgnoreCase("quit") == 0);
+    public boolean isLogout() {
+        return (this.name.compareToIgnoreCase("logout") == 0);
     }
 
     @Override

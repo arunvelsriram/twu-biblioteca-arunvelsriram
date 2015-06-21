@@ -49,7 +49,7 @@ public class MenuControllerTest {
                 .thenReturn(1);
         when(menuStub.menuItem(1))
                 .thenReturn(menuItemStub);
-        when(menuItemStub.isExit())
+        when(menuItemStub.isLogout())
                 .thenReturn(false);
 
         boolean actual = menuController.chooseOption();
@@ -63,7 +63,7 @@ public class MenuControllerTest {
                 .thenReturn(3);
         when(menuStub.menuItem(3))
                 .thenReturn(menuItemStub);
-        when(menuItemStub.isExit())
+        when(menuItemStub.isLogout())
                 .thenReturn(true);
 
         boolean actual = menuController.chooseOption();

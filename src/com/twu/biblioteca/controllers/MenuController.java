@@ -20,7 +20,7 @@ public class MenuController {
     public boolean chooseOption() {
         int option = view.readInt();
         MenuItem menuItem = menu.menuItem(option);
-        if (menuItem.isExit()) {
+        if (menuItem.isLogout()) {
             return false;
         } else {
             menuItem.performAction();
