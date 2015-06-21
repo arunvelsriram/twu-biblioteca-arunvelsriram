@@ -10,9 +10,7 @@ import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class CheckoutHistoryTest {
     private Map<User, List<Item>> history;
@@ -144,5 +142,28 @@ public class CheckoutHistoryTest {
         boolean actual = checkoutHistory.has(user, items.get(0));
 
         assertTrue(actual);
+    }
+
+    @Test
+    public void shouldBeAbleToRemoveAnItemForAParticularUser() {
+        CheckoutHistory expectedCheckoutHistory = new CheckoutHistory(history);
+        items.add(new Movie("The Prestige", "Christopher Nolan", 2006, "10"));
+        history.put(user, items);
+        CheckoutHistory actualCheckoutHistory = new CheckoutHistory(history);
+
+        actualCheckoutHistory.remove(user, book);
+
+        assertThat(actualCheckoutHistory, is(equalTo(expectedCheckoutHistory)));
+    }
+
+    @Test
+    public void shouldBeAbleToRemoveAnEntryFromTheHistoryIfTheItemListReducesToZero() {
+        Map<User, List<Item>> expectedHistory = new LinkedHashMap<>();
+        CheckoutHistory expectedCheckoutHistory = new CheckoutHistory(expectedHistory);
+        CheckoutHistory actualCheckoutHistory = new CheckoutHistory(history);
+
+        actualCheckoutHistory.remove(user, book);
+
+        assertThat(actualCheckoutHistory, is(equalTo(expectedCheckoutHistory)));
     }
 }

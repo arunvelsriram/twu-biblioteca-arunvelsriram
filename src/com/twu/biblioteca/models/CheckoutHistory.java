@@ -19,6 +19,14 @@ public class CheckoutHistory {
         return false;
     }
 
+    public void remove(User user, Item item) {
+        List<Item> items = history.get(user);
+        items.remove(item);
+        if(items.size() == 0) {
+            history.remove(user);
+        }
+    }
+
     public void store(User user, Item item) {
         if (history.containsKey(user)) {
             history.get(user).add(item);
