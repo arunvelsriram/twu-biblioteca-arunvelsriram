@@ -1,16 +1,13 @@
 package com.twu.biblioteca.views;
 
-import java.io.Console;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class View {
     private Scanner scanner;
-    private Console console;
 
-    public View(Scanner scanner, Console console) {
+    public View(Scanner scanner) {
         this.scanner = scanner;
-        this.console = console;
     }
 
     public void write(String message) {

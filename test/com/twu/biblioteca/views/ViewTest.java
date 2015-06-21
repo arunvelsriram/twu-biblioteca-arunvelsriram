@@ -25,7 +25,7 @@ public class ViewTest {
     
     @Test
     public void shouldBeAbleToPrintWelcomeMessage() {
-        View view = new View(new Scanner(System.in), System.console());
+        View view = new View(new Scanner(System.in));
         view.write("***Welcome to Biblioteca***");
 
         String actualMessage = byteArrayOutputStream.toString();
@@ -38,7 +38,7 @@ public class ViewTest {
         String inputData = "1 ";
         byteArrayInputStream = new ByteArrayInputStream(inputData.getBytes());
         System.setIn(byteArrayInputStream);
-        View view = new View(new Scanner(System.in), System.console());
+        View view = new View(new Scanner(System.in));
 
         int actualOption = view.readInt();
 
@@ -50,7 +50,7 @@ public class ViewTest {
         String inputData = "hello";
         byteArrayInputStream = new ByteArrayInputStream(inputData.getBytes());
         System.setIn(byteArrayInputStream);
-        View view = new View(new Scanner(System.in), System.console());
+        View view = new View(new Scanner(System.in));
 
         int actualOption = view.readInt();
 
@@ -62,7 +62,7 @@ public class ViewTest {
         String inputData = "Harry Potter and The Sorcer's Stone";
         byteArrayInputStream = new ByteArrayInputStream(inputData.getBytes());
         System.setIn(byteArrayInputStream);
-        View view = new View(new Scanner(System.in), System.console());
+        View view = new View(new Scanner(System.in));
 
         String actualBookName = view.read();
 
