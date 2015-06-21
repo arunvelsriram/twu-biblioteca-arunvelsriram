@@ -68,7 +68,7 @@ public class EntryPoint {
         librarianMenuItems.add(new MenuItem("Return Movie", movieReturnAction));
         librarianMenuItems.add(new MenuItem("Checkout History", new CheckoutHistoryAction(historyController)));
         librarianMenuItems.add(new MenuItem("Logout", null));
-        librarianMenuItems.add(new MenuItem("Quit", null));
+        librarianMenuItems.add(new MenuItem("Quit", new QuitAction(view)));
         librarianMenuItems.add(new MenuItem("Invalid Option", new InvalidOptionAction(view)));
 
         Menu guestMenu = new Menu(guestMenuItems);
