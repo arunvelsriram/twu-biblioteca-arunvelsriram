@@ -10,14 +10,12 @@ public class BibliotecaApp implements LoginListener {
     private View view;
     private MenuDispatcher menuDispatcher;
     private User user;
-    private LoginController loginController;
 
     public BibliotecaApp(View view, MenuDispatcher menuDispatcher, User guest, LoginController loginController) {
         this.view = view;
         this.menuDispatcher = menuDispatcher;
         this.user = guest;
-        this.loginController = loginController;
-        this.loginController.addLoginListener(this);
+        loginController.addLoginListener(this);
     }
 
     public void start() {
