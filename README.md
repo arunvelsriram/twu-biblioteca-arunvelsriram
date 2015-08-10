@@ -26,3 +26,6 @@ Password: passwd
 ### Member
 Library Number: B1012  
 Password: password
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/arunvelsriram/twu-biblioteca-arunvelsriram/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
